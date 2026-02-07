@@ -1,0 +1,133 @@
+.work-section {
+    padding: 150px 0;
+}
+
+
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 4rem;
+}
+
+.experience-card {
+    padding: 40px;
+    border-radius: 32px;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    transition: var(--transition-smooth);
+}
+
+.experience-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary);
+    transform: scale(1.02);
+}
+
+.exp-left {
+    display: flex;
+    gap: 25px;
+    flex: 1;
+}
+
+.exp-right {
+    flex: 1.5;
+}
+
+.exp-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.exp-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.exp-info .company {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.exp-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.exp-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.exp-right p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 25px;
+}
+
+.exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    padding: 6px 14px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .experience-card {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-section {
+        padding: 80px 0;
+    }
+
+    .experience-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .exp-left {
+        gap: 15px;
+    }
+
+    .exp-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+    }
+
+    .exp-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .exp-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

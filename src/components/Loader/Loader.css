@@ -1,0 +1,205 @@
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: background-color 0.8s ease;
+}
+
+.loader-wrapper.word-bg-0 {
+    background-color: #000d1a;
+}
+
+.loader-wrapper.word-bg-1 {
+    background-color: #000c24;
+}
+
+.loader-wrapper.word-bg-2 {
+    background-color: #0a001a;
+}
+
+.loader-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Engineering Background: Binary Rain */
+.engineering-grid {
+    background: transparent;
+}
+
+.engineering-grid::after {
+    content: "0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0";
+    position: absolute;
+    top: -100px;
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    color: rgba(0, 71, 255, 0.15);
+    line-height: 1.2;
+    word-break: break-all;
+    white-space: pre-wrap;
+    animation: rain 10s linear infinite;
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+@keyframes rain {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Gaming Background */
+.gaming-energy {
+    background: radial-gradient(circle at center, rgba(0, 174, 255, 0.15) 0%, transparent 70%);
+}
+
+.gaming-energy::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Zz48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyIiBmaWxsPSJyZ2JhKDAsIDE3NCwgMjU1LCAwLjIpIi8+PC9nPjwvc3ZnPg==');
+    animation: jitter 0.2s infinite;
+}
+
+@keyframes jitter {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(2px, -2px);
+    }
+
+    50% {
+        transform: translate(-2px, 2px);
+    }
+
+    75% {
+        transform: translate(2px, 2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Learner Background */
+.learner-constellation {
+    background: radial-gradient(circle at center, rgba(112, 0, 255, 0.1) 0%, transparent 80%);
+}
+
+.learner-constellation::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow:
+        10vw 20vh 2px white, 30vw 50vh 2px white, 70vw 10vh 2px white,
+        20vw 80vh 2px white, 50vw 40vh 2px white, 90vw 70vh 2px white,
+        40vw 15vh 2px white, 80vw 35vh 2px white, 15vw 60vh 2px white;
+    animation: drift 10s linear infinite alternate;
+}
+
+@keyframes drift {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(20px, 20px);
+    }
+}
+
+.loader-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.liquid-logo {
+    width: 120px;
+    height: 120px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.loader-text {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.loader-subtext-container {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-subtext {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: white;
+    margin-left: 4px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}

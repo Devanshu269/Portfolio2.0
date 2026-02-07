@@ -1,0 +1,242 @@
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 200px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.gradient-sphere {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+}
+
+.sphere-1 {
+    width: 50vw;
+    height: 50vw;
+    background: var(--primary);
+    top: -10vw;
+    right: -10vw;
+}
+
+.sphere-2 {
+    width: 40vw;
+    height: 40vw;
+    background: #00AEFF;
+    bottom: -10vw;
+    left: -10vw;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+
+.hero-header h1 {
+    font-size: clamp(3.5rem, 12vw, 10rem);
+    line-height: 0.85;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.role-container {
+    margin-top: 1.5rem;
+    min-height: 4rem;
+    /* Prevents layout shift */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.typewriter-text {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background-color: var(--primary);
+    margin-left: 8px;
+    vertical-align: middle;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.profile-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.name-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.hello-text {
+    font-size: 1.3rem;
+    color: #fff;
+    /* Brighter white */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-shadow: 0 0 15px rgba(0, 174, 255, 0.6);
+    /* Glow effect */
+    margin-left: 0;
+    margin-bottom: 5px;
+}
+
+.devanshu-name {
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    font-weight: 800;
+    color: white;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    text-align: center;
+}
+
+.last-name {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to bottom, var(--primary), #00AEFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* Removing old profile-pill styles */
+.profile-pill {
+    display: none;
+}
+
+.hero-footer {
+    margin-top: 5rem;
+    margin-bottom: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.hero-bio {
+    max-width: 500px;
+}
+
+.hero-bio p {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: var(--text-dim);
+    font-weight: 400;
+}
+
+.hero-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.social-link:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 120px;
+    }
+
+    .hero-header h1 {
+        font-size: clamp(2.5rem, 15vw, 4.5rem);
+    }
+
+    .profile-pill {
+        padding: 0 20px;
+        height: 50px;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-header .line-alt {
+        gap: 15px;
+    }
+
+    .hero-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+        margin-top: 3rem;
+        margin-bottom: 4rem;
+    }
+
+    .hero-bio {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .availability-tag {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+    }
+
+    .hero-header h1 {
+        font-size: 2.8rem;
+    }
+
+    .profile-pill {
+        height: 40px;
+        padding: 0 15px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,166 @@
+:root {
+  --primary: #0047FF;
+  --primary-dark: #002BBF;
+  --bg-dark: #050505;
+  --bg-light: #ffffff;
+  --text-main: #ffffff;
+  --text-dim: #a0a0a0;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --gradient-main: linear-gradient(135deg, #0047FF 0%, #00AEFF 100%);
+  --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --bg-dark-alt: #0a0a0a;
+  --divider: rgba(255, 255, 255, 0.03);
+  --section-padding: 120px 0;
+}
+
+/* Global Section Styling for Separation */
+section {
+  position: relative;
+  width: 100%;
+}
+
+/* Add subtle separator line between sections */
+section:not(:last-of-type)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  /* Not full width for a cleaner look */
+  height: 1px;
+  background: radial-gradient(circle, var(--divider) 0%, transparent 100%);
+}
+
+/* Alternating Backgrounds */
+main>section:nth-of-type(odd) {
+  background-color: var(--bg-dark);
+}
+
+main>section:nth-of-type(even) {
+  background-color: var(--bg-dark-alt);
+}
+
+/* Ensure Hero (first section) allows background spheres to show */
+main>section:first-of-type {
+  background-color: transparent !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* Hero Text Mask Animation */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  /* Increased size */
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 8vw, 6rem);
+  line-height: 0.9;
+  margin-bottom: 2rem;
+}

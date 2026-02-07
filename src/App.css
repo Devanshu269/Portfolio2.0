@@ -1,0 +1,7 @@
+.app-wrapper {
+    overflow-x: hidden;
+}
+
+.main-content {
+    position: relative;
+}
