@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MapPin, Mail, Phone, ExternalLink } from 'lucide-react';
+import { Send, MapPin, Mail, Phone, ExternalLink, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -9,6 +10,8 @@ const Contact = () => {
         email: '',
         message: ''
     });
+    const [isLoading, setIsLoading] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(''); // 'success' | 'error' | ''
 
     const handleChange = (e) => {
         setFormData({
@@ -17,23 +20,50 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+        setSubmitStatus('');
 
         // Check if all fields are filled
         if (formData.name.trim() && formData.email.trim() && formData.message.trim()) {
-            // Here you can add your form submission logic
-            console.log('Form submitted:', formData);
-            alert('Message sent successfully!');
+            try {
+                // Initialize EmailJS with your public key
+                // Get your public key from: https://dashboard.emailjs.com/admin/account
+                emailjs.init("ISIBtK7dnMFb9_z2a"); // REPLACE THIS
+                
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    'service_50jq8c8',
+                    'template_h5q0se7',
+                    {
+                        name: formData.name,
+                        email: formData.email,
+                        message: formData.message,
+                        to_email: 'devanshu.shekhar2@gmail.com' // This should be YOUR email
+                    }
+                );
 
-            // Reset form
-            setFormData({
-                name: '',
-                email: '',
-                message: ''
-            });
+                if (response.status === 200) {
+                    setSubmitStatus('success');
+                    // Reset form
+                    setFormData({
+                        name: '',
+                        email: '',
+                        message: ''
+                    });
+                } else {
+                    setSubmitStatus('error');
+                }
+            } catch (error) {
+                console.error('Email send error:', error);
+                setSubmitStatus('error');
+            } finally {
+                setIsLoading(false);
+            }
         } else {
-            alert('Please fill in all fields before submitting.');
+            setSubmitStatus('error');
+            setIsLoading(false);
         }
     };
 
@@ -123,16 +153,34 @@ const Contact = () => {
                                     required
                                 ></textarea>
                             </div>
+                            
+                            {submitStatus && (
+                                <div className={`status-message ${submitStatus}`}>
+                                    {submitStatus === 'success' 
+                                        ? '✓ Message sent successfully! I\'ll get back to you soon.' 
+                                        : '✗ Failed to send message. Please try again.'}
+                                </div>
+                            )}
+                            
                             <button
                                 type="submit"
                                 className="submit-btn"
-                                disabled={!isFormValid}
+                                disabled={!isFormValid || isLoading}
                                 style={{
-                                    opacity: isFormValid ? 1 : 0.5,
-                                    cursor: isFormValid ? 'pointer' : 'not-allowed'
+                                    opacity: isFormValid && !isLoading ? 1 : 0.5,
+                                    cursor: isFormValid && !isLoading ? 'pointer' : 'not-allowed'
                                 }}
                             >
-                                Send Message <Send size={18} />
+                                {isLoading ? (
+                                    <>
+                                        <Loader2 size={18} className="animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        Send Message <Send size={18} />
+                                    </>
+                                )}
                             </button>
                         </form>
                     </motion.div>

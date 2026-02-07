@@ -16,13 +16,14 @@
 
 .navbar-inner {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 24px;
+    padding: 12px 28px;
     border-radius: 100px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.3s ease;
 }
 
 .nav-logo {
@@ -31,8 +32,9 @@
     gap: 10px;
     font-family: 'Lexend', sans-serif;
     font-weight: 800;
-    color: white;
+    color: var(--text-primary);
     font-size: 1.2rem;
+    transition: color 0.3s ease;
 }
 
 .logo-dot {
@@ -44,29 +46,31 @@
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 24px;
 }
 
 .nav-link {
     font-weight: 500;
     font-size: 0.9rem;
-    color: var(--text-dim);
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: white;
+    color: var(--text-primary);
 }
 
 .nav-actions {
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
 .contact-btn {
-    background: white;
-    color: black;
+    background: var(--text-primary);
+    color: var(--bg-primary);
     padding: 8px 18px;
     border-radius: 100px;
     font-size: 0.85rem;
@@ -75,17 +79,19 @@
     align-items: center;
     gap: 6px;
     text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
 .contact-btn:hover {
     background: var(--primary);
-    color: white;
+    color: var(--text-inverse);
     transform: scale(1.05);
 }
 
 .mobile-toggle {
     display: none;
-    color: white;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 /* Mobile Menu */
@@ -100,12 +106,15 @@
     flex-direction: column;
     gap: 20px;
     z-index: 999;
+    box-shadow: var(--shadow-lg);
 }
 
 .mobile-link {
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .mobile-link.contact {

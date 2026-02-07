@@ -86,7 +86,7 @@ const Hero = () => {
                     className="hero-footer"
                 >
                     <div className="hero-bio">
-                        <p>With over 3.5 years of experience in product-based companies, I specialize in building scalable, high-performance web applications, mentoring junior developers.</p>
+                        <p>With 3.5+ years of experience in product-based companies, I specialize in building scalable, high-performance web applications, mentoring junior developers.</p>
                     </div>
                     <div className="hero-socials">
                         <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" className="social-link glass"><Github size={20} /></a>
