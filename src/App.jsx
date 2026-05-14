@@ -18,7 +18,7 @@ function App() {
     // Simulate loading time for the personalized loader
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4500);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
