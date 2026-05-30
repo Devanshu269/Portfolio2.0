@@ -1,5 +1,6 @@
 import os
-from PIL import Image
+import numpy as np
+from PIL import Image, ImageOps
 
 # Paths
 brain_dir = "/Users/n1k0zy/.gemini/antigravity-ide/brain/fefc838c-b8ef-4b29-ab53-dfaff0eb021c"
