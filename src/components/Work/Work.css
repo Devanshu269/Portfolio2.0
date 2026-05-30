@@ -32,10 +32,6 @@
     flex: 1;
 }
 
-.exp-right {
-    flex: 1.5;
-}
-
 .exp-icon {
     width: 60px;
     height: 60px;
@@ -47,35 +43,127 @@
     flex-shrink: 0;
 }
 
-.exp-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
+.exp-company-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.exp-info .company {
-    font-size: 1.1rem;
-    color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 15px;
+.company-name {
+    font-size: 1.8rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
 }
 
-.exp-meta {
+.exp-company-meta {
     display: flex;
     gap: 20px;
     font-size: 0.85rem;
     color: var(--text-dim);
+    margin-bottom: 12px;
 }
 
-.exp-meta span {
+.exp-company-meta span {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.exp-right p {
-    font-size: 1.1rem;
+/* Promotion Badge */
+.promotion-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: fit-content;
+}
+
+.promo-star {
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+/* Timeline/Roles Container */
+.exp-roles-container {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+}
+
+.exp-roles-container.has-multiple-roles {
+    padding-left: 30px;
+}
+
+.exp-roles-container.has-multiple-roles::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.exp-role-item {
+    position: relative;
+}
+
+.timeline-node {
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 10px rgba(0, 71, 255, 0.5);
+    z-index: 2;
+}
+
+.role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.role-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+}
+
+.role-period {
+    font-size: 0.8rem;
+    color: var(--primary);
+    font-weight: 600;
+    background: rgba(0, 71, 255, 0.08);
+    border: 1px solid rgba(0, 71, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+.role-desc {
+    font-size: 1.05rem;
     color: var(--text-dim);
-    margin-bottom: 25px;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .exp-tags {
@@ -122,12 +210,41 @@
         border-radius: 12px;
     }
 
-    .exp-info h3 {
-        font-size: 1.2rem;
+    .company-name {
+        font-size: 1.4rem;
     }
 
-    .exp-meta {
+    .exp-company-meta {
         flex-direction: column;
         gap: 8px;
+    }
+
+    .exp-roles-container.has-multiple-roles {
+        padding-left: 20px;
+    }
+
+    .exp-roles-container.has-multiple-roles::before {
+        left: 4px;
+    }
+
+    .timeline-node {
+        left: -20px;
+        width: 8px;
+        height: 8px;
+        border-width: 2px;
+    }
+
+    .role-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .role-title {
+        font-size: 1.15rem;
+    }
+
+    .role-period {
+        align-self: flex-start;
     }
 }

@@ -76,6 +76,97 @@
     font-size: 0.95rem;
 }
 
+/* Accreditation Tags */
+.edu-accreditations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.edu-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.accreditation-tag {
+    background: rgba(0, 174, 255, 0.08);
+    color: #00aeff;
+    border: 1px solid rgba(0, 174, 255, 0.15);
+}
+
+/* Meta Grid */
+.edu-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.edu-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.edu-meta-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.edu-meta-value {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Link Button */
+.edu-link-container {
+    margin-top: 20px;
+}
+
+.edu-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, rgba(0, 71, 255, 0.1) 0%, rgba(0, 174, 255, 0.1) 100%);
+    border: 1px solid rgba(0, 174, 255, 0.25);
+    padding: 8px 16px;
+    border-radius: 10px;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.edu-link-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(0, 71, 255, 0.25) 0%, rgba(0, 174, 255, 0.25) 100%);
+    border-color: rgba(0, 174, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 174, 255, 0.15);
+}
+
+.edu-link-icon {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+}
+
+.edu-link-btn:hover .edu-link-icon {
+    transform: translate(2px, -2px);
+}
+
+
+
 @media (max-width: 768px) {
     .education-card {
         flex-direction: column;
