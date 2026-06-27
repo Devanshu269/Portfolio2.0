@@ -60,7 +60,7 @@
 
 .skill-tag:hover {
     background: var(--primary);
-    color: white;
+    color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

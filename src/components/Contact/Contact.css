@@ -89,7 +89,7 @@
     padding: 16px 20px;
     border-radius: 12px;
     border: 1px solid var(--glass-border);
-    color: white;
+    color: var(--text-primary);
     width: 100%;
 }
 
@@ -101,7 +101,7 @@
 
 .submit-btn {
     background: var(--primary);
-    color: white;
+    color: var(--text-primary);
     padding: 18px;
     border-radius: 12px;
     font-weight: 700;
