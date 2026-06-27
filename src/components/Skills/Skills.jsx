@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { 
-    FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJava, FaPython, FaGitAlt 
+import {
+    FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJava, FaPython, FaGitAlt
 } from 'react-icons/fa';
-import { 
-    SiNextdotjs, SiTailwindcss, SiSass, SiExpress, SiSpringboot, 
-    SiPostgresql, SiMongodb, SiMysql, SiApachekafka, SiPostman 
+import {
+    SiNextdotjs, SiTailwindcss, SiSass, SiExpress, SiSpringboot,
+    SiPostgresql, SiMongodb, SiMysql, SiApachekafka, SiPostman
 } from 'react-icons/si';
 import { BiNetworkChart } from 'react-icons/bi';
 import './Skills.css';
@@ -24,11 +24,11 @@ const Skills = () => {
         { name: "Spring Boot", icon: <SiSpringboot />, color: "#6DB33F" },
         { name: "Python", icon: <FaPython />, color: "#3776AB" },
         { name: "PostgreSQL", icon: <SiPostgresql />, color: "#4169E1" },
-        { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
+        // { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
         { name: "MySQL", icon: <SiMysql />, color: "#4479A1" },
         { name: "Git", icon: <FaGitAlt />, color: "#F05032" },
-        { name: "Kafka", icon: <SiApachekafka />, color: "#FFFFFF" },
-        { name: "Postman", icon: <SiPostman />, color: "#FF6C37" }
+        // { name: "Kafka", icon: <SiApachekafka />, color: "#FFFFFF" },
+        // { name: "Postman", icon: <SiPostman />, color: "#FF6C37" }
     ];
 
     return (
@@ -48,13 +48,13 @@ const Skills = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ 
-                                duration: 0.5, 
+                            transition={{
+                                duration: 0.5,
                                 delay: index * 0.05,
                                 type: "spring",
                                 stiffness: 100
                             }}
-                            whileHover={{ 
+                            whileHover={{
                                 y: -5,
                                 transition: { duration: 0.2 }
                             }}
