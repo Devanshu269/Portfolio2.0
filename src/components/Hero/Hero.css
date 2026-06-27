@@ -193,12 +193,79 @@
     align-items: center;
     color: var(--text-primary);
     transition: var(--transition-smooth);
+    position: relative;
 }
 
 .social-link:hover {
     background: var(--primary);
     color: var(--text-inverse);
     transform: translateY(-5px);
+}
+
+.social-tooltip {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+    background: var(--primary);
+    color: #0B0E14;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0, 242, 255, 0.2);
+}
+
+.social-link:hover .social-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.hero-btn {
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-btn.btn-primary {
+    background: var(--primary);
+    color: #0B0E14; /* Always dark text on primary button */
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
+.hero-btn.btn-primary:hover {
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+.hero-btn.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+}
+
+.hero-btn.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-3px);
 }
 
 .scroll-indicator {

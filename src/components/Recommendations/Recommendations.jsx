@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Recommendations.css';
 
 import avatarAnuja from '../../assets/avatar-anuja.png';
@@ -11,6 +12,8 @@ import avatarRishindra from '../../assets/avatar-rishindra.png';
 import avatarSaswata from '../../assets/avatar-saswata.png';
 
 const Recommendations = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
     const testimonials = [
         {
             name: "Anuja Nayak",
@@ -32,7 +35,7 @@ const Recommendations = () => {
         },
         {
             name: "Amit Kumar",
-            role: "Software Engineer @ Lowe's India (Senior Colleague)",
+            role: "Senior Software Engineer @ Lowe's India (Senior Colleague)",
             avatar: avatarAmit,
             content: "I've had the privilege of working closely with Devanshu on a variety of projects in our current organization, and I continue to be impressed by his dedication, technical expertise, and ability to deliver high-quality work on time. What truly sets Devanshu apart is his natural leadership ability. He possesses the qualities of an excellent manager, demonstrating strong decision-making skills, effective communication, and the ability to inspire and guide his team toward achieving shared goals."
         },
@@ -56,6 +59,60 @@ const Recommendations = () => {
         }
     ];
 
+    const handleNext = () => {
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    };
+
+    const handlePrev = () => {
+        setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    };
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const getCardStyles = (idx) => {
+        const length = testimonials.length;
+        let diff = (idx - currentIndex + length) % length;
+        
+        if (diff > Math.floor(length / 2)) {
+            diff -= length;
+        }
+
+        if (isMobile) {
+            if (diff === 0) {
+                return { x: '0%', scale: 1, zIndex: 5, opacity: 1, filter: 'blur(0px)' };
+            } else if (diff === 1) {
+                return { x: '110%', scale: 0.85, zIndex: 4, opacity: 0, filter: 'blur(4px)' };
+            } else if (diff === -1) {
+                return { x: '-110%', scale: 0.85, zIndex: 4, opacity: 0, filter: 'blur(4px)' };
+            } else {
+                return { x: diff > 0 ? '150%' : '-150%', scale: 0.5, zIndex: 0, opacity: 0, filter: 'blur(10px)' };
+            }
+        }
+
+        if (diff === 0) {
+            return { x: '0%', scale: 1, zIndex: 5, opacity: 1, filter: 'blur(0px)' };
+        } else if (diff === 1) {
+            return { x: '55%', scale: 0.85, zIndex: 4, opacity: 0.6, filter: 'blur(2px)' };
+        } else if (diff === -1) {
+            return { x: '-55%', scale: 0.85, zIndex: 4, opacity: 0.6, filter: 'blur(2px)' };
+        } else if (diff === 2) {
+            return { x: '95%', scale: 0.7, zIndex: 3, opacity: 0.2, filter: 'blur(6px)' };
+        } else if (diff === -2) {
+            return { x: '-95%', scale: 0.7, zIndex: 3, opacity: 0.2, filter: 'blur(6px)' };
+        } else {
+            return { x: diff > 0 ? '150%' : '-150%', scale: 0.5, zIndex: 0, opacity: 0, filter: 'blur(10px)' };
+        }
+    };
+
     return (
         <section id="recommendations" className="recommendations-section">
             <div className="container">
@@ -64,28 +121,52 @@ const Recommendations = () => {
                     <h2 className="section-title">Peer <br /> <span className="outline-text">Recognition</span></h2>
                 </div>
 
-                <div className="recommendations-grid">
-                    {testimonials.map((item, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="testimonial-card glass"
-                        >
-                            <Quote className="quote-icon" size={32} />
-                            <p className="testimonial-content">"{item.content}"</p>
-                            <div className="testimonial-footer">
-                                <div className="author-avatar">
-                                    <img src={item.avatar} alt={item.name} />
-                                </div>
-                                <div className="author-info">
-                                    <h4>{item.name}</h4>
-                                    <span>{item.role}</span>
-                                </div>
-                            </div>
-                        </motion.div>
+                <div className="carousel-container">
+                    <button onClick={handlePrev} className="carousel-btn prev-btn" aria-label="Previous Testimonial">
+                        <ChevronLeft size={24} />
+                    </button>
+
+                    <div className="carousel-viewport">
+                        {testimonials.map((item, idx) => {
+                            const styles = getCardStyles(idx);
+                            return (
+                                <motion.div
+                                    key={idx}
+                                    initial={false}
+                                    animate={styles}
+                                    transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                                    className={`testimonial-card glass ${idx === currentIndex ? 'active-card' : 'inactive-card'}`}
+                                    onClick={() => setCurrentIndex(idx)}
+                                >
+                                    <Quote className="quote-icon" size={32} />
+                                    <p className="testimonial-content">"{item.content}"</p>
+                                    <div className="testimonial-footer">
+                                        <div className="author-avatar">
+                                            <img src={item.avatar} alt={item.name} />
+                                        </div>
+                                        <div className="author-info">
+                                            <h4>{item.name}</h4>
+                                            <span>{item.role}</span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+
+                    <button onClick={handleNext} className="carousel-btn next-btn" aria-label="Next Testimonial">
+                        <ChevronRight size={24} />
+                    </button>
+                </div>
+
+                <div className="carousel-dots">
+                    {testimonials.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => setCurrentIndex(idx)}
+                            className={`carousel-dot ${idx === currentIndex ? 'active' : ''}`}
+                            aria-label={`Go to testimonial ${idx + 1}`}
+                        />
                     ))}
                 </div>
             </div>

@@ -12,7 +12,6 @@ import Projects from './components/Projects/Projects';
 import Recommendations from './components/Recommendations/Recommendations';
 import Contact from './components/Contact/Contact';
 import CustomCursor from './components/CustomCursor/CustomCursor';
-import StickySocial from './components/StickySocial/StickySocial';
 import { useScroll, useSpring } from 'framer-motion';
 import './App.css';
 
@@ -62,7 +61,6 @@ function App() {
           </motion.main>
         )}
       </AnimatePresence>
-      <StickySocial />
     </div>
   );
 }

@@ -1,16 +1,54 @@
-# React + Vite
+# Devanshu Shekhar - Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, modern, and highly interactive personal portfolio for Devanshu Shekhar, a Full Stack Developer. Built with React, Vite, and Framer Motion, it features dynamic scroll animations, a responsive Bento Grid for projects, and a custom interactive cursor.
 
-Currently, two official plugins are available:
+## Live Demo
+View the live site here: [https://Devanshu269.github.io/Portfolio2.0](https://Devanshu269.github.io/Portfolio2.0)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **Fluid Bento Grid Layout**: Scalable and responsive project showcase layout.
+- **Framer Motion Animations**: Smooth page transitions, scroll-linked animations, and staggered list effects.
+- **Infinite Scrolling Certificates**: A continuous marquee displaying professional qualifications.
+- **Testimonial Carousel**: Interactive UI for peer recommendations.
+- **SEO Optimized**: Pre-configured with Open Graph (OG) and Twitter meta tags.
 
-## React Compiler
+## Technology Stack
+- **React 19**
+- **Vite** (Build Tool)
+- **Framer Motion** (Animations)
+- **Lucide React** (Icons)
+- **EmailJS** (Contact Form)
+- **CSS Modules & Variables** (Styling)
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Local Development Setup
 
-## Expanding the ESLint configuration
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Devanshu269/Portfolio2.0.git
+   cd Portfolio2.0
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+## Deployment to GitHub Pages
+
+This project is pre-configured for one-click deployment to GitHub Pages via the `gh-pages` NPM package.
+
+To build and deploy the application, run:
+```bash
+npm run deploy
+```
+
+This command will automatically:
+1. Run the Vite build process (`npm run build`).
+2. Publish the generated `/dist` folder to the `gh-pages` branch on GitHub.
+
+**Note on Routing:** The `vite.config.js` is currently set up with `base: '/Portfolio2.0/'` which is required for GitHub Pages project sites. If you ever connect a custom domain, you may need to update this `base` configuration to `'/'`.

@@ -109,12 +109,26 @@ const Hero = () => {
                             Full Stack Developer passionate about building complete web experiences — from pixel-perfect interfaces to robust backend systems. With 4+ years spanning retail and software development, I bridge the gap between design and infrastructure, writing maintainable code across the stack and staying current with the tools shaping modern web development.
                         </p>
 
-                        <div className="hero-socials" style={{ marginTop: '2rem' }}>
+                        <div className="hero-socials" style={{ marginTop: '2rem', display: 'flex', gap: '15px' }}>
+                            <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" className="social-link" aria-label="GitHub">
+                                <Github size={24} />
+                                <span className="social-tooltip">GitHub</span>
+                            </a>
+                            <a href="https://linkedin.com/in/devanshu-shekhar-968115b0" target="_blank" rel="noreferrer" className="social-link" aria-label="LinkedIn">
+                                <Linkedin size={24} />
+                                <span className="social-tooltip">LinkedIn</span>
+                            </a>
                             <a href="https://leetcode.com/Devanshu269" target="_blank" rel="noreferrer" className="social-link" aria-label="LeetCode">
                                 <Code2 size={24} />
+                                <span className="social-tooltip">LeetCode</span>
                             </a>
                             <a href="https://www.scaler.com/academy/profile/" target="_blank" rel="noreferrer" className="social-link" aria-label="Scaler">
                                 <GraduationCap size={24} />
+                                <span className="social-tooltip">Scaler</span>
+                            </a>
+                            <a href="mailto:devanshu.shekhar2@gmail.com" className="social-link" aria-label="Email">
+                                <Mail size={24} />
+                                <span className="social-tooltip">Email</span>
                             </a>
                         </div>
                     </div>
