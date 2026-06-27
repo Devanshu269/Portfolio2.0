@@ -106,7 +106,7 @@ const Hero = () => {
                             I thrive on <TypewriterText texts={valueProps} />
                         </p>
                         <p style={{ lineHeight: '1.8' }}>
-                            Full Stack Developer passionate about building complete web experiences — from pixel-perfect interfaces to robust backend systems. With 4+ years spanning retail and software development, I bridge the gap between design and infrastructure, writing maintainable code across the stack and staying current with the tools shaping modern web development.
+                            Full Stack Developer with 4+ years of professional experience, currently at Lowe's India where I've shipped micro-frontend architectures, React dashboards, and Spring Boot services used at enterprise scale. I care about code quality, real user impact, and staying sharp — from system design to pixel-level detail.
                         </p>
 
                         <div className="hero-socials" style={{ marginTop: '2rem', display: 'flex', gap: '15px' }}>
