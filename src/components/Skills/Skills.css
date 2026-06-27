@@ -16,46 +16,78 @@
 .skill-category {
     padding: 40px;
     border-radius: 24px;
-    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 .skill-category:hover {
-    border-color: var(--primary);
-    transform: translateY(-10px);
+    transform: translateY(-5px);
+}
+
+.spotlight-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 0) var(--mouse-y, 0), 
+        rgba(0, 174, 255, 0.08), 
+        transparent 40%
+    );
+    z-index: 0;
+}
+
+.skill-category:hover .spotlight-overlay {
+    opacity: 1;
 }
 
 .category-header {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .category-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(0, 71, 255, 0.1) 0%, rgba(0, 174, 255, 0.1) 100%);
     color: var(--primary);
-    background: rgba(0, 71, 255, 0.1);
-    padding: 12px;
-    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 174, 255, 0.2);
 }
 
 .category-header h3 {
-    font-size: 1.25rem;
-    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
 }
 
 .skill-tag {
-    padding: 8px 16px;
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.05);
-    font-size: 0.85rem;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: rgba(100, 100, 100, 0.05);
+    border: 1px solid var(--glass-border);
+    font-size: 0.9rem;
     font-weight: 500;
-    transition: var(--transition-smooth);
+    transition: all 0.3s ease;
+    cursor: default;
 }
 
 .skill-tag:hover {

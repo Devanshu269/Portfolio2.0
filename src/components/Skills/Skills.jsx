@@ -4,7 +4,6 @@ import {
     Database,
     Terminal,
     Cpu,
-    Layers,
     Globe
 } from 'lucide-react';
 import './Skills.css';
@@ -29,10 +28,21 @@ const Skills = () => {
         {
             title: "DevOps & Tools",
             icon: <Cpu />,
-            //skills: ["Docker", "Git", "CI/CD", "Kafka", "Postman", "AWS"]
             skills: ["Git", "Kafka", "Postman"]
         }
     ];
+
+    const handleMouseMove = (e, index) => {
+        const card = document.getElementById(`skill-card-${index}`);
+        if (!card) return;
+        
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    };
 
     return (
         <section id="skills" className="skills-section">
@@ -45,13 +55,16 @@ const Skills = () => {
                 <div className="skills-grid">
                     {skillCategories.map((category, index) => (
                         <motion.div
+                            id={`skill-card-${index}`}
                             key={index}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="skill-category glass"
+                            className="skill-category glass spotlight-card"
+                            onMouseMove={(e) => handleMouseMove(e, index)}
                         >
+                            <div className="spotlight-overlay"></div>
                             <div className="category-header">
                                 <div className="category-icon">{category.icon}</div>
                                 <h3>{category.title}</h3>

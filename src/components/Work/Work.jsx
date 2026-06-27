@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import TiltCard from '../TiltCard/TiltCard';
 import './Work.css';
 
 const Work = () => {
@@ -54,43 +55,45 @@ const Work = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="experience-card glass"
+                            style={{ perspective: 1000 }}
                         >
-                            <div className="exp-left">
-                                <div className="exp-icon">
-                                    <Briefcase size={24} />
-                                </div>
-                                <div className="exp-company-details">
-                                    <h3 className="company-name">{exp.company}</h3>
-                                    <div className="exp-company-meta">
-                                        <span><Calendar size={14} /> {exp.period}</span>
-                                        <span><MapPin size={14} /> {exp.location}</span>
+                            <TiltCard className="experience-card glass">
+                                <div className="exp-left">
+                                    <div className="exp-icon">
+                                        <Briefcase size={24} />
                                     </div>
-                                    {exp.roles.length > 1 && (
-                                        <div className="promotion-badge animate-pulse">
-                                            <span className="promo-star">★</span> Promoted Inside
+                                    <div className="exp-company-details">
+                                        <h3 className="company-name">{exp.company}</h3>
+                                        <div className="exp-company-meta">
+                                            <span><Calendar size={14} /> {exp.period}</span>
+                                            <span><MapPin size={14} /> {exp.location}</span>
                                         </div>
-                                    )}
+                                        {exp.roles.length > 1 && (
+                                            <div className="promotion-badge animate-pulse">
+                                                <span className="promo-star">★</span> Promoted Inside
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className={`exp-roles-container ${exp.roles.length > 1 ? 'has-multiple-roles' : ''}`}>
-                                {exp.roles.map((role, rIndex) => (
-                                    <div key={rIndex} className="exp-role-item">
-                                        {exp.roles.length > 1 && <div className="timeline-node" />}
-                                        <div className="role-header">
-                                            <h4 className="role-title">{role.title}</h4>
-                                            <span className="role-period">{role.period}</span>
+                                <div className={`exp-roles-container ${exp.roles.length > 1 ? 'has-multiple-roles' : ''}`}>
+                                    {exp.roles.map((role, rIndex) => (
+                                        <div key={rIndex} className="exp-role-item">
+                                            {exp.roles.length > 1 && <div className="timeline-node" />}
+                                            <div className="role-header">
+                                                <h4 className="role-title">{role.title}</h4>
+                                                <span className="role-period">{role.period}</span>
+                                            </div>
+                                            <p className="role-desc">{role.description}</p>
+                                            <div className="exp-tags">
+                                                {role.tags.map(tag => (
+                                                    <span key={tag} className="tag">{tag}</span>
+                                                ))}
+                                            </div>
                                         </div>
-                                        <p className="role-desc">{role.description}</p>
-                                        <div className="exp-tags">
-                                            {role.tags.map(tag => (
-                                                <span key={tag} className="tag">{tag}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
+                            </TiltCard>
                         </motion.div>
                     ))}
                 </div>

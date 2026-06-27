@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import Magnetic from '../Magnetic/Magnetic';
 import './Hero.css';
 
 const TypewriterText = ({ texts }) => {
@@ -53,8 +54,24 @@ const Hero = () => {
     return (
         <section id="hero" className="hero-section">
             <div className="hero-background">
-                <div className="gradient-sphere sphere-1"></div>
-                <div className="gradient-sphere sphere-2"></div>
+                <motion.div 
+                    animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 90, 0],
+                        opacity: [0.15, 0.25, 0.15]
+                    }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="gradient-sphere sphere-1"
+                />
+                <motion.div 
+                    animate={{ 
+                        scale: [1, 1.3, 1],
+                        rotate: [0, -90, 0],
+                        opacity: [0.15, 0.25, 0.15]
+                    }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                    className="gradient-sphere sphere-2"
+                />
             </div>
 
             <div className="container hero-container">
@@ -89,9 +106,15 @@ const Hero = () => {
                         <p>With 4+ years of experience in product-based companies, I specialize in building scalable, high-performance web applications, mentoring junior developers.</p>
                     </div>
                     <div className="hero-socials">
-                        <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" className="social-link glass"><Github size={20} /></a>
-                        <a href="https://linkedin.com/in/devanshu-shekhar-968115b0" target="_blank" rel="noreferrer" className="social-link glass"><Linkedin size={20} /></a>
-                        <a href="mailto:devanshu.shekhar2@gmail.com" className="social-link glass"><Mail size={20} /></a>
+                        <Magnetic>
+                            <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" className="social-link glass"><Github size={20} /></a>
+                        </Magnetic>
+                        <Magnetic>
+                            <a href="https://linkedin.com/in/devanshu-shekhar-968115b0" target="_blank" rel="noreferrer" className="social-link glass"><Linkedin size={20} /></a>
+                        </Magnetic>
+                        <Magnetic>
+                            <a href="mailto:devanshu.shekhar2@gmail.com" className="social-link glass"><Mail size={20} /></a>
+                        </Magnetic>
                     </div>
                 </motion.div>
 
