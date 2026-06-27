@@ -68,23 +68,31 @@
     width: 100%;
 }
 
-.typewriter-text {
+.hero-role {
     font-size: clamp(1.5rem, 4vw, 3rem);
     font-weight: 700;
-    color: var(--text-secondary);
+    color: var(--primary);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.05em;
+    position: relative;
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+.typewriter-text {
+    font-weight: 600;
+    color: var(--primary);
     position: relative;
 }
 
 .cursor {
     display: inline-block;
-    width: 3px;
-    height: 1em;
+    width: 2px;
+    height: 1.1em;
     background-color: var(--primary);
-    margin-left: 8px;
-    vertical-align: middle;
+    margin-left: 2px;
+    vertical-align: text-bottom;
     animation: blink 0.8s step-end infinite;
+    color: transparent; /* hide the '|' character since we're using background-color */
 }
 
 @keyframes blink {
@@ -160,7 +168,8 @@
 }
 
 .hero-bio {
-    max-width: 500px;
+    max-width: 100%;
+    width: 100%;
 }
 
 .hero-bio p {

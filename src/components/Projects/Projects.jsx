@@ -62,42 +62,6 @@ const DUMMY_PROJECTS = [
 ];
 
 const Projects = () => {
-    const [currentPage, setCurrentPage] = useState(0);
-    const [direction, setDirection] = useState(1);
-    const itemsPerPage = 6;
-
-    const totalPages = Math.ceil(DUMMY_PROJECTS.length / itemsPerPage);
-
-    const next = () => {
-        setDirection(1);
-        setCurrentPage((prev) => (prev + 1) % totalPages);
-    };
-
-    const prev = () => {
-        setDirection(-1);
-        setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
-    };
-
-    const currentProjects = DUMMY_PROJECTS.slice(
-        currentPage * itemsPerPage,
-        (currentPage + 1) * itemsPerPage
-    );
-
-    const variants = {
-        enter: (direction) => ({
-            x: direction > 0 ? 100 : -100,
-            opacity: 0
-        }),
-        center: {
-            x: 0,
-            opacity: 1
-        },
-        exit: (direction) => ({
-            x: direction < 0 ? 100 : -100,
-            opacity: 0
-        })
-    };
-
     return (
         <section id="projects" className="projects-section">
             <div className="container">
@@ -107,80 +71,47 @@ const Projects = () => {
                 </div>
 
                 <div className="projects-container">
-                    <AnimatePresence mode="wait" custom={direction}>
-                        <motion.div
-                            key={currentPage}
-                            custom={direction}
-                            variants={variants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="projects-grid"
-                        >
-                            {currentProjects.map((project, idx) => (
-                                <motion.div
-                                    key={project.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className="project-card glass"
-                                >
-                                    <div className="project-image-wrapper">
-                                        <img src={project.image} alt={project.title} className="project-image" />
-                                        <div className="project-overlay">
-                                            <div className="project-overlay-content">
-                                                <p className="project-desc">{project.description}</p>
-                                                <div className="project-links">
-                                                    {project.github && (
-                                                        <a href={project.github} target="_blank" rel="noreferrer" className="project-link" aria-label="GitHub Repo">
-                                                            <Github size={22} />
-                                                        </a>
-                                                    )}
-                                                    {project.live && (
-                                                        <a href={project.live} target="_blank" rel="noreferrer" className="project-link" aria-label="Live Website">
-                                                            <ExternalLink size={22} />
-                                                        </a>
-                                                    )}
-                                                </div>
+                    <div className="projects-grid">
+                        {DUMMY_PROJECTS.map((project, idx) => (
+                            <motion.div
+                                key={project.id}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
+                                className="project-card glass"
+                            >
+                                <div className="project-image-wrapper">
+                                    <img src={project.image} alt={project.title} className="project-image" />
+                                    <div className="project-overlay">
+                                        <div className="project-overlay-content">
+                                            <p className="project-desc">{project.description}</p>
+                                            <div className="project-links">
+                                                {project.github && (
+                                                    <a href={project.github} target="_blank" rel="noreferrer" className="project-link" aria-label="GitHub Repo">
+                                                        <Github size={22} />
+                                                    </a>
+                                                )}
+                                                {project.live && (
+                                                    <a href={project.live} target="_blank" rel="noreferrer" className="project-link" aria-label="Live Website">
+                                                        <ExternalLink size={22} />
+                                                    </a>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="project-info">
-                                        <h3>{project.title}</h3>
-                                        <div className="project-tags">
-                                            {project.tags.map(tag => (
-                                                <span key={tag} className="project-tag">{tag}</span>
-                                            ))}
-                                        </div>
+                                </div>
+                                <div className="project-info">
+                                    <h3>{project.title}</h3>
+                                    <div className="project-tags">
+                                        {project.tags.map(tag => (
+                                            <span key={tag} className="project-tag">{tag}</span>
+                                        ))}
                                     </div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
-
-                    {totalPages > 1 && (
-                        <div className="projects-pagination">
-                            <button className="pagination-btn glass" onClick={prev} aria-label="Previous page">
-                                <ChevronLeft size={24} />
-                            </button>
-                            <div className="pagination-indicators">
-                                {Array.from({ length: totalPages }).map((_, i) => (
-                                    <span
-                                        key={i}
-                                        className={`indicator-dot ${i === currentPage ? 'active' : ''}`}
-                                        onClick={() => {
-                                            setDirection(i > currentPage ? 1 : -1);
-                                            setCurrentPage(i);
-                                        }}
-                                    />
-                                ))}
-                            </div>
-                            <button className="pagination-btn glass" onClick={next} aria-label="Next page">
-                                <ChevronRight size={24} />
-                            </button>
-                        </div>
-                    )}
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

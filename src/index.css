@@ -1,26 +1,27 @@
 :root {
-  --primary: #0047FF;
-  --primary-dark: #002BBF;
+  --primary: #00F2FF; /* Electric Cyan */
+  --primary-dark: #00B8C4;
+  --primary-alt: #BB86FC; /* Neon Purple */
   --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   --section-padding: 120px 0;
 }
 
-/* Dark Mode (Default) */
+/* Dark Mode (Default) - Cyberpunk Minimalism */
 :root,
 [data-theme="dark"] {
-  --bg-primary: #050505;
-  --bg-secondary: #0a0a0a;
-  --bg-surface: #ffffff;
+  --bg-primary: #0B0E14; /* Midnight Navy */
+  --bg-secondary: #12151C; /* Slightly lighter navy */
+  --bg-surface: #1A1D23; /* Dark Slate */
   --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --text-inverse: #050505;
-  --glass: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --gradient-main: linear-gradient(135deg, #0047FF 0%, #00AEFF 100%);
-  --divider: rgba(255, 255, 255, 0.03);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --text-secondary: #A0A4B8; /* Muted Lavender-Gray */
+  --text-inverse: #0B0E14;
+  --glass: rgba(0, 242, 255, 0.03); /* Subtle Cyan Glass */
+  --glass-border: rgba(0, 242, 255, 0.1);
+  --gradient-main: linear-gradient(135deg, #00F2FF 0%, #BB86FC 100%);
+  --divider: rgba(0, 242, 255, 0.08);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 242, 255, 0.1); /* Subtle neon glow */
 }
 
 /* Light Mode */

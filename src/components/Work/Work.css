@@ -27,34 +27,36 @@
 }
 
 .exp-left {
+    flex: 0 0 35%;
     display: flex;
-    gap: 25px;
-    flex: 1;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .exp-icon {
     width: 60px;
     height: 60px;
-    background: var(--primary);
-    border-radius: 20px;
+    border-radius: 16px;
+    background: rgba(0, 242, 255, 0.1);
+    color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    align-self: flex-start;
 }
 
 .exp-company-details {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    gap: 10px;
 }
 
 .company-name {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--text-primary);
-    font-weight: 800;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
+    margin: 0;
 }
 
 .exp-company-meta {
@@ -96,11 +98,20 @@
 
 /* Timeline/Roles Container */
 .exp-roles-container {
-    flex: 1.5;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 2rem;
     position: relative;
+}
+
+.exp-role-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.exp-role-item:last-child {
+    margin-bottom: 0;
 }
 
 .exp-roles-container.has-multiple-roles {
@@ -160,10 +171,28 @@
 }
 
 .role-desc {
-    font-size: 1.05rem;
     color: var(--text-dim);
+    font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 20px;
+}
+
+.role-achievements {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.role-achievements li {
+    margin-bottom: 8px;
+}
+
+.role-achievements strong {
+    color: var(--text-primary);
+    font-weight: 700;
 }
 
 .exp-tags {

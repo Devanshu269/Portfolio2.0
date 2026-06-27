@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Code2, GraduationCap } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Magnetic from '../Magnetic/Magnetic';
 import './Hero.css';
@@ -43,19 +43,18 @@ const TypewriterText = ({ texts }) => {
 };
 
 const Hero = () => {
-    const roles = [
-        "Software Engineer",
-        "Gamer",
-        "Problem Solver",
-        "Lifelong Learner",
-        "Tech Enthusiast"
+    const valueProps = [
+        "building scalable systems",
+        "solving complex DSA",
+        "debugging until 3 AM",
+        "winning Valorant matches"
     ];
 
     return (
         <section id="hero" className="hero-section">
             <div className="hero-background">
-                <motion.div 
-                    animate={{ 
+                <motion.div
+                    animate={{
                         scale: [1, 1.2, 1],
                         rotate: [0, 90, 0],
                         opacity: [0.15, 0.25, 0.15]
@@ -63,8 +62,8 @@ const Hero = () => {
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                     className="gradient-sphere sphere-1"
                 />
-                <motion.div 
-                    animate={{ 
+                <motion.div
+                    animate={{
                         scale: [1, 1.3, 1],
                         rotate: [0, -90, 0],
                         opacity: [0.15, 0.25, 0.15]
@@ -91,7 +90,7 @@ const Hero = () => {
                             </div>
                         </div>
                         <div className="role-container">
-                            <TypewriterText texts={roles} />
+                            <h2 className="hero-role">FULL STACK DEVELOPER</h2>
                         </div>
                     </h1>
                 </motion.div>
@@ -103,18 +102,21 @@ const Hero = () => {
                     className="hero-footer"
                 >
                     <div className="hero-bio">
-                        <p>With 4+ years of experience in product-based companies, I specialize in building scalable, high-performance web applications, mentoring junior developers.</p>
-                    </div>
-                    <div className="hero-socials">
-                        <Magnetic>
-                            <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" className="social-link glass"><Github size={20} /></a>
-                        </Magnetic>
-                        <Magnetic>
-                            <a href="https://linkedin.com/in/devanshu-shekhar-968115b0" target="_blank" rel="noreferrer" className="social-link glass"><Linkedin size={20} /></a>
-                        </Magnetic>
-                        <Magnetic>
-                            <a href="mailto:devanshu.shekhar2@gmail.com" className="social-link glass"><Mail size={20} /></a>
-                        </Magnetic>
+                        <p style={{ marginBottom: '1.5rem' }}>
+                            I thrive on <TypewriterText texts={valueProps} />
+                        </p>
+                        <p style={{ lineHeight: '1.8' }}>
+                            Full Stack Developer passionate about building complete web experiences — from pixel-perfect interfaces to robust backend systems. With 4+ years spanning retail and software development, I bridge the gap between design and infrastructure, writing maintainable code across the stack and staying current with the tools shaping modern web development.
+                        </p>
+
+                        <div className="hero-socials" style={{ marginTop: '2rem' }}>
+                            <a href="https://leetcode.com/Devanshu269" target="_blank" rel="noreferrer" className="social-link" aria-label="LeetCode">
+                                <Code2 size={24} />
+                            </a>
+                            <a href="https://www.scaler.com/academy/profile/" target="_blank" rel="noreferrer" className="social-link" aria-label="Scaler">
+                                <GraduationCap size={24} />
+                            </a>
+                        </div>
                     </div>
                 </motion.div>
 

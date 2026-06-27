@@ -42,22 +42,23 @@
     font-weight: 600;
 }
 
-.social-links-minimal {
+.footer-socials {
     display: flex;
-    gap: 30px;
-    margin-top: 3rem;
-}
-
-.social-links-minimal a {
-    display: flex;
+    gap: 20px;
     align-items: center;
-    gap: 6px;
-    font-weight: 500;
-    color: var(--text-dim);
 }
 
-.social-links-minimal a:hover {
+.footer-socials a {
+    color: var(--text-dim);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-socials a:hover {
     color: var(--primary);
+    transform: translateY(-3px);
 }
 
 .contact-form-container {
@@ -115,7 +116,10 @@
 }
 
 .submit-btn:hover {
-    background: var(--primary-dark);
+    background: var(--primary);
+    color: #0B0E14;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    transform: translateY(-3px);
 }
 
 .status-message {
@@ -158,8 +162,10 @@
 
 .footer-inner {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
     align-items: center;
+    text-align: center;
 }
 
 .footer-inner p {
@@ -209,11 +215,6 @@
     .info-details a,
     .info-details span {
         font-size: 0.95rem;
-    }
-
-    .social-links-minimal {
-        flex-wrap: wrap;
-        gap: 15px 30px;
     }
 
     .footer-inner {

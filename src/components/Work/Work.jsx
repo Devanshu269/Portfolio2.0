@@ -13,14 +13,25 @@ const Work = () => {
                 {
                     title: "Software Engineer",
                     period: "Oct 2024 – Present",
-                    description: "Leading development initiatives and mentoring junior developers, I architect scalable solutions for enterprise-level applications. My focus includes optimizing system performance and implementing best practices across the development lifecycle. I led the migration to a micro-frontend architecture, improving system performance by 30%. Responsibilities encompass extensive code reviews, technical decision-making, and fostering cross-team collaboration.",
-                    tags: ["Micro-Frontends", "React.js", "Node.js", "Spring Boot", "Kafka", "PostgreSQL"]
+                    achievements: [
+                        "Leading development initiatives and mentoring junior developers to architect scalable solutions for enterprise-level applications.",
+                        "<strong>Architected and implemented a micro-frontend solution</strong> using Webpack Module Federation, consolidating 5 separate applications into a single host to dramatically improve performance, maintainability, and development efficiency.",
+                        "Upgraded the core front-end technology stack by leveraging <strong>React.memo</strong> and <strong>useCallback</strong>, and conducted extensive code reviews—achieving a <strong>30% increase in performance</strong> and faster load times.",
+                        "Implemented a comprehensive monitoring and deployment strategy using <strong>Grafana and Prometheus</strong> for real-time server health tracking, while driving Agile execution via Jira and Confluence.",
+                        "Fostered cross-team collaboration to streamline best practices and technical decisions across the development lifecycle."
+                    ],
+                    tags: ["Micro-Frontends", "Webpack", "React.js", "Grafana", "Prometheus", "Spring Boot"]
                 },
                 {
                     title: "Associate Software Engineer",
                     period: "Aug 2022 – Oct 2024",
-                    description: "Contributed to multiple high-impact projects including Bulk UI updates, Smart Sourcing, Node Capabilities, and a robust File Upload system. Developed intuitive React-based dashboards, such as the Assortment Dashboard, significantly increasing user engagement. Successfully implemented SSO login architecture and micro-frontend concepts, while also proactively resolving technical debt and providing critical on-call support.",
-                    tags: ["React", "Java", "Spring Boot", "Kafka", "SSO", "PostgreSQL"]
+                    achievements: [
+                        "Revamped the shipment tracking and pricing analysis interface, as well as intuitive <strong>React-based dashboards</strong> (like the Assortment Dashboard), <strong>boosting user satisfaction by 25%</strong> and improving on-time delivery visibility by 20%.",
+                        "Developed a fully configurable <strong>file upload architecture</strong> with built-in UI validation, reducing implementation time for new uploads from 3 days to just 1 hour via modular automation.",
+                        "Engineered robust <strong>RESTful Web Services</strong> utilizing <strong>Java and Spring Boot</strong>, streamlining critical data exchange with third-party applications and proactively resolving technical debt.",
+                        "Successfully implemented secure <strong>SSO login</strong> architecture alongside early micro-frontend concepts, while providing critical on-call support for robust microservices."
+                    ],
+                    tags: ["React", "Java", "Spring Boot", "REST APIs", "SSO", "UI/UX"]
                 }
             ]
         },
@@ -32,8 +43,13 @@ const Work = () => {
                 {
                     title: "Web Developer Intern",
                     period: "May 2020 – June 2020",
-                    description: "Gained foundational hands-on experience in web development at Softnika Solutions. I mastered core web technologies including HTML5, CSS3, and JavaScript, applying responsive design principles. Worked on real-world client projects under the guidance of senior developers, learning essential version control with Git and agile development practices, which laid a solid foundation for my professional career.",
-                    tags: ["HTML5", "CSS3", "JavaScript", "Git"]
+                    achievements: [
+                        "Developed a comprehensive gaming platform using <strong>React</strong>, providing gamers with centralized access to game information, news, and purchasing options.",
+                        "Implemented shopping cart functionality and a dynamic news feed featuring the latest <strong>Esports updates</strong> and game releases.",
+                        "Engineered user-friendly interfaces enabling gamers to intuitively compare prices, browse game catalogs, and access both free and premium content.",
+                        "Developed a secure <strong>user authentication system</strong> with account management, order tracking, and personalized game recommendations based on user preferences."
+                    ],
+                    tags: ["React", "HTML5", "CSS3", "JavaScript", "Authentication"]
                 }
             ]
         }
@@ -60,7 +76,7 @@ const Work = () => {
                             <TiltCard className="experience-card glass">
                                 <div className="exp-left">
                                     <div className="exp-icon">
-                                        <Briefcase size={24} />
+                                        <Briefcase size={32} />
                                     </div>
                                     <div className="exp-company-details">
                                         <h3 className="company-name">{exp.company}</h3>
@@ -84,7 +100,11 @@ const Work = () => {
                                                 <h4 className="role-title">{role.title}</h4>
                                                 <span className="role-period">{role.period}</span>
                                             </div>
-                                            <p className="role-desc">{role.description}</p>
+                                            <ul className="role-achievements">
+                                                {role.achievements.map((achieve, i) => (
+                                                    <li key={i} dangerouslySetInnerHTML={{ __html: achieve }}></li>
+                                                ))}
+                                            </ul>
                                             <div className="exp-tags">
                                                 {role.tags.map(tag => (
                                                     <span key={tag} className="tag">{tag}</span>

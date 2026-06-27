@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MapPin, Mail, Phone, ExternalLink, Loader2 } from 'lucide-react';
+import { Send, MapPin, Mail, Phone, ExternalLink, Loader2, Github, Linkedin, Code2, GraduationCap } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
@@ -103,11 +103,6 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="social-links-minimal">
-                            <a href="https://linkedin.com/in/devanshu-shekhar-968115b0" target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={14} /></a>
-                            <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer">GitHub <ExternalLink size={14} /></a>
-                            <a href="https://leetcode.com/N1k0zY" target="_blank" rel="noreferrer">LeetCode <ExternalLink size={14} /></a>
-                        </div>
                     </div>
 
                     <motion.div
@@ -191,30 +186,23 @@ const Contact = () => {
                 <div className="container">
                     <div className="footer-inner">
                         <p>© 2024 Devanshu Shekhar. Built with React & Passion.</p>
-                        <div className="footer-logo">
-                            <motion.span
-                                animate={{
-                                    backgroundColor: ["#0047FF", "#00AEFF", "#00FFC2", "#7000FF", "#0047FF"],
-                                    boxShadow: [
-                                        "0 0 5px #0047FF",
-                                        "0 0 15px #00AEFF",
-                                        "0 0 5px #00FFC2",
-                                        "0 0 15px #7000FF",
-                                        "0 0 5px #0047FF"
-                                    ]
-                                }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                                className="logo-dot"
-                            ></motion.span>
-                            <motion.span
-                                animate={{
-                                    color: ["#ffffff", "#00AEFF", "#00FFC2", "#7000FF", "#ffffff"]
-                                }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                                style={{ display: 'inline-block' }}
-                            >
-                                DS
-                            </motion.span>
+                        
+                        <div className="footer-socials">
+                            <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" aria-label="GitHub">
+                                <Github size={20} strokeWidth={1.5} />
+                            </a>
+                            <a href="https://linkedin.com/in/devanshu-shekhar-968115b0" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                                <Linkedin size={20} strokeWidth={1.5} />
+                            </a>
+                            <a href="https://leetcode.com/Devanshu269" target="_blank" rel="noreferrer" aria-label="LeetCode">
+                                <Code2 size={20} strokeWidth={1.5} />
+                            </a>
+                            <a href="https://www.scaler.com/academy/profile/" target="_blank" rel="noreferrer" aria-label="Scaler">
+                                <GraduationCap size={20} strokeWidth={1.5} />
+                            </a>
+                            <a href="mailto:devanshu.shekhar2@gmail.com" aria-label="Email">
+                                <Mail size={20} strokeWidth={1.5} />
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -29,7 +29,12 @@ const Navbar = () => {
     return (
         <nav className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
             <div className="navbar-inner glass">
-                <a href="#hero" className="nav-logo">
+                <motion.a 
+                    href="#hero" 
+                    className="nav-logo"
+                    whileHover={{ y: -3, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
                     <motion.span
                         animate={{
                             backgroundColor: ["#0047FF", "#00AEFF", "#00FFC2", "#7000FF", "#0047FF"],
@@ -53,7 +58,7 @@ const Navbar = () => {
                     >
                         DS
                     </motion.span>
-                </a>
+                </motion.a>
 
                 <div className="nav-links desktop-only">
                     {navLinks.map((link) => (

@@ -4,12 +4,25 @@ import './About.css';
 
 const About = () => {
     const interests = [
-        { icon: <Gamepad2 size={20} />, label: "FPS Gaming", desc: "Strategic thinking & quick reflexes" },
-        { icon: <Tv size={20} />, label: "Anime", desc: "Creative storytelling inspiration" },
-        { icon: <Heart size={20} />, label: "Badminton", desc: "For agility & mental sharpness" }
+        { 
+            icon: <Gamepad2 size={20} />, 
+            label: "FPS Gaming", 
+            desc: "Strategic thinking & quick reflexes",
+            status: { active: true, text: "Now Playing: Valorant" }
+        },
+        { 
+            icon: <Tv size={20} />, 
+            label: "Anime", 
+            desc: "Creative storytelling inspiration",
+            status: { active: false, text: "Watching: Attack on Titan" }
+        },
+        { 
+            icon: <Heart size={20} />, 
+            label: "Badminton", 
+            desc: "For agility & mental sharpness",
+            status: { active: true, text: "Court booked for Sunday" }
+        }
     ];
-
-
 
     return (
         <section id="about" className="about-section">
@@ -47,11 +60,15 @@ const About = () => {
                         <div className="interests-grid">
                             <span className="category-label">Life & Hobbies</span>
                             {interests.map((item, i) => (
-                                <div key={i} className="interest-card glass">
+                                <div key={i} className="interest-card glass" tabIndex="0" aria-label={`Hobby: ${item.label}`}>
                                     <div className="interest-icon">{item.icon}</div>
                                     <div className="interest-info">
                                         <h4>{item.label}</h4>
                                         <p>{item.desc}</p>
+                                        <div className="interest-status">
+                                            <span className={`status-dot ${item.status.active ? 'active' : ''}`}></span>
+                                            <span className="status-text">{item.status.text}</span>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
