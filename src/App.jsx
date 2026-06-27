@@ -7,6 +7,8 @@ import About from './components/About/About';
 import Education from './components/Education/Education';
 import Work from './components/Work/Work';
 import Skills from './components/Skills/Skills';
+import Certificates from './components/Certificates/Certificates';
+import Projects from './components/Projects/Projects';
 import Recommendations from './components/Recommendations/Recommendations';
 import Contact from './components/Contact/Contact';
 import CustomCursor from './components/CustomCursor/CustomCursor';
@@ -50,8 +52,10 @@ function App() {
             <Hero />
             <About />
             <Work />
-            <Education />
+            <Projects />
             <Skills />
+            <Education />
+            <Certificates />
             <Recommendations />
             <Contact />
           </motion.main>

@@ -16,7 +16,7 @@
 
 .navbar-inner {
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px; /* Increased from 900px to fit all links */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,6 +35,7 @@
     color: var(--text-primary);
     font-size: 1.2rem;
     transition: color 0.3s ease;
+    margin-right: 20px; /* added margin to ensure it never overlaps */
 }
 
 .logo-dot {
@@ -46,16 +47,19 @@
 
 .nav-links {
     display: flex;
-    gap: 24px;
+    gap: 20px; /* decreased from 24px */
+    flex-wrap: wrap; /* allow wrapping on smaller screens before mobile menu kicks in */
+    justify-content: center;
 }
 
 .nav-link {
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* decreased slightly */
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: color 0.3s ease;
+    white-space: nowrap; /* keep text on one line */
 }
 
 .nav-link:hover {
