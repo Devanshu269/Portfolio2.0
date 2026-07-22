@@ -1,17 +1,28 @@
 import { useState } from 'react';
 import { useAudio } from '../../context/AudioContext';
+import { useAchievements } from '../../context/AchievementContext';
 import './QuestionBlock.css';
 
 const QuestionBlock = () => {
+    const [hitCount, setHitCount] = useState(0);
     const [hit, setHit] = useState(false);
     const [showOneUp, setShowOneUp] = useState(false);
     const [coins, setCoins] = useState([]);
     const { playSfx } = useAudio();
+    const { unlockAchievement } = useAchievements();
 
     const handleHit = () => {
-        if (hit) return;
-        setHit(true);
-        setShowOneUp(true);
+        if (hitCount >= 10) return;
+        
+        const newCount = hitCount + 1;
+        setHitCount(newCount);
+        
+        if (newCount >= 10) {
+            setHit(true);
+            setShowOneUp(true);
+            unlockAchievement('coin_collector');
+        }
+        
         playSfx('coin');
 
         // Spawn burst coins

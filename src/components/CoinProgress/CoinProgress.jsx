@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
 import { useAudio } from '../../context/AudioContext';
+import { useAchievements } from '../../context/AchievementContext';
 import './CoinProgress.css';
 
 const TOTAL_COINS = 12;
@@ -12,6 +13,7 @@ const CoinProgress = () => {
     const [score, setScore] = useState(0);
     const [lastCoin, setLastCoin] = useState(-1);
     const { playSfx } = useAudio();
+    const { unlockAchievement } = useAchievements();
 
     useMotionValueEvent(smoothProgress, 'change', (v) => {
         setProgress(v);
@@ -20,6 +22,9 @@ const CoinProgress = () => {
         if (collected > lastCoin) {
             setLastCoin(collected);
             if (collected > 0) playSfx('coin');
+        }
+        if (v === 1) {
+            unlockAchievement('scroller');
         }
     });
 

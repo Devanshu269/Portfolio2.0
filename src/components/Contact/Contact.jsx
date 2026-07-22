@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Send, MapPin, Mail, Phone, ExternalLink, Loader2, Github, Linkedin, Code2, GraduationCap } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useAudio } from '../../context/AudioContext';
+import { useAchievements } from '../../context/AchievementContext';
 import './Contact.css';
 
 const Contact = () => {
@@ -15,6 +16,7 @@ const Contact = () => {
     const [submitStatus, setSubmitStatus] = useState(''); // 'success' | 'error' | ''
     const [showVictoryScreen, setShowVictoryScreen] = useState(false);
     const { playSfx } = useAudio();
+    const { unlockAchievement } = useAchievements();
 
     const handleChange = (e) => {
         setFormData({
@@ -51,6 +53,7 @@ const Contact = () => {
                     setSubmitStatus('success');
                     setShowVictoryScreen(true);
                     playSfx('victory');
+                    unlockAchievement('contact_sent');
                     // Reset form
                     setFormData({
                         name: '',

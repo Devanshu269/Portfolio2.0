@@ -34,10 +34,7 @@ function App() {
     restDelta: 0.001,
   });
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 5000);
-    return () => clearTimeout(timer);
-  }, []);
+  // The loader now hides itself via the onStart callback.
 
   return (
     <div className="app-wrapper">
@@ -51,7 +48,7 @@ function App() {
 
       <AnimatePresence mode="wait">
         {loading ? (
-          <Loader key="loader" />
+          <Loader key="loader" onStart={() => setLoading(false)} />
         ) : (
           <motion.main
             key="main-content"

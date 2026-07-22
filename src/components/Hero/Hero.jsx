@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Code2, Gamepad2, Swords } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import CharacterSelect from './CharacterSelect';
 import './Hero.css';
 
 const TypewriterText = ({ texts }) => {
@@ -85,6 +86,7 @@ const Hero = () => {
                         <p style={{ marginBottom: '1.5rem', color: 'var(--primary-alt)' }}>
                             CURRENT QUEST: <TypewriterText texts={valueProps} />
                         </p>
+                        <CharacterSelect />
                         <div className="bio-content">
                             <div className="bio-icon-box">
                                 <Swords size={32} color="var(--primary)" />

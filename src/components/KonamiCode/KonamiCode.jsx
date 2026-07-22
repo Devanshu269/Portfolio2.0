@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { useAchievements } from '../../context/AchievementContext';
+import SpaceInvaderMiniGame from './SpaceInvaderMiniGame';
 import './KonamiCode.css';
 
 const KONAMI_SEQUENCE = [
@@ -9,15 +11,18 @@ const KONAMI_SEQUENCE = [
 
 const KonamiCode = () => {
     const [active, setActive] = useState(false);
+    const [showMiniGame, setShowMiniGame] = useState(false);
     const [coins, setCoins] = useState([]);
     const keysRef = useRef([]);
     const timerRef = useRef(null);
+    const { unlockAchievement } = useAchievements();
 
     useEffect(() => {
         const onKey = (e) => {
             keysRef.current = [...keysRef.current, e.key].slice(-KONAMI_SEQUENCE.length);
             if (keysRef.current.join(',') === KONAMI_SEQUENCE.join(',')) {
-                trigger();
+                setShowMiniGame(true);
+                unlockAchievement('konami_code');
                 keysRef.current = [];
             }
         };
@@ -43,9 +48,18 @@ const KonamiCode = () => {
         }, 5000);
     };
 
-    if (!active) return null;
+    const handleBossDefeat = () => {
+        setShowMiniGame(false);
+        unlockAchievement('boss_slayer');
+        trigger();
+    };
+
+    if (!active && !showMiniGame) return null;
 
     return (
+        <>
+            {showMiniGame && <SpaceInvaderMiniGame onDefeat={handleBossDefeat} />}
+            {active && (
         <div className="konami-overlay" onClick={() => setActive(false)}>
             <div className="konami-flash" />
             <div className="konami-banner">
@@ -66,12 +80,14 @@ const KonamiCode = () => {
                             width: c.size,
                             height: c.size,
                             animationDelay: `${c.delay}s`,
-                            animationDuration: `${c.duration}s`,
+                            animationDuration: `${c.duration}s`
                         }}
                     />
                 ))}
             </div>
         </div>
+            )}
+        </>
     );
 };
 

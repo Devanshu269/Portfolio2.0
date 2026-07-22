@@ -8,9 +8,22 @@
   /* Pixel Yellow */
   --accent-gold: #F57F17;
   /* Pixel Gold */
-  --transition-smooth: none;
   /* Blocky retro transitions */
   --section-padding: 120px 0;
+}
+
+[data-theme='mage'] {
+  --primary: #1976D2; /* Mage Blue */
+  --primary-dark: #0D47A1;
+  --primary-alt: #E1BEE7; /* Magic Purple */
+  --accent-gold: #9C27B0; 
+}
+
+[data-theme='rogue'] {
+  --primary: #388E3C; /* Rogue Green */
+  --primary-dark: #1B5E20;
+  --primary-alt: #DCE775; /* Toxic Yellow */
+  --accent-gold: #AFB42B; 
 }
 
 /* Dark Mode - Default & Only Theme */

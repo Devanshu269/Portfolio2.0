@@ -101,7 +101,7 @@ export const AudioProvider = ({ children }) => {
     }, [isMuted]);
 
     return (
-        <AudioContext.Provider value={{ isMuted, toggleMute, playSfx }}>
+        <AudioContext.Provider value={{ isMuted, setIsMuted, toggleMute, playSfx, initAudio }}>
             {children}
         </AudioContext.Provider>
     );
