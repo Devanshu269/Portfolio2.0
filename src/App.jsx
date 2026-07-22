@@ -23,12 +23,27 @@ import WarpPipe from './components/WarpPipe/WarpPipe';
 import StageBanner from './components/StageBanner/StageBanner';
 import CursorTrail from './components/CursorTrail/CursorTrail';
 import QuestionBlock from './components/QuestionBlock/QuestionBlock';
+import Starfield from './components/Starfield/Starfield';
+import { useAudio } from './context/AudioContext';
 
 import './App.css';
 
 function App() {
   const [hasStarted, setHasStarted] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { playSfx } = useAudio();
+
+  // Global hover sound effect
+  useEffect(() => {
+    if (!hasStarted) return;
+    const handleMouseOver = (e) => {
+      if (e.target.closest('button, a, .project-card, .cert-card, .edu-item')) {
+        playSfx('hover');
+      }
+    };
+    document.addEventListener('mouseover', handleMouseOver);
+    return () => document.removeEventListener('mouseover', handleMouseOver);
+  }, [hasStarted, playSfx]);
 
   // Dynamic Tab Marquee
   useEffect(() => {
@@ -93,6 +108,7 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
+            <Starfield />
             {/* ── Game HUD elements ── */}
             <CoinProgress />
             <StageBanner />

@@ -202,7 +202,7 @@ section:not(:last-of-type)::after {
 
 /* ---- Section 1: Hero — Moving Star Field (Space Invaders) ---- */
 main>section:nth-of-type(1) {
-  background-color: #000 !important;
+  background-color: transparent !important;
   background-image:
     radial-gradient(1px 1px at 20px 30px, #fff, transparent),
     radial-gradient(1px 1px at 60px 10px, #FBC02D, transparent),
@@ -229,7 +229,7 @@ main>section:nth-of-type(1) {
 
 /* ---- Section 2: About — Retro RPG Grid (Zelda dungeons) ---- */
 main>section:nth-of-type(2) {
-  background-color: #080808;
+  background-color: transparent;
   background-image:
     linear-gradient(rgba(211, 47, 47, 0.12) 1px, transparent 1px),
     linear-gradient(90deg, rgba(211, 47, 47, 0.12) 1px, transparent 1px),
@@ -251,7 +251,7 @@ main>section:nth-of-type(2) {
 
 /* ---- Section 3: Work — Side-Scroller Ground (Mario) ---- */
 main>section:nth-of-type(3) {
-  background-color: #050A14;
+  background-color: transparent;
   background-image:
     linear-gradient(rgba(21, 101, 192, 0.15) 1px, transparent 1px),
     linear-gradient(90deg, rgba(21, 101, 192, 0.15) 1px, transparent 1px);
@@ -271,7 +271,7 @@ main>section:nth-of-type(3) {
 
 /* ---- Section 4: Projects — Pixel Rain (Tetris) ---- */
 main>section:nth-of-type(4) {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.4);
   background-image:
     repeating-linear-gradient(0deg,
       transparent,
@@ -298,7 +298,7 @@ main>section:nth-of-type(4) {
 
 /* ---- Section 5: Skills — Neon Scanlines (Arcade) ---- */
 main>section:nth-of-type(5) {
-  background-color: #04040A;
+  background-color: transparent;
   background-image:
     repeating-linear-gradient(0deg,
       rgba(211, 47, 47, 0) 0px,
@@ -320,7 +320,7 @@ main>section:nth-of-type(5) {
 
 /* ---- Section 6: Education — Pixel Dungeon Crawl ---- */
 main>section:nth-of-type(6) {
-  background-color: #0d0d0d;
+  background-color: rgba(0, 0, 0, 0.3);
   background-image:
     linear-gradient(#1a1a1a 2px, transparent 2px),
     linear-gradient(90deg, #1a1a1a 2px, transparent 2px),
@@ -342,7 +342,7 @@ main>section:nth-of-type(6) {
 
 /* ---- Section 7: Certificates — Trophy Sparkles ---- */
 main>section:nth-of-type(7) {
-  background-color: #080600;
+  background-color: transparent;
   background-image:
     radial-gradient(circle 1px, rgba(251, 192, 45, 0.4) 1px, transparent 1px),
     radial-gradient(circle 1px, rgba(245, 127, 23, 0.3) 1px, transparent 1px);
@@ -361,9 +361,9 @@ main>section:nth-of-type(7) {
   }
 }
 
-/* ---- Section 8: Recommendations — Cyber Matrix ---- */
+/* ---- Section 8: Recommendations — Digital Rain (Matrix) ---- */
 main>section:nth-of-type(8) {
-  background-color: #000;
+  background-color: transparent;
   background-image:
     repeating-linear-gradient(90deg,
       transparent 0px,
@@ -383,9 +383,9 @@ main>section:nth-of-type(8) {
   }
 }
 
-/* ---- Section 9: Contact — Pixel Warp (Star Fox vibes) ---- */
+/* ---- Section 9: Contact — Final Boss Arena (Lava glow) ---- */
 main>section:nth-of-type(9) {
-  background-color: #020209;
+  background-color: rgba(211, 47, 47, 0.05);
   background-image:
     radial-gradient(ellipse at center, rgba(21, 101, 192, 0.15) 0%, transparent 70%),
     repeating-conic-gradient(rgba(211, 47, 47, 0.04) 0deg, transparent 1deg, transparent 9deg, rgba(211, 47, 47, 0.04) 10deg);
@@ -429,8 +429,16 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: none;
-  /* Blocky fonts */
-  /* no theme transitions needed — dark only */
+}
+
+/* Thematic Text Selection */
+::selection {
+  background-color: var(--primary);
+  color: var(--accent-gold);
+}
+::-moz-selection {
+  background-color: var(--primary);
+  color: var(--accent-gold);
 }
 
 /* Anime-style scanline overlay */
