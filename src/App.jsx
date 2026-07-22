@@ -13,6 +13,7 @@ import Recommendations from './components/Recommendations/Recommendations';
 import Contact from './components/Contact/Contact';
 import CustomCursor from './components/CustomCursor/CustomCursor';
 import StickySocial from './components/StickySocial/StickySocial';
+import MarioPet from './components/MarioPet/MarioPet';
 import { useScroll, useSpring } from 'framer-motion';
 import './App.css';
 
@@ -49,6 +50,7 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
+            <MarioPet />
             <Navbar />
             <StickySocial />
             <Hero />

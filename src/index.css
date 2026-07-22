@@ -129,19 +129,182 @@ section:not(:last-of-type)::after {
   to { background-position: 0 40px, 40px 0; }
 }
 
-/* Alternating Backgrounds */
-main>section:nth-of-type(odd) {
-  background-color: var(--bg-primary);
+/* ============================================
+   RETRO GAME ANIMATED SECTION BACKGROUNDS
+   Each section gets its own retro game style
+   ============================================ */
+
+/* ---- Section 1: Hero — Moving Star Field (Space Invaders) ---- */
+main > section:nth-of-type(1) {
+    background-color: #000 !important;
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 60px 10px, #FBC02D, transparent),
+        radial-gradient(1px 1px at 100px 60px, #fff, transparent),
+        radial-gradient(1px 1px at 140px 20px, #D32F2F, transparent),
+        radial-gradient(2px 2px at 80px 80px, #fff, transparent),
+        radial-gradient(1px 1px at 160px 50px, #fff, transparent),
+        radial-gradient(1px 1px at 30px 100px, #FBC02D, transparent),
+        radial-gradient(1px 1px at 200px 30px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 220px 120px;
+    animation: heroStars 20s linear infinite;
 }
 
-main>section:nth-of-type(even) {
-  background-color: var(--bg-secondary);
+@keyframes heroStars {
+    from { background-position: 0 0; }
+    to   { background-position: -220px 120px; }
 }
 
-/* Ensure Hero (first section) allows background spheres to show */
-main>section:first-of-type {
-  background-color: transparent !important;
+/* ---- Section 2: About — Retro RPG Grid (Zelda dungeons) ---- */
+main > section:nth-of-type(2) {
+    background-color: #080808;
+    background-image:
+        linear-gradient(rgba(211, 47, 47, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(211, 47, 47, 0.12) 1px, transparent 1px),
+        linear-gradient(rgba(251, 192, 45, 0.05) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(251, 192, 45, 0.05) 2px, transparent 2px);
+    background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px;
+    animation: aboutGrid 6s linear infinite;
 }
+
+@keyframes aboutGrid {
+    from { background-position: 0 0, 0 0, 0 0, 0 0; }
+    to   { background-position: 0 40px, 40px 0, 0 200px, 200px 0; }
+}
+
+/* ---- Section 3: Work — Side-Scroller Ground (Mario) ---- */
+main > section:nth-of-type(3) {
+    background-color: #050A14;
+    background-image:
+        linear-gradient(rgba(21, 101, 192, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 101, 192, 0.15) 1px, transparent 1px);
+    background-size: 32px 32px;
+    animation: workScroll 3s linear infinite;
+}
+
+@keyframes workScroll {
+    from { background-position: 0 0; }
+    to   { background-position: -32px 0; }
+}
+
+/* ---- Section 4: Projects — Pixel Rain (Tetris) ---- */
+main > section:nth-of-type(4) {
+    background-color: #000;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 30px,
+            rgba(211, 47, 47, 0.06) 30px,
+            rgba(211, 47, 47, 0.06) 31px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 30px,
+            rgba(251, 192, 45, 0.04) 30px,
+            rgba(251, 192, 45, 0.04) 31px
+        );
+    animation: projectsRain 4s linear infinite;
+}
+
+@keyframes projectsRain {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 0 30px, 0 0; }
+}
+
+/* ---- Section 5: Skills — Neon Scanlines (Arcade) ---- */
+main > section:nth-of-type(5) {
+    background-color: #04040A;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(211, 47, 47, 0) 0px,
+            rgba(211, 47, 47, 0) 3px,
+            rgba(211, 47, 47, 0.04) 3px,
+            rgba(211, 47, 47, 0.04) 4px
+        );
+    animation: skillsScan 2s linear infinite;
+}
+
+@keyframes skillsScan {
+    from { background-position: 0 0; }
+    to   { background-position: 0 -40px; }
+}
+
+/* ---- Section 6: Education — Pixel Dungeon Crawl ---- */
+main > section:nth-of-type(6) {
+    background-color: #0d0d0d;
+    background-image:
+        linear-gradient(#1a1a1a 2px, transparent 2px),
+        linear-gradient(90deg, #1a1a1a 2px, transparent 2px),
+        linear-gradient(#111 1px, transparent 1px),
+        linear-gradient(90deg, #111 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+    animation: dungeonCrawl 8s linear infinite;
+}
+
+@keyframes dungeonCrawl {
+    from { background-position: 0 0, 0 0, 0 0, 0 0; }
+    to   { background-position: -80px -80px, -80px -80px, -16px -16px, -16px -16px; }
+}
+
+/* ---- Section 7: Certificates — Trophy Sparkles ---- */
+main > section:nth-of-type(7) {
+    background-color: #080600;
+    background-image:
+        radial-gradient(circle 1px, rgba(251, 192, 45, 0.4) 1px, transparent 1px),
+        radial-gradient(circle 1px, rgba(245, 127, 23, 0.3) 1px, transparent 1px);
+    background-size: 120px 120px, 80px 80px;
+    background-position: 0 0, 40px 40px;
+    animation: certSparkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes certSparkle {
+    from { background-position: 0 0, 40px 40px; }
+    to   { background-position: 10px 10px, 50px 30px; }
+}
+
+/* ---- Section 8: Recommendations — Cyber Matrix ---- */
+main > section:nth-of-type(8) {
+    background-color: #000;
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 18px,
+            rgba(211, 47, 47, 0.07) 18px,
+            rgba(211, 47, 47, 0.07) 20px
+        );
+    animation: matrixScroll 1.5s linear infinite;
+}
+
+@keyframes matrixScroll {
+    from { background-position: 0 0; }
+    to   { background-position: 0 20px; }
+}
+
+/* ---- Section 9: Contact — Pixel Warp (Star Fox vibes) ---- */
+main > section:nth-of-type(9) {
+    background-color: #020209;
+    background-image:
+        radial-gradient(ellipse at center, rgba(21, 101, 192, 0.15) 0%, transparent 70%),
+        repeating-conic-gradient(rgba(211, 47, 47, 0.04) 0deg, transparent 1deg, transparent 9deg, rgba(211, 47, 47, 0.04) 10deg);
+    background-size: cover, 200px 200px;
+    animation: contactWarp 6s linear infinite;
+}
+
+@keyframes contactWarp {
+    from { background-position: center, 0 0; }
+    to   { background-position: center, 200px 200px; }
+}
+
+/* Keep hero transparent override */
+main > section:first-of-type {
+    background-color: transparent !important;
+}
+
 
 * {
   margin: 0;
@@ -151,7 +314,7 @@ main>section:first-of-type {
 
 html {
   scroll-behavior: auto; /* Remove smooth scroll for retro feel */
-  scroll-padding-top: 100px;
+  scroll-padding-top: 60px;
 }
 
 body {
