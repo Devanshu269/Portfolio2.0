@@ -26,6 +26,35 @@
   --accent-gold: #AFB42B; 
 }
 
+/* CRT Overlay */
+[data-crt="true"] body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 999999;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+[data-crt="true"] body::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.4) 100%);
+  z-index: 999999;
+  pointer-events: none;
+}
+
 /* Dark Mode - Default & Only Theme */
 :root {
   --bg-primary: #000000;
@@ -41,6 +70,26 @@
   --shadow-sm: 4px 4px 0px rgba(0, 0, 0, 1);
   --shadow-md: 8px 8px 0px rgba(0, 0, 0, 1);
   --shadow-lg: 12px 12px 0px rgba(211, 47, 47, 0.5);
+}
+
+/* Custom Retro Scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+  border-left: 2px solid #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border: 2px solid #000;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-alt);
 }
 
 /* Global Section Styling for Separation */

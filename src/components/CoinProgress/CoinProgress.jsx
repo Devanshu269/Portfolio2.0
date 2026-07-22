@@ -21,7 +21,6 @@ const CoinProgress = () => {
         setScore(Math.round(v * 9900));
         if (collected > lastCoin) {
             setLastCoin(collected);
-            if (collected > 0) playSfx('coin');
         }
         if (v === 1) {
             unlockAchievement('scroller');

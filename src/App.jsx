@@ -11,6 +11,7 @@ import Certificates from './components/Certificates/Certificates';
 import Projects from './components/Projects/Projects';
 import Recommendations from './components/Recommendations/Recommendations';
 import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
 import CustomCursor from './components/CustomCursor/CustomCursor';
 import StickySocial from './components/StickySocial/StickySocial';
 
@@ -26,7 +27,42 @@ import QuestionBlock from './components/QuestionBlock/QuestionBlock';
 import './App.css';
 
 function App() {
+  const [hasStarted, setHasStarted] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  // Dynamic Tab Marquee
+  useEffect(() => {
+    let intervalId;
+    let titleText = "[ LEVEL 1 ] Devanshu's Portfolio... ";
+    
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        clearInterval(intervalId);
+        document.title = "⚠️ PLAYER 1 HAS LEFT...";
+      } else {
+        document.title = titleText;
+        intervalId = setInterval(() => {
+          titleText = titleText.substring(1) + titleText[0];
+          document.title = titleText;
+        }, 300);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    // Start marquee initially if not hidden
+    if (!document.hidden) {
+      intervalId = setInterval(() => {
+        titleText = titleText.substring(1) + titleText[0];
+        document.title = titleText;
+      }, 300);
+    }
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      clearInterval(intervalId);
+    };
+  }, []);
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -78,6 +114,7 @@ function App() {
             <Certificates />
             <Recommendations />
             <Contact />
+            <Footer />
           </motion.main>
         )}
       </AnimatePresence>

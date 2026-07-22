@@ -203,29 +203,6 @@ const Contact = () => {
                     </motion.div>
                 </div>
             </div>
-
-            <footer className="footer">
-                <div className="container">
-                    <div className="footer-inner">
-                        <p>© 2024 Devanshu Shekhar. Built with React & ⚔️ Determination.</p>
-
-                        <div className="footer-socials">
-                            <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" aria-label="GitHub">
-                                <Github size={20} strokeWidth={1.5} />
-                            </a>
-                            <a href="https://linkedin.com/in/devanshu-shekhar-968115b0" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                                <Linkedin size={20} strokeWidth={1.5} />
-                            </a>
-                            <a href="https://leetcode.com/u/N1k0zY/" target="_blank" rel="noreferrer" aria-label="LeetCode">
-                                <Code2 size={20} strokeWidth={1.5} />
-                            </a>
-                            <a href="mailto:devanshu.shekhar2@gmail.com" aria-label="Email">
-                                <Mail size={20} strokeWidth={1.5} />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </section>
     );
 };

@@ -17,7 +17,7 @@ const Loader = ({ onStart }) => {
             "SPAWNING NPCs...",
             "COMPILING QUESTS...",
             "EQUIPPING GEAR...",
-            "PRESS START"
+            "STARTING GAME..."
         ];
 
         const interval = setInterval(() => {
@@ -25,11 +25,17 @@ const Loader = ({ onStart }) => {
                 const next = prev + Math.floor(Math.random() * 12) + 2;
                 if (next >= 100) {
                     clearInterval(interval);
-                    setStatus("PRESS START");
+                    setStatus("STARTING GAME...");
                     setPhase('ready');
+                    
+                    setTimeout(() => {
+                        unlockAchievement('first_blood');
+                        if (onStart) onStart();
+                    }, 1200);
+
                     return 100;
                 }
-                
+
                 if (next > 80) setStatus(statuses[3]);
                 else if (next > 50) setStatus(statuses[2]);
                 else if (next > 20) setStatus(statuses[1]);
@@ -40,18 +46,6 @@ const Loader = ({ onStart }) => {
 
         return () => clearInterval(interval);
     }, []);
-
-    const handleStart = () => {
-        if (phase !== 'ready') return;
-        initAudio();
-        setIsMuted(false); // Make sure sounds are unmuted initially when user presses start
-        // Set timeout to let state update before playing sound
-        setTimeout(() => {
-            playSfx('coin'); // Startup sound
-            unlockAchievement('first_blood');
-            if (onStart) onStart();
-        }, 50);
-    };
 
     return (
         <AnimatePresence>
@@ -64,7 +58,7 @@ const Loader = ({ onStart }) => {
                         transition: { duration: 0.8 }
                     }}
                 >
-                    <div className="rpg-container" onClick={handleStart} style={{ cursor: phase === 'ready' ? 'pointer' : 'default' }}>
+                    <div className="rpg-container">
                         {/* 8-bit Heart Icon or Logo Placeholder */}
                         <div className={`rpg-icon ${phase === 'ready' ? 'rpg-pulse' : ''}`}>
                             <div className="pixel-heart"></div>
@@ -72,8 +66,7 @@ const Loader = ({ onStart }) => {
 
                         {phase === 'ready' ? (
                             <h2 className="rpg-status-text rpg-blink" style={{ color: 'var(--accent-gold)' }}>
-                                - INSERT COIN -<br />
-                                PRESS START
+                                STARTING GAME...
                             </h2>
                         ) : (
                             <h2 className="rpg-status-text">
@@ -82,12 +75,12 @@ const Loader = ({ onStart }) => {
                         )}
 
                         <div className="rpg-progress-container">
-                            <div 
+                            <div
                                 className="rpg-progress-bar"
                                 style={{ width: `${progress}%` }}
                             ></div>
                         </div>
-                        
+
                         <div className="rpg-percentage">
                             LVL {Math.floor(progress / 10)} - {progress}%
                         </div>

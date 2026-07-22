@@ -200,7 +200,7 @@ const MarioPet = () => {
             }
             setMy(Math.max(0, yv));
         }, 16);
-    }, []);
+    }, [playSfx]);
 
     // ── Auto random jump ─────────────────────────────────
     useEffect(() => {

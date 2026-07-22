@@ -28,7 +28,7 @@ const Terminal = ({ isOpen, onClose }) => {
 
         switch(trimmed) {
             case 'help':
-                response = "Commands: help, whoami, skills, projects, clear, sudo";
+                response = "Commands: help, whoami, skills, projects, clear, crt on, crt off, sudo";
                 break;
             case 'whoami':
                 response = "Devanshu Shekhar - Full Stack Sorcerer & Pixel Enthusiast.";
@@ -42,6 +42,14 @@ const Terminal = ({ isOpen, onClose }) => {
             case 'clear':
                 setHistory([]);
                 return;
+            case 'crt on':
+                document.documentElement.dataset.crt = 'true';
+                response = "CRT Monitor simulation enabled.";
+                break;
+            case 'crt off':
+                document.documentElement.removeAttribute('data-crt');
+                response = "CRT Monitor simulation disabled.";
+                break;
             case 'sudo':
                 response = "Nice try. Incident logged.";
                 unlockAchievement('konami_code'); // funny achievement trigger

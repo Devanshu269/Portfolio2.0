@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, useRef } from 'react';
+import { createContext, useContext, useState, useCallback, useRef, useEffect } from 'react';
 
 const AudioContext = createContext(null);
 
@@ -13,6 +13,7 @@ export const useAudio = () => {
 export const AudioProvider = ({ children }) => {
     const [isMuted, setIsMuted] = useState(true); // Default to muted for UX
     const audioCtxRef = useRef(null);
+    const bgmIntervalRef = useRef(null);
 
     const initAudio = () => {
         if (!audioCtxRef.current) {
@@ -98,6 +99,45 @@ export const AudioProvider = ({ children }) => {
             default:
                 break;
         }
+    }, [isMuted]);
+
+    // Background Music Loop
+    useEffect(() => {
+        if (isMuted) {
+            clearInterval(bgmIntervalRef.current);
+            return;
+        }
+
+        initAudio();
+        const ctx = audioCtxRef.current;
+        if (!ctx) return;
+
+        const notes = [261.63, 329.63, 392.00, 329.63]; // C4, E4, G4, E4
+        let step = 0;
+
+        bgmIntervalRef.current = setInterval(() => {
+            if (ctx.state !== 'running') return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            // Triangle wave for a soft, retro bassline
+            osc.type = 'triangle';
+            osc.frequency.value = notes[step % notes.length] / 2; // Drop an octave
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            
+            const now = ctx.currentTime;
+            gain.gain.setValueAtTime(0.015, now); // Very low volume BGM
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+            
+            osc.start(now);
+            osc.stop(now + 0.4);
+            
+            step++;
+        }, 500); // Play a note every 500ms
+
+        return () => clearInterval(bgmIntervalRef.current);
     }, [isMuted]);
 
     return (

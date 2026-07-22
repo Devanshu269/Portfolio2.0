@@ -1,5 +1,5 @@
 .contact-section {
-    padding-top: 120px;
+    padding: 120px 0;
     position: relative;
 }
 
@@ -233,8 +233,15 @@
 }
 
 @keyframes fadeInOverlay {
-    from { opacity: 0; backdrop-filter: blur(0); }
-    to { opacity: 1; backdrop-filter: blur(10px); }
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+    }
 }
 
 .victory-content {
@@ -244,8 +251,15 @@
 }
 
 @keyframes slideUpContent {
-    from { transform: translateY(40px) scale(0.9); opacity: 0; }
-    to { transform: translateY(0) scale(1); opacity: 1; }
+    from {
+        transform: translateY(40px) scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
 .victory-title {
@@ -259,8 +273,15 @@
 }
 
 @keyframes pulseTitle {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .victory-score {
