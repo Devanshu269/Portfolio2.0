@@ -22,8 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Build
-        run: npm run build
+      - name: Build for main
+        if: github.ref == 'refs/heads/main'
+        run: VITE_BASE_PATH='/Portfolio2.0/prod/' npm run build
+      
+      - name: Build for gamin-anime-version
+        if: github.ref == 'refs/heads/gamin-anime-version'
+        run: VITE_BASE_PATH='/Portfolio2.0/gamin-anime-version/' npm run build
       
       - name: Create deployment structure
         run: |
