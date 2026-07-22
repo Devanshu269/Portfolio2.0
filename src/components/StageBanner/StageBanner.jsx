@@ -8,8 +8,7 @@ const STAGES = [
     { id: 'skills',          num: '2-2', name: 'SKILL TREE' },
     { id: 'education',       num: '3-1', name: 'TUTORIAL ZONE' },
     { id: 'certificates',    num: '3-2', name: 'ACHIEVEMENTS' },
-    { id: 'recommendations', num: '4-1', name: 'ALLY REPORTS' },
-    { id: 'contact',         num: '4-2', name: 'FINAL BOSS' },
+    { id: 'recommendations', num: '4-1', name: 'ALLY REPORTS' }
 ];
 
 const StageBanner = () => {

@@ -295,7 +295,7 @@ main > section:first-of-type {
 }
 
 html {
-  scroll-behavior: auto; /* Remove smooth scroll for retro feel */
+  scroll-behavior: smooth; /* Enable smooth scrolling */
   scroll-padding-top: 60px;
 }
 

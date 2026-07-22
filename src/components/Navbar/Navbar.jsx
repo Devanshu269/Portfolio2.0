@@ -63,9 +63,16 @@ const Navbar = () => {
 
                 <div className="nav-links desktop-only">
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="nav-link">
+                        <motion.a 
+                            key={link.name} 
+                            href={link.href} 
+                            className="nav-link"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.9 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
                             {link.name}
-                        </a>
+                        </motion.a>
                     ))}
                 </div>
 
@@ -91,14 +98,16 @@ const Navbar = () => {
                         exit={{ opacity: 0, y: -20 }}
                     >
                         {navLinks.map((link) => (
-                            <a
+                            <motion.a
                                 key={link.name}
                                 href={link.href}
                                 className="mobile-link"
                                 onClick={() => setMobileMenuOpen(false)}
+                                whileHover={{ scale: 1.05, originX: 0 }}
+                                whileTap={{ scale: 0.95, originX: 0 }}
                             >
                                 {link.name}
-                            </a>
+                            </motion.a>
                         ))}
                         <a
                             href="#contact"
