@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import './CursorTrail.css';
 
-const EMOJIS = ['⭐', '✨', '🌟', '💫', '🪙'];
-
-let trailId = 0;
+const COLORS = 5; // matches color-0 through color-4
+let pid = 0;
 
 const CursorTrail = () => {
     const [particles, setParticles] = useState([]);
     const lastPos = useRef({ x: -999, y: -999 });
+    const colorRef = useRef(0);
 
     useEffect(() => {
         // Skip on touch devices
@@ -16,24 +16,19 @@ const CursorTrail = () => {
         const onMove = (e) => {
             const dx = e.clientX - lastPos.current.x;
             const dy = e.clientY - lastPos.current.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 16) return; // only add particle every 16px
+            if (dx * dx + dy * dy < 256) return; // only every ~16px
 
             lastPos.current = { x: e.clientX, y: e.clientY };
-            const id = trailId++;
-            const p = {
-                id,
-                x: e.clientX,
-                y: e.clientY,
-                emoji: EMOJIS[id % EMOJIS.length],
-                size: 10 + Math.random() * 8,
-            };
+            const id = pid++;
+            const color = colorRef.current % COLORS;
+            colorRef.current++;
 
-            setParticles(prev => [...prev.slice(-18), p]);
+            const p = { id, x: e.clientX, y: e.clientY, color };
+            setParticles(prev => [...prev.slice(-20), p]);
 
             setTimeout(() => {
                 setParticles(prev => prev.filter(x => x.id !== id));
-            }, 500);
+            }, 450);
         };
 
         window.addEventListener('mousemove', onMove, { passive: true });
@@ -44,20 +39,12 @@ const CursorTrail = () => {
 
     return (
         <div className="cursor-trail" aria-hidden="true">
-            {particles.map((p, idx) => (
+            {particles.map(p => (
                 <div
                     key={p.id}
-                    className="trail-particle"
-                    style={{
-                        left: p.x,
-                        top: p.y,
-                        fontSize: p.size,
-                        opacity: (idx + 1) / particles.length,
-                        animationDuration: '0.5s',
-                    }}
-                >
-                    {p.emoji}
-                </div>
+                    className={`trail-pixel color-${p.color}`}
+                    style={{ left: p.x, top: p.y }}
+                />
             ))}
         </div>
     );

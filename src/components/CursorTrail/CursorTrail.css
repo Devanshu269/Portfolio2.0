@@ -1,4 +1,4 @@
-/* ── Cursor Trail ── */
+/* ── Cursor Trail — Retro Pixel Style ── */
 
 .cursor-trail {
     position: fixed;
@@ -8,18 +8,32 @@
     overflow: hidden;
 }
 
-.trail-particle {
+.trail-pixel {
     position: absolute;
-    transform: translate(-50%, -50%);
     pointer-events: none;
-    animation: trailFade 0.5s ease-out forwards;
     image-rendering: pixelated;
-    line-height: 1;
-    user-select: none;
+    animation: pixelFade 0.45s steps(4) forwards;
 }
 
-@keyframes trailFade {
-    0%   { transform: translate(-50%, -50%) scale(1)    rotate(0deg);    opacity: 1;   }
-    50%  { transform: translate(-50%, -70%) scale(0.8)  rotate(20deg);   opacity: 0.7; }
-    100% { transform: translate(-50%, -100%) scale(0.4) rotate(40deg);   opacity: 0;   }
+/* Each pixel particle is a small colored square */
+.trail-pixel::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    transform: translate(-50%, -50%);
+}
+
+.trail-pixel.color-0::before { background: #FBC02D; box-shadow: 2px 2px 0 #E65100; } /* gold coin */
+.trail-pixel.color-1::before { background: #D32F2F; box-shadow: 2px 2px 0 #7F0000; } /* mario red */
+.trail-pixel.color-2::before { background: #fff;    box-shadow: 2px 2px 0 #999;    } /* white star */
+.trail-pixel.color-3::before { background: #388E3C; box-shadow: 2px 2px 0 #1B5E20; } /* koopa green */
+.trail-pixel.color-4::before { background: #1565C0; box-shadow: 2px 2px 0 #003c8f; } /* mario blue */
+
+@keyframes pixelFade {
+    0%   { transform: translate(-50%, -50%) scale(1.4);  opacity: 1; }
+    25%  { transform: translate(-50%, -65%) scale(1.1);  opacity: 0.85; }
+    50%  { transform: translate(-50%, -80%) scale(0.8);  opacity: 0.5; }
+    75%  { transform: translate(-50%, -95%) scale(0.5);  opacity: 0.25; }
+    100% { transform: translate(-50%, -110%) scale(0.2); opacity: 0; }
 }

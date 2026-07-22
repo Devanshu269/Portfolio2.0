@@ -2,8 +2,9 @@
 
 .question-block-wrapper {
     position: fixed;
-    bottom: 80px;
-    left: 24px;
+    top: 45%;
+    left: 20px;
+    transform: translateY(-50%);
     z-index: 9500;
     display: flex;
     flex-direction: column;
@@ -138,7 +139,7 @@
 /* Mobile adjustments */
 @media (max-width: 480px) {
     .question-block-wrapper {
-        left: 12px;
-        bottom: 70px;
+        left: 10px;
+        top: 50%;
     }
 }

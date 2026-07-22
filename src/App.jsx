@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import Loader from './components/Loader/Loader';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
@@ -13,8 +13,16 @@ import Recommendations from './components/Recommendations/Recommendations';
 import Contact from './components/Contact/Contact';
 import CustomCursor from './components/CustomCursor/CustomCursor';
 import StickySocial from './components/StickySocial/StickySocial';
+
+// ── Game Features ──────────────────────────────────────────
 import MarioPet from './components/MarioPet/MarioPet';
-import { useScroll, useSpring } from 'framer-motion';
+import KonamiCode from './components/KonamiCode/KonamiCode';
+import CoinProgress from './components/CoinProgress/CoinProgress';
+import WarpPipe from './components/WarpPipe/WarpPipe';
+import StageBanner from './components/StageBanner/StageBanner';
+import CursorTrail from './components/CursorTrail/CursorTrail';
+import QuestionBlock from './components/QuestionBlock/QuestionBlock';
+
 import './App.css';
 
 function App() {
@@ -23,22 +31,24 @@ function App() {
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   useEffect(() => {
-    // Simulate loading time for the personalized loader
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 5000);
-
+    const timer = setTimeout(() => setLoading(false), 5000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="app-wrapper">
+      {/* ── Always-on overlays ── */}
       <CustomCursor />
+      <CursorTrail />
+      <KonamiCode />
+
+      {/* ── Scroll progress bar (red) ── */}
       <motion.div className="progress-bar" style={{ scaleX }} />
+
       <AnimatePresence mode="wait">
         {loading ? (
           <Loader key="loader" />
@@ -50,9 +60,18 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
+            {/* ── Game HUD elements ── */}
+            <CoinProgress />
+            <StageBanner />
+            <WarpPipe />
+            <QuestionBlock />
             <MarioPet />
+
+            {/* ── Site nav & social ── */}
             <Navbar />
             <StickySocial />
+
+            {/* ── Page sections ── */}
             <Hero />
             <About />
             <Work />

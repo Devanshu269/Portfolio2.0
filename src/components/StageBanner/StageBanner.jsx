@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import './StageBanner.css';
 
 const STAGES = [
@@ -13,37 +13,55 @@ const STAGES = [
 ];
 
 const StageBanner = () => {
-    const [banner, setBanner] = useState(null);
+    const [banner, setBanner]   = useState(null);
     const [visible, setVisible] = useState(false);
-    const timerRef = useRef(null);
-    const lastRef  = useRef(null);
+
+    const lastScrollY  = useRef(window.scrollY);
+    const currentStage = useRef(null);
+    const timerRef     = useRef(null);
+
+    const showBanner = useCallback((stage) => {
+        clearTimeout(timerRef.current);
+        setBanner(stage);
+        setVisible(true);
+        timerRef.current = setTimeout(() => setVisible(false), 2600);
+    }, []);
 
     useEffect(() => {
-        const observers = [];
+        // Get all section elements once
+        const sections = STAGES.map(s => ({
+            ...s,
+            el: document.getElementById(s.id),
+        })).filter(s => s.el);
 
-        STAGES.forEach(stage => {
-            const el = document.getElementById(stage.id);
-            if (!el) return;
+        const TRIGGER_ZONE = window.innerHeight * 0.45; // 45% from top
 
-            const observer = new IntersectionObserver(([entry]) => {
-                if (entry.isIntersecting && lastRef.current !== stage.id) {
-                    lastRef.current = stage.id;
-                    clearTimeout(timerRef.current);
-                    setBanner(stage);
-                    setVisible(true);
-                    timerRef.current = setTimeout(() => setVisible(false), 2400);
+        const onScroll = () => {
+            const currentY = window.scrollY;
+            const scrollingDown = currentY > lastScrollY.current;
+            lastScrollY.current = currentY;
+
+            if (!scrollingDown) return; // only trigger going down
+
+            for (const stage of sections) {
+                const rect = stage.el.getBoundingClientRect();
+                // Section top edge just entered upper half of viewport
+                if (rect.top >= 0 && rect.top <= TRIGGER_ZONE) {
+                    if (currentStage.current !== stage.id) {
+                        currentStage.current = stage.id;
+                        showBanner(stage);
+                    }
+                    break;
                 }
-            }, { threshold: 0.25, rootMargin: '-60px 0px 0px 0px' });
+            }
+        };
 
-            observer.observe(el);
-            observers.push(observer);
-        });
-
+        window.addEventListener('scroll', onScroll, { passive: true });
         return () => {
-            observers.forEach(o => o.disconnect());
+            window.removeEventListener('scroll', onScroll);
             clearTimeout(timerRef.current);
         };
-    }, []);
+    }, [showBanner]);
 
     if (!banner) return null;
 
