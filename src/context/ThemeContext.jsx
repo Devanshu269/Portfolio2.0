@@ -1,43 +1,19 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext } from 'react';
 
-const ThemeContext = createContext();
+const ThemeContext = createContext({ theme: 'dark' });
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
-};
+export const useTheme = () => useContext(ThemeContext);
 
+// Kept as a no-op provider so nothing else breaks if useTheme is called
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    // Check localStorage first, then system preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
-    }
-    
-    // Check system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      return 'light';
-    }
-    
-    return 'dark';
-  });
-
-  useEffect(() => {
-    // Apply theme to document
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
-  };
-
+  // Always dark — set once on mount, never changes
+  if (typeof document !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.removeAttribute('data-theme'); // use :root defaults
+    localStorage.removeItem('theme');
+  }
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: 'dark', toggleTheme: () => {} }}>
       {children}
     </ThemeContext.Provider>
   );

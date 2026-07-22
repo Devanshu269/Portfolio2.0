@@ -1,0 +1,74 @@
+/* ── Stage Banner ── */
+
+.stage-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(120vw);
+    z-index: 99990;
+    pointer-events: none;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stage-banner.show {
+    transform: translate(-50%, -50%) translateX(0);
+    animation: bannerLife 2.4s ease forwards;
+}
+
+.stage-banner.hide {
+    transform: translate(-50%, -50%) translateX(120vw);
+}
+
+@keyframes bannerLife {
+    0%    { transform: translate(-50%, -50%) translateX(120vw); opacity: 1; }
+    15%   { transform: translate(-50%, -50%) translateX(0);      opacity: 1; }
+    75%   { transform: translate(-50%, -50%) translateX(0);      opacity: 1; }
+    100%  { transform: translate(-50%, -50%) translateX(-120vw); opacity: 0; }
+}
+
+.stage-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.92);
+    border-top: 3px solid #FBC02D;
+    border-bottom: 3px solid #FBC02D;
+    padding: 18px 48px;
+    white-space: nowrap;
+    box-shadow: 0 0 40px rgba(251, 192, 45, 0.25);
+}
+
+.stage-num {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.75rem;
+    color: #FBC02D;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 rgba(211, 47, 47, 0.6);
+}
+
+.stage-dash {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.stage-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.75rem;
+    color: #fff;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.6);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .stage-inner {
+        gap: 12px;
+        padding: 14px 24px;
+    }
+    .stage-num,
+    .stage-dash,
+    .stage-name {
+        font-size: 0.55rem;
+    }
+}

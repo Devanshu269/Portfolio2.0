@@ -9,39 +9,21 @@
   --section-padding: 120px 0;
 }
 
-/* Dark Mode (Default) - Retro RPG Aesthetic */
-:root,
-[data-theme="dark"] {
-  --bg-primary: #000000; /* Pure Black */
-  --bg-secondary: #0A0A0A; /* Very dark gray */
-  --bg-surface: #111111; /* Dark panel */
-  --text-primary: #FFFFFF; /* Pure White */
-  --text-secondary: #AAAAAA; /* Light gray */
+/* Dark Mode - Default & Only Theme */
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+  --bg-surface: #111111;
+  --text-primary: #FFFFFF;
+  --text-secondary: #AAAAAA;
   --text-inverse: #000000;
-  --glass: #000000; /* No more glass */
-  --glass-border: #FFFFFF; /* Solid white border */
+  --glass: #000000;
+  --glass-border: #FFFFFF;
   --gradient-main: linear-gradient(90deg, #D32F2F 0%, #FBC02D 100%);
   --divider: #333333;
   --shadow-sm: 4px 4px 0px rgba(0, 0, 0, 1);
   --shadow-md: 8px 8px 0px rgba(0, 0, 0, 1);
-  --shadow-lg: 12px 12px 0px rgba(211, 47, 47, 0.5); /* Pixel shadow */
-}
-
-/* Light Mode (Retro GameBoy / Classic style) */
-[data-theme="light"] {
-  --bg-primary: #E0F8D0; /* Classic GameBoy Green */
-  --bg-secondary: #88C070;
-  --bg-surface: #346856;
-  --text-primary: #081820;
-  --text-secondary: #346856;
-  --text-inverse: #E0F8D0;
-  --glass: #88C070;
-  --glass-border: #081820;
-  --gradient-main: linear-gradient(90deg, #346856 0%, #081820 100%);
-  --divider: #081820;
-  --shadow-sm: 4px 4px 0px #081820;
-  --shadow-md: 8px 8px 0px #081820;
-  --shadow-lg: 12px 12px 0px #081820;
+  --shadow-lg: 12px 12px 0px rgba(211, 47, 47, 0.5);
 }
 
 /* Global Section Styling for Separation */
@@ -325,7 +307,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: none; /* Blocky fonts */
-  transition: background-color 0s ease, color 0s ease;
+  /* no theme transitions needed — dark only */
 }
 
 /* Anime-style scanline overlay */

@@ -1,0 +1,25 @@
+/* ── Cursor Trail ── */
+
+.cursor-trail {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99998;
+    overflow: hidden;
+}
+
+.trail-particle {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: trailFade 0.5s ease-out forwards;
+    image-rendering: pixelated;
+    line-height: 1;
+    user-select: none;
+}
+
+@keyframes trailFade {
+    0%   { transform: translate(-50%, -50%) scale(1)    rotate(0deg);    opacity: 1;   }
+    50%  { transform: translate(-50%, -70%) scale(0.8)  rotate(20deg);   opacity: 0.7; }
+    100% { transform: translate(-50%, -100%) scale(0.4) rotate(40deg);   opacity: 0;   }
+}

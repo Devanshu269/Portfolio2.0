@@ -30,6 +30,8 @@
 </head>
 
 <body>
+  <!-- Force dark theme — remove any previously saved preference -->
+  <script>localStorage.removeItem('theme');</script>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

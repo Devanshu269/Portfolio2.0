@@ -1,0 +1,90 @@
+/* ── Coin Progress HUD ── */
+
+.coin-hud {
+    position: fixed;
+    top: 14px;
+    right: 20px;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 2px solid rgba(251, 192, 45, 0.3);
+    border-radius: 30px;
+    padding: 5px 14px;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+}
+
+/* ── Coin row ── */
+.coin-row {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.hud-coin {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+    border: 1px solid #444;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.hud-coin.collected {
+    background: #FBC02D;
+    border-color: #F57F17;
+    box-shadow: 0 0 4px rgba(251, 192, 45, 0.6);
+    animation: coinCollect 0.3s ease-out;
+}
+
+@keyframes coinCollect {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.4) translateY(-3px); }
+    100% { transform: scale(1); }
+}
+
+/* ── Score display ── */
+.hud-score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1;
+}
+
+.score-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.35rem;
+    color: #888;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.score-value {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    color: #FBC02D;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+/* ── Mobile: make it smaller ── */
+@media (max-width: 768px) {
+    .coin-hud {
+        top: 8px;
+        right: 10px;
+        padding: 4px 10px;
+        gap: 7px;
+    }
+
+    .hud-coin {
+        width: 7px;
+        height: 7px;
+    }
+
+    .score-value {
+        font-size: 0.5rem;
+    }
+}
