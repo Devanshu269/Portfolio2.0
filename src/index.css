@@ -1,45 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
 :root {
-  --primary: #D32F2F; /* Soft Lavender */
+  --primary: #D32F2F; /* Pixel Red */
   --primary-dark: #9A0007;
-  --primary-alt: #FBC02D; /* Soft Cyan */
-  --accent-gold: #F57F17; /* Soft Gold */
-  --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --primary-alt: #FBC02D; /* Pixel Yellow */
+  --accent-gold: #F57F17; /* Pixel Gold */
+  --transition-smooth: none; /* Blocky retro transitions */
   --section-padding: 120px 0;
 }
 
-/* Dark Mode (Default) - Gaming / Anime Aesthetic */
+/* Dark Mode (Default) - Retro RPG Aesthetic */
 :root,
 [data-theme="dark"] {
-  --bg-primary: #0B0C10; /* Deep navy/gray */
-  --bg-secondary: #0F1015; /* Slightly lighter navy */
-  --bg-surface: #15161E; /* Dark panel */
-  --text-primary: #E0E0E0;
-  --text-secondary: #9E9E9E; /* Muted gray */
-  --text-inverse: #0B0C10;
-  --glass: rgba(211, 47, 47, 0.03); /* Subtle lavender glass */
-  --glass-border: rgba(211, 47, 47, 0.12);
-  --gradient-main: linear-gradient(135deg, #D32F2F 0%, #FBC02D 100%);
-  --divider: rgba(211, 47, 47, 0.08);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(211, 47, 47, 0.1); /* Subtle lavender glow */
+  --bg-primary: #000000; /* Pure Black */
+  --bg-secondary: #0A0A0A; /* Very dark gray */
+  --bg-surface: #111111; /* Dark panel */
+  --text-primary: #FFFFFF; /* Pure White */
+  --text-secondary: #AAAAAA; /* Light gray */
+  --text-inverse: #000000;
+  --glass: #000000; /* No more glass */
+  --glass-border: #FFFFFF; /* Solid white border */
+  --gradient-main: linear-gradient(90deg, #D32F2F 0%, #FBC02D 100%);
+  --divider: #333333;
+  --shadow-sm: 4px 4px 0px rgba(0, 0, 0, 1);
+  --shadow-md: 8px 8px 0px rgba(0, 0, 0, 1);
+  --shadow-lg: 12px 12px 0px rgba(211, 47, 47, 0.5); /* Pixel shadow */
 }
 
-/* Light Mode */
+/* Light Mode (Retro GameBoy / Classic style) */
 [data-theme="light"] {
-  --bg-primary: #FAF8FF; /* Very light lavender */
-  --bg-secondary: #F0EDF5;
-  --bg-surface: #1A1A2E;
-  --text-primary: #0A0A12;
-  --text-secondary: #555566;
-  --text-inverse: #FAF8FF;
-  --glass: rgba(0, 0, 0, 0.03);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --gradient-main: linear-gradient(135deg, #D32F2F 0%, #FBC02D 100%);
-  --divider: rgba(0, 0, 0, 0.06);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --bg-primary: #E0F8D0; /* Classic GameBoy Green */
+  --bg-secondary: #88C070;
+  --bg-surface: #346856;
+  --text-primary: #081820;
+  --text-secondary: #346856;
+  --text-inverse: #E0F8D0;
+  --glass: #88C070;
+  --glass-border: #081820;
+  --gradient-main: linear-gradient(90deg, #346856 0%, #081820 100%);
+  --divider: #081820;
+  --shadow-sm: 4px 4px 0px #081820;
+  --shadow-md: 8px 8px 0px #081820;
+  --shadow-lg: 12px 12px 0px #081820;
 }
 
 /* Global Section Styling for Separation */
@@ -48,17 +50,83 @@ section {
   width: 100%;
 }
 
-/* Add subtle separator line between sections */
+/* Add solid pixel separator line between sections */
 section:not(:last-of-type)::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  /* Not full width for a cleaner look */
-  height: 1px;
-  background: radial-gradient(circle, var(--divider) 0%, transparent 100%);
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--divider);
+}
+
+/* --- Retro RPG Backgrounds --- */
+.bg-pixel-dungeon {
+  background-color: #0d0d0d;
+  background-image: 
+    linear-gradient(#222 2px, transparent 2px),
+    linear-gradient(90deg, #222 2px, transparent 2px),
+    linear-gradient(#111 1px, transparent 1px),
+    linear-gradient(90deg, #111 1px, #0d0d0d 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: 0 0, 0 0, 0 0, 0 0;
+  animation: scrollDungeon 10s linear infinite;
+}
+
+@keyframes scrollDungeon {
+  from { background-position: 0 0, 0 0, 0 0, 0 0; }
+  to { background-position: -50px -50px, -50px -50px, -10px -10px, -10px -10px; }
+}
+
+.bg-pixel-stars {
+  background-color: #000;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: scrollStars 15s linear infinite;
+}
+
+@keyframes scrollStars {
+  from { background-position: 0 0; }
+  to { background-position: -200px 200px; }
+}
+
+.bg-scanlines-retro {
+  background-color: #000;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(34, 34, 34, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  animation: scanlineScroll 5s linear infinite;
+}
+
+@keyframes scanlineScroll {
+  from { background-position: 0 0; }
+  to { background-position: 0 100px; }
+}
+
+.bg-retro-grid {
+  background-color: #050505;
+  background-image: 
+    linear-gradient(rgba(211, 47, 47, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(211, 47, 47, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 0;
+  animation: gridScroll 4s linear infinite;
+}
+
+@keyframes gridScroll {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 40px, 40px 0; }
 }
 
 /* Alternating Backgrounds */
@@ -82,18 +150,19 @@ main>section:first-of-type {
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Remove smooth scroll for retro feel */
   scroll-padding-top: 100px;
 }
 
 body {
-  font-family: 'Rajdhani', 'Inter', sans-serif;
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: none; /* Blocky fonts */
+  transition: background-color 0s ease, color 0s ease;
 }
 
 /* Anime-style scanline overlay */
@@ -134,10 +203,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Orbitron', 'Lexend', sans-serif;
-  font-weight: 800;
+  font-family: 'Press Start 2P', monospace;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
+  line-height: 1.4;
 }
 
 a {
@@ -241,8 +311,8 @@ button {
 }
 
 .section-title {
-  font-size: clamp(2rem, 8vw, 6rem);
-  line-height: 0.9;
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  line-height: 1.2;
   margin-bottom: 2rem;
   position: relative;
   transition: text-shadow 0.2s;

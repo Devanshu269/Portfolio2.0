@@ -63,10 +63,10 @@ const DUMMY_PROJECTS = [
 
 const Projects = () => {
     return (
-        <section id="projects" className="projects-section bg-sci-fi-hex">
+        <section id="projects" className="projects-section bg-retro-grid">
             <div className="container">
                 <div className="section-header align-center">
-                    <span className="section-subtitle">Portfolio</span>
+                    <span className="section-subtitle">Load Game</span>
                     <h2 className="section-title">Featured <br /> <span className="outline-text">Projects</span></h2>
                 </div>
 
@@ -75,13 +75,13 @@ const Projects = () => {
                         {DUMMY_PROJECTS.map((project, idx) => (
                             <motion.div
                                 key={project.id}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
-                                className="project-card glass"
+                                transition={{ duration: 0.1, delay: idx * 0.05 }}
+                                className="project-card rpg-window"
                             >
-                                <div className="project-image-wrapper">
+                                <div className="project-image-wrapper pixel-border">
                                     <img src={project.image} alt={project.title} className="project-image" />
                                     <div className="project-overlay">
                                         <div className="project-overlay-content">

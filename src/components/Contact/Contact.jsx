@@ -70,15 +70,15 @@ const Contact = () => {
     const isFormValid = formData.name.trim() && formData.email.trim() && formData.message.trim();
 
     return (
-        <section id="contact" className="contact-section bg-synthwave-grid">
+        <section id="contact" className="contact-section bg-pixel-stars">
             <div className="container">
                 <div className="contact-grid">
                     <div className="contact-info">
-                        <span className="section-subtitle">Connect // Network</span>
+                        <span className="section-subtitle">Multiplayer</span>
                         <h2 className="section-title">Initiate <br /> <span className="outline-text">Contact</span></h2>
 
                         <div className="info-cards">
-                            <div className="info-card glass">
+                            <div className="info-card rpg-window">
                                 <Mail className="info-icon" />
                                 <div className="info-details">
                                     <p>Email</p>
@@ -86,7 +86,7 @@ const Contact = () => {
                                 </div>
                             </div>
 
-                            <div className="info-card glass">
+                            <div className="info-card rpg-window">
                                 <Phone className="info-icon" />
                                 <div className="info-details">
                                     <p>Phone</p>
@@ -94,7 +94,7 @@ const Contact = () => {
                                 </div>
                             </div>
 
-                            <div className="info-card glass">
+                            <div className="info-card rpg-window">
                                 <MapPin className="info-icon" />
                                 <div className="info-details">
                                     <p>Location</p>
@@ -109,7 +109,7 @@ const Contact = () => {
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="contact-form-container glass"
+                        className="contact-form-container rpg-window"
                     >
                         <form className="contact-form" onSubmit={handleSubmit}>
                             <div className="form-group">
@@ -118,7 +118,7 @@ const Contact = () => {
                                     type="text"
                                     name="name"
                                     placeholder="Enter your name..."
-                                    className="glass"
+                                    className="rpg-input"
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
@@ -130,7 +130,7 @@ const Contact = () => {
                                     type="email"
                                     name="email"
                                     placeholder="john@example.com"
-                                    className="glass"
+                                    className="rpg-input"
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
@@ -140,8 +140,8 @@ const Contact = () => {
                                 <label>Message</label>
                                 <textarea
                                     name="message"
-                                    placeholder="Tell me about your project or opportunity..."
-                                    className="glass"
+                                    placeholder="Tell me about your quest..."
+                                    className="rpg-input"
                                     rows="5"
                                     value={formData.message}
                                     onChange={handleChange}

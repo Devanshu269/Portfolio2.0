@@ -21,12 +21,6 @@ const About = () => {
             label: "Badminton",
             desc: "For agility & mental sharpness",
             color: "#22c55e"
-        },
-        {
-            icon: <BookOpen size={20} />,
-            label: "Manga",
-            desc: "Reading weekly chapters religiously",
-            color: "#FFD700"
         }
     ];
 

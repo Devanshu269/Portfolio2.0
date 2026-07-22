@@ -30,42 +30,29 @@ const CustomCursor = () => {
 
     const variants = {
         default: {
-            x: mousePosition.x - 12,
-            y: mousePosition.y - 12,
+            x: mousePosition.x - 8,
+            y: mousePosition.y - 8,
             scale: 1,
-            rotate: 45
+            rotate: 0
         },
         hover: {
             x: mousePosition.x - 12,
             y: mousePosition.y - 12,
             scale: 1.5,
-            rotate: 90
+            rotate: 45
         }
     };
 
     return (
-        <>
-            {/* Outer Sci-Fi Frame */}
-            <motion.div
-                className={`custom-cursor-frame ${isHovering ? 'hovering' : ''}`}
-                variants={variants}
-                animate={isHovering ? "hover" : "default"}
-                transition={{
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 28,
-                    mass: 0.5
-                }}
-            />
-            {/* Inner Core */}
-            <div 
-                className={`custom-cursor-core ${isHovering ? 'hovering' : ''}`} 
-                style={{ 
-                    left: `${mousePosition.x}px`, 
-                    top: `${mousePosition.y}px` 
-                }} 
-            />
-        </>
+        <motion.div
+            className={`pixel-cursor ${isHovering ? 'hovering' : ''}`}
+            variants={variants}
+            animate={isHovering ? "hover" : "default"}
+            transition={{
+                type: "tween", // Snap instantly like retro games
+                duration: 0
+            }}
+        />
     );
 };
 

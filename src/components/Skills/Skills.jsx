@@ -32,10 +32,10 @@ const Skills = () => {
     ];
 
     return (
-        <section id="skills" className="skills-section bg-circuit-board">
+        <section id="skills" className="skills-section bg-scanlines-retro">
             <div className="container">
                 <div className="section-header align-center">
-                    <span className="section-subtitle">Capabilities</span>
+                    <span className="section-subtitle">Character Stats</span>
                     <h2 className="section-title">Technical <br /> <span className="outline-text">Expertise</span></h2>
                 </div>
 
@@ -43,20 +43,18 @@ const Skills = () => {
                     {skillsList.map((skill, index) => (
                         <motion.div
                             key={index}
-                            className="skill-item glass spotlight-card"
+                            className="skill-item rpg-skill-card"
                             style={{ '--hover-color': skill.color }}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{
-                                duration: 0.5,
-                                delay: index * 0.05,
-                                type: "spring",
-                                stiffness: 100
+                                duration: 0.1, /* Snappy RPG intro */
+                                delay: index * 0.05
                             }}
                             whileHover={{
-                                y: -5,
-                                transition: { duration: 0.2 }
+                                scale: 1.1,
+                                transition: { duration: 0 } /* Instant hover */
                             }}
                         >
                             <div className="skill-icon" style={{ color: skill.color }}>

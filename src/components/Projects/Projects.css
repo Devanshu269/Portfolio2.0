@@ -11,145 +11,117 @@
 }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
     width: 100%;
 }
 
 .project-card {
-    border-radius: 24px;
-    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-    position: relative;
-    height: 320px;
+    flex-direction: row;
+    height: auto;
+    background: var(--bg-surface);
+    border: 4px solid #fff;
+    box-shadow: 8px 8px 0px rgba(0,0,0,1);
+    transition: none;
+    padding: 20px;
+    gap: 30px;
 }
 
-.project-card:hover {
-    transform: translateY(-10px) translateX(-5px);
-    box-shadow: 8px 8px 0px rgba(211, 47, 47, 0.4); /* Softer crimson shadow */
-    border-color: rgba(211, 47, 47, 0.3); /* Subtle border change */
+/* Image container with thick borders */
+.pixel-border {
+    border: 4px solid #fff;
+    box-shadow: inset 0 0 0 4px #000;
 }
 
 .project-image-wrapper {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 40%;
+    height: auto;
+    min-height: 250px;
     overflow: hidden;
 }
 
 .project-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
 }
 
-/* Darker images to let neon pop */
-.project-card .project-image {
-    filter: brightness(0.6) contrast(1.2);
-}
-
-.project-card:hover .project-image {
-    transform: scale(1.05);
-    filter: brightness(0.4) blur(3px);
-}
-
+/* Overlay that appears instantly on hover */
 .project-overlay {
     position: absolute;
     inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 30px;
-    background: linear-gradient(to top, rgba(10, 10, 18, 0.95) 0%, rgba(10, 10, 18, 0.4) 50%, transparent 100%);
-    pointer-events: none;
+    display: none; /* Blocky toggle */
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    z-index: 10;
 }
 
 .project-card:hover .project-overlay {
-    background: rgba(10, 10, 18, 0.85);
-    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .project-overlay-content {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.4s ease;
     text-align: left;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    pointer-events: none;
-}
-
-.project-card:hover .project-overlay-content {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
 }
 
 .project-desc {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+    color: #fff;
+    font-size: 1.2rem;
     line-height: 1.5;
     margin: 0;
+    font-family: 'VT323', monospace;
 }
 
 .project-links {
     display: flex;
     gap: 15px;
-    margin-top: 5px;
 }
 
 .project-link {
     width: 45px;
     height: 45px;
-    border-radius: 50%;
-    background: rgba(211, 47, 47, 0.1);
-    color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(211, 47, 47, 0.3);
-    transition: all 0.3s ease;
+    background: var(--primary);
+    color: white;
+    border: 2px solid #fff;
+    box-shadow: 4px 4px 0px #000;
+    transition: none; /* RPG click effect */
 }
 
 .project-link:hover {
-    background: var(--primary);
-    color: white;
-    box-shadow: 0 0 15px rgba(211, 47, 47, 0.6);
-    transform: scale(1.1);
+    background: var(--primary-alt);
+    color: #000;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
 }
 
 .project-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    z-index: 2;
-    transition: transform 0.4s ease;
-    pointer-events: none;
-}
-
-.project-card:hover .project-info {
-    transform: translateY(-100%);
-    opacity: 0;
+    flex: 1;
 }
 
 .project-info h3 {
-    font-size: 1.6rem;
-    color: #fff;
+    font-size: 1rem;
+    color: var(--text-primary);
     margin: 0;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
+    font-family: 'Press Start 2P', monospace;
+    line-height: 1.4;
 }
 
 .project-tags {
@@ -159,25 +131,19 @@
 }
 
 .project-tag {
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--primary);
-    background: rgba(10, 10, 18, 0.8);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(211, 47, 47, 0.25);
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-family: 'Rajdhani', sans-serif;
-    /* Angular cut */
-    clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%, 0 6px);
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: var(--primary-alt);
+    padding: 2px 6px;
+    border: 1px solid var(--primary-alt);
 }
 
-/* Responsive Grid Adjustments */
 @media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .project-card {
+        flex-direction: column;
+    }
+    .project-image-wrapper {
+        width: 100%;
+        min-height: 200px;
     }
 }
