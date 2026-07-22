@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - gamin-anime-version
+      # Add more branches here in future, it will work automatically!
 
 jobs:
   deploy:
@@ -22,25 +23,31 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Build for main
-        if: github.ref == 'refs/heads/main'
-        run: VITE_BASE_PATH='/Portfolio2.0/prod/' npm run build
+      - name: Determine branch path
+        id: branch
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          if [ "$BRANCH_NAME" = "main" ]; then
+            BASE_PATH=""
+          else
+            BASE_PATH="$BRANCH_NAME"
+          fi
+          echo "base_path=$BASE_PATH" >> $GITHUB_OUTPUT
       
-      - name: Build for gamin-anime-version
-        if: github.ref == 'refs/heads/gamin-anime-version'
-        run: VITE_BASE_PATH='/Portfolio2.0/gamin-anime-version/' npm run build
+      - name: Build
+        run: npm run build
+        env:
+          VITE_BASE_PATH: ${{ steps.branch.outputs.base_path }}
       
       - name: Create deployment structure
         run: |
           mkdir -p deploy
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "Deploying main branch to /prod"
-            mkdir -p deploy/prod
-            cp -r dist/* deploy/prod/
-          elif [ "${{ github.ref }}" = "refs/heads/gamin-anime-version" ]; then
-            echo "Deploying gamin-anime-version branch to /gamin-anime-version"
-            mkdir -p deploy/gamin-anime-version
-            cp -r dist/* deploy/gamin-anime-version/
+          BASE_PATH="${{ steps.branch.outputs.base_path }}"
+          if [ -z "$BASE_PATH" ]; then
+            cp -r dist/* deploy/
+          else
+            mkdir -p "deploy/$BASE_PATH"
+            cp -r dist/* "deploy/$BASE_PATH/"
           fi
       
       - name: Deploy to gh-pages
