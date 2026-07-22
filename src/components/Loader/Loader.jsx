@@ -3,135 +3,76 @@ import { useState, useEffect } from 'react';
 import './Loader.css';
 
 const Loader = () => {
-    const words = ["Software Engineer", "Gamer", "Anime Enthusiast"];
-    const [index, setIndex] = useState(0);
-    const [subtext, setSubtext] = useState("");
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [speed, setSpeed] = useState(100);
     const [progress, setProgress] = useState(0);
+    const [status, setStatus] = useState("GENERATING WORLD...");
+    const [phase, setPhase] = useState('loading'); // 'loading' | 'ready' | 'done'
 
     useEffect(() => {
-        const handleType = () => {
-            const currentWord = words[index];
-            if (isDeleting) {
-                setSubtext(currentWord.substring(0, subtext.length - 1));
-                setSpeed(50);
-            } else {
-                setSubtext(currentWord.substring(0, subtext.length + 1));
-                setSpeed(100);
-            }
+        const statuses = [
+            "GENERATING WORLD...",
+            "SPAWNING NPCs...",
+            "COMPILING QUESTS...",
+            "EQUIPPING GEAR...",
+            "PRESS START"
+        ];
 
-            if (!isDeleting && subtext === currentWord) {
-                setTimeout(() => setIsDeleting(true), 800);
-            } else if (isDeleting && subtext === "") {
-                setIsDeleting(false);
-                setIndex((prev) => (prev + 1) % words.length);
-            }
-        };
-
-        const timer = setTimeout(handleType, speed);
-        return () => clearTimeout(timer);
-    }, [subtext, isDeleting, index]);
-
-    // XP bar progress animation
-    useEffect(() => {
         const interval = setInterval(() => {
             setProgress(prev => {
-                if (prev >= 100) return 100;
-                return prev + 2;
+                const next = prev + Math.floor(Math.random() * 12) + 2;
+                if (next >= 100) {
+                    clearInterval(interval);
+                    setStatus("PRESS START");
+                    setTimeout(() => setPhase('ready'), 500);
+                    setTimeout(() => setPhase('done'), 1800);
+                    return 100;
+                }
+                
+                if (next > 80) setStatus(statuses[3]);
+                else if (next > 50) setStatus(statuses[2]);
+                else if (next > 25) setStatus(statuses[1]);
+
+                return next;
             });
-        }, 80);
+        }, 120);
+
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <motion.div
-            className={`loader-wrapper word-bg-${index}`}
-            initial={{ opacity: 1 }}
-            exit={{
-                y: '-100%',
-                transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
-            }}
-        >
-            <div className="loader-bg-overlay">
-                <AnimatePresence mode="wait">
-                    {index === 0 && (
-                        <motion.div
-                            key="eng"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.4 }}
-                            exit={{ opacity: 0 }}
-                            className="bg-layer engineering-grid"
-                        />
-                    )}
-                    {index === 1 && (
-                        <motion.div
-                            key="gamer"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.4 }}
-                            exit={{ opacity: 0 }}
-                            className="bg-layer gaming-energy"
-                        />
-                    )}
-                    {index === 2 && (
-                        <motion.div
-                            key="anime"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.4 }}
-                            exit={{ opacity: 0 }}
-                            className="bg-layer anime-sparkles"
-                        />
-                    )}
-                </AnimatePresence>
-            </div>
-
-            <div className="loader-content">
+        <AnimatePresence>
+            {phase !== 'done' && (
                 <motion.div
-                    className="liquid-logo"
-                    animate={{
-                        borderRadius: ["40% 60% 70% 30% / 40% 40% 60% 50%", "30% 60% 70% 40% / 50% 60% 30% 60%", "60% 40% 30% 70% / 60% 30% 70% 40%", "40% 60% 70% 30% / 40% 40% 60% 50%"],
-                        scale: [1, 1.05, 1],
-                        rotate: [0, 5, -5, 0]
-                    }}
-                    transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "linear"
+                    className="rpg-loader-wrapper"
+                    initial={{ opacity: 1 }}
+                    exit={{
+                        opacity: 0,
+                        transition: { duration: 0.8 }
                     }}
                 >
-                    <span className="loader-text">DS</span>
-                </motion.div>
-                <div className="loader-subtext-container">
-                    <p className="loader-subtext">
-                        {subtext}
-                        <span className="cursor">|</span>
-                    </p>
-                </div>
+                    <div className="rpg-container">
+                        {/* 8-bit Heart Icon or Logo Placeholder */}
+                        <div className={`rpg-icon ${phase === 'ready' ? 'rpg-pulse' : ''}`}>
+                            <div className="pixel-heart"></div>
+                        </div>
 
-                {/* XP Progress Bar */}
-                <div className="xp-bar-container">
-                    <div className="xp-bar-track">
-                        <motion.div
-                            className="xp-bar-fill"
-                            initial={{ width: '0%' }}
-                            animate={{ width: `${progress}%` }}
-                            transition={{ duration: 0.1, ease: 'linear' }}
-                        />
+                        <h2 className={`rpg-status-text ${phase === 'ready' ? 'rpg-blink' : ''}`}>
+                            {status}
+                        </h2>
+
+                        <div className="rpg-progress-container">
+                            <div 
+                                className="rpg-progress-bar"
+                                style={{ width: `${progress}%` }}
+                            ></div>
+                        </div>
+                        
+                        <div className="rpg-percentage">
+                            LVL {Math.floor(progress / 10)} - {progress}%
+                        </div>
                     </div>
-                    <span className="xp-bar-label">LOADING... {progress}%</span>
-                </div>
-
-                {/* Press Start Text */}
-                <motion.p
-                    className="press-start-text"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: progress >= 80 ? [0, 1, 0, 1, 0, 1] : 0 }}
-                    transition={{ duration: 1.5 }}
-                >
-                    ▶ PRESS START
-                </motion.p>
-            </div>
-        </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 

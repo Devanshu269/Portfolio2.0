@@ -24,7 +24,7 @@ const ALL_CERTIFICATES = [
 
 const Certificates = () => {
     return (
-        <section id="certificates" className="certificates-section">
+        <section id="certificates" className="certificates-section bg-data-rings">
             <div className="container">
                 <div className="section-header align-center">
                     <span className="section-subtitle">Qualifications</span>

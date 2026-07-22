@@ -114,7 +114,7 @@ const Recommendations = () => {
     };
 
     return (
-        <section id="recommendations" className="recommendations-section">
+        <section id="recommendations" className="recommendations-section bg-cyberpunk-crt">
             <div className="container">
                 <div className="section-header align-center">
                     <span className="section-subtitle">Vouches</span>

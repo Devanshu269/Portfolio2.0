@@ -1,0 +1,50 @@
+.fireflies-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--bg-primary); /* Ink Black */
+}
+
+/* Base fog to add depth */
+.fireflies-fog-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(30, 30, 30, 0.4) 0%, rgba(5, 5, 5, 1) 80%);
+    z-index: 1;
+}
+
+/* Individual Firefly */
+.firefly {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 15px 4px rgba(251, 192, 45, 0.6), 0 0 30px rgba(251, 192, 45, 0.4);
+    opacity: 0;
+    z-index: 2;
+    animation: firefly-float linear infinite, firefly-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes firefly-float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.2);
+    }
+    66% {
+        transform: translate(-20px, -100px) scale(0.8);
+    }
+    100% {
+        transform: translate(10px, -150px) scale(1);
+    }
+}
+
+@keyframes firefly-pulse {
+    0% { opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.2; }
+}

@@ -71,7 +71,7 @@ const Education = () => {
     ];
 
     return (
-        <section id="education" className="education-section">
+        <section id="education" className="education-section bg-starlight">
             <div className="container">
                 <div className="section-header align-center">
                     <span className="section-subtitle">Academic Path</span>

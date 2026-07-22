@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Code2, Gamepad2, Swords } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Magnetic from '../Magnetic/Magnetic';
+import GoldenFireflies from '../GoldenFireflies/GoldenFireflies';
 import './Hero.css';
 
 const TypewriterText = ({ texts }) => {
@@ -70,16 +71,10 @@ const Hero = () => {
         "winning Valorant clutches"
     ];
 
-    const stats = [
-        { label: "Frontend", value: 90, color: "#FF2D55", delay: 0.3 },
-        { label: "Backend", value: 75, color: "#00F0FF", delay: 0.5 },
-        { label: "Gaming", value: 95, color: "#FFD700", delay: 0.7 },
-        { label: "Anime", value: 100, color: "#BB86FC", delay: 0.9 },
-    ];
-
     return (
         <section id="hero" className="hero-section">
             <div className="hero-background">
+                <GoldenFireflies />
                 <motion.div
                     animate={{
                         scale: [1, 1.2, 1],
@@ -102,9 +97,9 @@ const Hero = () => {
 
             <div className="container hero-container">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
                     className="hero-header"
                 >
                     <h1>
@@ -117,8 +112,8 @@ const Hero = () => {
                             </div>
                         </div>
                         <div className="role-container">
-                            <h2 className="hero-role">FULL STACK DEVELOPER</h2>
                             <span className="level-badge">// LVL 4+ EXP</span>
+                            <h2 className="hero-role">FULL STACK DEVELOPER</h2>
                         </div>
                     </h1>
 
@@ -130,9 +125,9 @@ const Hero = () => {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
+                    initial={{ opacity: 0, filter: 'blur(5px)' }}
+                    animate={{ opacity: 1, filter: 'blur(0px)' }}
+                    transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="hero-footer"
                 >
                     <div className="hero-bio">
@@ -144,15 +139,8 @@ const Hero = () => {
                                 <Swords size={24} />
                             </div>
                             <p style={{ margin: 0 }}>
-                                Full Stack Developer with 4+ years of XP. Currently on a main quest at Lowe's India — shipping micro-frontend architectures, React dashboards, and Spring Boot services at enterprise scale. Side quests include competitive FPS gaming and binge-watching shōnen anime. I care about code quality, real user impact, and clutch plays.
+                                Full Stack Developer with 4+ years of EXP. Currently on a main quest at Lowe's India — shipping micro-frontend architectures, React dashboards, and Spring Boot services at enterprise scale. Side quests include competitive FPS gaming and binge-watching shōnen anime. I care about code quality, real user impact, and clutch plays.
                             </p>
-                        </div>
-
-                        {/* RPG Stat Bars */}
-                        <div className="stat-bars-container">
-                            {stats.map((stat) => (
-                                <StatBar key={stat.label} {...stat} />
-                            ))}
                         </div>
 
                         <div className="hero-socials" style={{ marginTop: '2rem', display: 'flex', gap: '15px' }}>

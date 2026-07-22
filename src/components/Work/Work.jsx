@@ -56,7 +56,7 @@ const Work = () => {
     ];
 
     return (
-        <section id="work" className="work-section">
+        <section id="work" className="work-section bg-tactical-grid-v2">
             <div className="container">
                 <div className="section-header">
                     <span className="section-subtitle">Professional Journey</span>

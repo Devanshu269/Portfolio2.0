@@ -28,9 +28,9 @@
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(255, 45, 85, 0.2);
-    border-color: rgba(255, 45, 85, 0.4);
+    transform: translateY(-10px) translateX(-5px);
+    box-shadow: 8px 8px 0px rgba(211, 47, 47, 0.4); /* Softer crimson shadow */
+    border-color: rgba(211, 47, 47, 0.3); /* Subtle border change */
 }
 
 .project-image-wrapper {
@@ -107,19 +107,19 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: rgba(255, 45, 85, 0.1);
+    background: rgba(211, 47, 47, 0.1);
     color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(255, 45, 85, 0.3);
+    border: 1px solid rgba(211, 47, 47, 0.3);
     transition: all 0.3s ease;
 }
 
 .project-link:hover {
     background: var(--primary);
     color: white;
-    box-shadow: 0 0 15px rgba(255, 45, 85, 0.6);
+    box-shadow: 0 0 15px rgba(211, 47, 47, 0.6);
     transform: scale(1.1);
 }
 
@@ -164,7 +164,7 @@
     color: var(--primary);
     background: rgba(10, 10, 18, 0.8);
     backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 45, 85, 0.25);
+    border: 1px solid rgba(211, 47, 47, 0.25);
     padding: 6px 12px;
     border-radius: 6px;
     text-transform: uppercase;

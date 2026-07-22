@@ -28,7 +28,8 @@
 .sphere-1 {
     width: 50vw;
     height: 50vw;
-    background: var(--primary); /* Sakura Pink */
+    background: var(--primary);
+    /* Sakura Pink */
     top: -10vw;
     right: -10vw;
 }
@@ -36,7 +37,8 @@
 .sphere-2 {
     width: 40vw;
     height: 40vw;
-    background: var(--primary-alt); /* Cyan */
+    background: var(--primary-alt);
+    /* Cyan */
     bottom: -10vw;
     left: -10vw;
 }
@@ -58,14 +60,13 @@
 }
 
 .role-container {
-    margin-top: 1.5rem;
     min-height: 4rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     gap: 15px;
-    flex-wrap: wrap;
 }
 
 .hero-role {
@@ -75,7 +76,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     position: relative;
-    text-shadow: 0 0 15px rgba(255, 45, 85, 0.4), 0 0 30px rgba(255, 45, 85, 0.2);
+    text-shadow: 0 0 15px rgba(211, 47, 47, 0.4), 0 0 30px rgba(211, 47, 47, 0.2);
 }
 
 .level-badge {
@@ -93,8 +94,15 @@
 }
 
 @keyframes neon-pulse-gold {
-    0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
-    50% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.15); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.15);
+    }
 }
 
 /* Status Indicator */
@@ -116,8 +124,17 @@
 }
 
 @keyframes pulse-online {
-    0%, 100% { box-shadow: 0 0 4px #22c55e, 0 0 8px rgba(34, 197, 94, 0.3); transform: scale(1); }
-    50% { box-shadow: 0 0 12px #22c55e, 0 0 24px rgba(34, 197, 94, 0.5); transform: scale(1.2); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 4px #22c55e, 0 0 8px rgba(34, 197, 94, 0.3);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 12px #22c55e, 0 0 24px rgba(34, 197, 94, 0.5);
+        transform: scale(1.2);
+    }
 }
 
 .status-text {
@@ -174,7 +191,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 8px;
-    text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    text-shadow: 0 0 15px rgba(251, 192, 45, 0.4);
     margin-left: 0;
     margin-bottom: 5px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
@@ -233,11 +250,11 @@
 
 .bio-icon-box {
     padding: 12px;
-    background: rgba(255, 45, 85, 0.05);
+    background: rgba(211, 47, 47, 0.05);
     border-radius: 12px;
     color: var(--primary);
     flex-shrink: 0;
-    border: 1px solid rgba(255, 45, 85, 0.15);
+    border: 1px solid rgba(211, 47, 47, 0.15);
 }
 
 /* RPG Stat Bars */
@@ -326,7 +343,7 @@
     background: var(--primary);
     color: white;
     transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(255, 45, 85, 0.4);
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.4);
     border-color: var(--primary);
 }
 
@@ -345,7 +362,7 @@
     font-weight: 700;
     white-space: nowrap;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 10px rgba(255, 45, 85, 0.3);
+    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
 }
 
 .social-link:hover .social-tooltip {
@@ -377,11 +394,11 @@
     background: var(--primary);
     color: white;
     border: 1px solid var(--primary);
-    box-shadow: 0 0 15px rgba(255, 45, 85, 0.3);
+    box-shadow: 0 0 15px rgba(211, 47, 47, 0.3);
 }
 
 .hero-btn.btn-primary:hover {
-    box-shadow: 0 0 25px rgba(255, 45, 85, 0.5);
+    box-shadow: 0 0 25px rgba(211, 47, 47, 0.5);
     transform: translateY(-3px);
 }
 

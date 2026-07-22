@@ -72,7 +72,7 @@
 
 .nav-link:hover {
     color: var(--primary-alt);
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    text-shadow: 0 0 10px rgba(251, 192, 45, 0.4);
 }
 
 .nav-link::after {
@@ -83,7 +83,7 @@
     width: 0;
     height: 2px;
     background: var(--primary-alt);
-    box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 8px rgba(251, 192, 45, 0.4);
     transition: width 0.3s ease;
 }
 
@@ -111,14 +111,14 @@
     transition: all 0.3s ease;
     font-family: 'Rajdhani', sans-serif;
     letter-spacing: 1px;
-    box-shadow: 0 0 10px rgba(255, 45, 85, 0.2);
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.2);
 }
 
 .contact-btn:hover {
     background: var(--primary);
     color: white;
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.5);
 }
 
 .mobile-toggle {

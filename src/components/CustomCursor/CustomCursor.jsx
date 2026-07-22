@@ -12,7 +12,7 @@ const CustomCursor = () => {
         };
 
         const handleMouseOver = (e) => {
-            if (e.target.closest('a, button, .skill-card, .experience-card, .theme-toggle')) {
+            if (e.target.closest('a, button, .skill-card, .experience-card, .theme-toggle, input, textarea')) {
                 setIsHovering(true);
             } else {
                 setIsHovering(false);
@@ -30,25 +30,24 @@ const CustomCursor = () => {
 
     const variants = {
         default: {
-            x: mousePosition.x - 16,
-            y: mousePosition.y - 16,
+            x: mousePosition.x - 12,
+            y: mousePosition.y - 12,
             scale: 1,
-            backgroundColor: "transparent",
-            border: "2px solid var(--primary)",
+            rotate: 45
         },
         hover: {
-            x: mousePosition.x - 16,
-            y: mousePosition.y - 16,
+            x: mousePosition.x - 12,
+            y: mousePosition.y - 12,
             scale: 1.5,
-            backgroundColor: "rgba(255, 45, 85, 0.1)",
-            border: "2px solid var(--primary-alt)",
+            rotate: 90
         }
     };
 
     return (
         <>
+            {/* Outer Sci-Fi Frame */}
             <motion.div
-                className="custom-cursor-outline"
+                className={`custom-cursor-frame ${isHovering ? 'hovering' : ''}`}
                 variants={variants}
                 animate={isHovering ? "hover" : "default"}
                 transition={{
@@ -58,8 +57,9 @@ const CustomCursor = () => {
                     mass: 0.5
                 }}
             />
+            {/* Inner Core */}
             <div 
-                className="custom-cursor-dot" 
+                className={`custom-cursor-core ${isHovering ? 'hovering' : ''}`} 
                 style={{ 
                     left: `${mousePosition.x}px`, 
                     top: `${mousePosition.y}px` 

@@ -41,8 +41,8 @@
 }
 
 .skill-item:hover {
-    box-shadow: 0 0 20px rgba(255, 45, 85, 0.2), 0 10px 30px -10px var(--hover-color);
-    border-color: rgba(255, 45, 85, 0.3);
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.2), 0 10px 30px -10px var(--hover-color);
+    border-color: rgba(211, 47, 47, 0.3);
     /* Hexagonal clip on hover for game inventory feel */
     clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
 }

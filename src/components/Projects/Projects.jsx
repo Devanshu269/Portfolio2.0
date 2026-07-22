@@ -63,7 +63,7 @@ const DUMMY_PROJECTS = [
 
 const Projects = () => {
     return (
-        <section id="projects" className="projects-section">
+        <section id="projects" className="projects-section bg-sci-fi-hex">
             <div className="container">
                 <div className="section-header align-center">
                     <span className="section-subtitle">Portfolio</span>

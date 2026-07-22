@@ -31,7 +31,7 @@ const About = () => {
     ];
 
     return (
-        <section id="about" className="about-section">
+        <section id="about" className="about-section bg-dust-motes">
             <div className="container">
                 <div className="about-grid">
                     <motion.div

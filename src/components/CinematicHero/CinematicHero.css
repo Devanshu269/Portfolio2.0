@@ -1,0 +1,70 @@
+.cinematic-hero-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--bg-primary); /* Ink Black */
+}
+
+/* Kurosawa Sun */
+.kurosawa-sun {
+    position: absolute;
+    width: 60vh;
+    height: 60vh;
+    background: radial-gradient(circle at center, var(--primary) 0%, rgba(154, 0, 7, 0.8) 50%, transparent 80%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(8px);
+    opacity: 0.6;
+    animation: sun-pulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes sun-pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.8; }
+}
+
+/* Fog Layers */
+.fog-layer {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    bottom: 0;
+    left: -50%;
+    background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+    filter: blur(20px);
+}
+
+.fog-layer-1 {
+    animation: fog-drift-slow 20s ease-in-out infinite alternate;
+}
+
+.fog-layer-2 {
+    bottom: -20%;
+    background: radial-gradient(ellipse at bottom left, rgba(200, 200, 200, 0.02) 0%, transparent 70%);
+    animation: fog-drift-slow 25s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes fog-drift-slow {
+    0% { transform: translateX(-5%); }
+    100% { transform: translateX(5%); }
+}
+
+/* Drifting Embers */
+.hero-embers {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(245, 127, 23, 0.5) 1px, transparent 2px);
+    background-size: 150px 150px;
+    background-position: 0 0;
+    opacity: 0.3;
+    animation: rise-embers 30s linear infinite;
+}
+
+@keyframes rise-embers {
+    0% { background-position: 0 100vh; }
+    100% { background-position: 50px -100vh; }
+}

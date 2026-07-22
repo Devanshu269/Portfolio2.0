@@ -37,13 +37,13 @@ const Navbar = () => {
                 >
                     <motion.span
                         animate={{
-                            backgroundColor: ["#FF2D55", "#00F0FF", "#FFD700", "#BB86FC", "#FF2D55"],
+                            backgroundColor: ["#D32F2F", "#FBC02D", "#F57F17", "#D32F2F", "#D32F2F"],
                             boxShadow: [
-                                "0 0 5px #FF2D55",
-                                "0 0 15px #00F0FF",
-                                "0 0 5px #FFD700",
-                                "0 0 15px #BB86FC",
-                                "0 0 5px #FF2D55"
+                                "0 0 5px #D32F2F",
+                                "0 0 15px #FBC02D",
+                                "0 0 5px #F57F17",
+                                "0 0 15px #D32F2F",
+                                "0 0 5px #D32F2F"
                             ]
                         }}
                         transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
@@ -52,7 +52,7 @@ const Navbar = () => {
                     <span className="logo-bracket">「</span>
                     <motion.span
                         animate={{
-                            color: ["#ffffff", "#FF2D55", "#00F0FF", "#FFD700", "#ffffff"]
+                            color: ["#ffffff", "#D32F2F", "#FBC02D", "#F57F17", "#ffffff"]
                         }}
                         transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                         style={{ display: 'inline-block' }}
@@ -72,7 +72,7 @@ const Navbar = () => {
 
                 <div className="nav-actions">
                     <a href="#contact" className="contact-btn desktop-only">
-                        Party Up <ArrowUpRight size={16} />
+                        Contact <ArrowUpRight size={16} />
                     </a>
                     <ThemeToggle />
                     <button
@@ -107,7 +107,7 @@ const Navbar = () => {
                             className="mobile-link contact"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Party Up
+                            Contact
                         </a>
                     </motion.div>
                 )}

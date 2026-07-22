@@ -1,17 +1,27 @@
-.custom-cursor-outline {
+/* Outer Sci-Fi Frame */
+.custom-cursor-frame {
     position: fixed;
     top: 0;
     left: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--primary);
+    background: transparent;
     pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
+    z-index: 9998;
+    transform-origin: center;
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.4), inset 0 0 10px rgba(211, 47, 47, 0.2);
+    /* Diamond shape */
+    transform: rotate(45deg);
 }
 
-.custom-cursor-dot {
+.custom-cursor-frame.hovering {
+    border-color: var(--primary-alt); /* Yellow on hover */
+    box-shadow: 0 0 15px rgba(251, 192, 45, 0.6), inset 0 0 15px rgba(251, 192, 45, 0.3);
+}
+
+/* Inner Core */
+.custom-cursor-core {
     position: fixed;
     top: 0;
     left: 0;
@@ -23,21 +33,29 @@
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: width 0.2s, height 0.2s, background-color 0.2s;
-    mix-blend-mode: difference;
-    box-shadow: 0 0 6px var(--primary);
+    box-shadow: 0 0 15px 4px rgba(211, 47, 47, 0.8);
 }
 
-/* Hide default cursor on desktop, but keep it on interactive elements just in case, or hide it globally */
+.custom-cursor-core.hovering {
+    background-color: var(--primary-alt);
+    width: 4px;
+    height: 4px;
+    box-shadow: 0 0 15px 4px rgba(251, 192, 45, 0.8);
+}
+
 @media (pointer: fine) {
     body {
-        /* cursor: none; */ /* Let's keep the cursor for now to not break accessibility, just add the effect on top */
+        cursor: none; /* Hide default cursor to fully commit to the gaming vibe */
     }
 }
 
 /* Hide custom cursor on touch devices */
 @media (max-width: 768px) {
-    .custom-cursor-outline,
-    .custom-cursor-dot {
+    .custom-cursor-frame,
+    .custom-cursor-core {
         display: none !important;
+    }
+    body {
+        cursor: auto;
     }
 }

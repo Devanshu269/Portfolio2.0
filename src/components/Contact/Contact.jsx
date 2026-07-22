@@ -31,7 +31,7 @@ const Contact = () => {
                 // Initialize EmailJS with your public key
                 // Get your public key from: https://dashboard.emailjs.com/admin/account
                 emailjs.init("ISIBtK7dnMFb9_z2a"); // REPLACE THIS
-                
+
                 // Send email using EmailJS
                 const response = await emailjs.send(
                     'service_50jq8c8',
@@ -70,12 +70,12 @@ const Contact = () => {
     const isFormValid = formData.name.trim() && formData.email.trim() && formData.message.trim();
 
     return (
-        <section id="contact" className="contact-section">
+        <section id="contact" className="contact-section bg-synthwave-grid">
             <div className="container">
                 <div className="contact-grid">
                     <div className="contact-info">
-                        <span className="section-subtitle">Connect // Co-Op</span>
-                        <h2 className="section-title">Let's Party <br /> <span className="outline-text">Up</span></h2>
+                        <span className="section-subtitle">Connect // Network</span>
+                        <h2 className="section-title">Initiate <br /> <span className="outline-text">Contact</span></h2>
 
                         <div className="info-cards">
                             <div className="info-card glass">
@@ -117,7 +117,7 @@ const Contact = () => {
                                 <input
                                     type="text"
                                     name="name"
-                                    placeholder="Enter your gamertag... or real name"
+                                    placeholder="Enter your name..."
                                     className="glass"
                                     value={formData.name}
                                     onChange={handleChange}
@@ -140,7 +140,7 @@ const Contact = () => {
                                 <label>Message</label>
                                 <textarea
                                     name="message"
-                                    placeholder="Tell me about your quest..."
+                                    placeholder="Tell me about your project or opportunity..."
                                     className="glass"
                                     rows="5"
                                     value={formData.message}
@@ -148,15 +148,15 @@ const Contact = () => {
                                     required
                                 ></textarea>
                             </div>
-                            
+
                             {submitStatus && (
                                 <div className={`status-message ${submitStatus}`}>
-                                    {submitStatus === 'success' 
-                                        ? '✓ Message sent successfully! I\'ll get back to you soon.' 
+                                    {submitStatus === 'success'
+                                        ? '✓ Message sent successfully! I\'ll get back to you soon.'
                                         : '✗ Failed to send message. Please try again.'}
                                 </div>
                             )}
-                            
+
                             <button
                                 type="submit"
                                 className="submit-btn"
@@ -186,7 +186,7 @@ const Contact = () => {
                 <div className="container">
                     <div className="footer-inner">
                         <p>© 2024 Devanshu Shekhar. Built with React & ⚔️ Determination.</p>
-                        
+
                         <div className="footer-socials">
                             <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" aria-label="GitHub">
                                 <Github size={20} strokeWidth={1.5} />
@@ -194,11 +194,8 @@ const Contact = () => {
                             <a href="https://linkedin.com/in/devanshu-shekhar-968115b0" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                                 <Linkedin size={20} strokeWidth={1.5} />
                             </a>
-                            <a href="https://leetcode.com/Devanshu269" target="_blank" rel="noreferrer" aria-label="LeetCode">
+                            <a href="https://leetcode.com/u/N1k0zY/" target="_blank" rel="noreferrer" aria-label="LeetCode">
                                 <Code2 size={20} strokeWidth={1.5} />
-                            </a>
-                            <a href="https://www.scaler.com/academy/profile/" target="_blank" rel="noreferrer" aria-label="Scaler">
-                                <GraduationCap size={20} strokeWidth={1.5} />
                             </a>
                             <a href="mailto:devanshu.shekhar2@gmail.com" aria-label="Email">
                                 <Mail size={20} strokeWidth={1.5} />
