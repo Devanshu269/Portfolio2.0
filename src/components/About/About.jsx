@@ -35,7 +35,7 @@ const About = () => {
                         className="about-content"
                     >
                         <span className="section-subtitle">Character Lore</span>
-                        <h2 className="section-title">Beyond the <br /> <span className="outline-text">Code</span></h2>
+                        <h2 className="section-title">Beyondthe <br /> <span className="outline-text">Code</span></h2>
                         <div className="about-text">
                             <p className="lead">
                                 A passionate Software Engineer who treats every project like a boss fight — strategize, execute, and ship. My expertise spans both front-end and back-end development, where I continuously grind my skills to build scalable and efficient solutions.

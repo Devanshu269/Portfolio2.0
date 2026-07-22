@@ -1,5 +1,5 @@
 .education-section {
-    padding: 100px 0;
+    padding: var(--section-padding);
     position: relative;
     background: radial-gradient(circle at 0% 0%, rgba(211, 47, 47, 0.04), transparent 60%);
 }

@@ -315,11 +315,6 @@ button {
   line-height: 1.2;
   margin-bottom: 2rem;
   position: relative;
-  transition: text-shadow 0.2s;
-}
-
-.section-title:hover {
-  animation: glitch-text 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
 }
 
 /* Outline text style for section titles */

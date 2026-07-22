@@ -1,5 +1,5 @@
 .work-section {
-    padding: 150px 0;
+    padding: var(--section-padding);
 }
 
 .experience-list {
@@ -62,7 +62,8 @@
 
 .exp-company-meta {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     font-size: 1.2rem;
     color: var(--text-secondary);
     margin-bottom: 12px;

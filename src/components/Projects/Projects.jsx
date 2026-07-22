@@ -62,6 +62,23 @@ const DUMMY_PROJECTS = [
 ];
 
 const Projects = () => {
+    const [currentPage, setCurrentPage] = useState(0);
+    const projectsPerPage = 6;
+    const totalPages = Math.ceil(DUMMY_PROJECTS.length / projectsPerPage);
+
+    const nextPage = () => {
+        setCurrentPage((prev) => (prev + 1) % totalPages);
+    };
+
+    const prevPage = () => {
+        setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+    };
+
+    const displayedProjects = DUMMY_PROJECTS.slice(
+        currentPage * projectsPerPage,
+        (currentPage + 1) * projectsPerPage
+    );
+
     return (
         <section id="projects" className="projects-section bg-retro-grid">
             <div className="container">
@@ -72,46 +89,62 @@ const Projects = () => {
 
                 <div className="projects-container">
                     <div className="projects-grid">
-                        {DUMMY_PROJECTS.map((project, idx) => (
-                            <motion.div
-                                key={project.id}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.1, delay: idx * 0.05 }}
-                                className="project-card rpg-window"
+                        <AnimatePresence mode="wait">
+                            <motion.div 
+                                key={currentPage}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.2 }}
+                                className="projects-page"
                             >
-                                <div className="project-image-wrapper pixel-border">
-                                    <img src={project.image} alt={project.title} className="project-image" />
-                                    <div className="project-overlay">
-                                        <div className="project-overlay-content">
-                                            <p className="project-desc">{project.description}</p>
-                                            <div className="project-links">
-                                                {project.github && (
-                                                    <a href={project.github} target="_blank" rel="noreferrer" className="project-link" aria-label="GitHub Repo">
-                                                        <Github size={22} />
-                                                    </a>
-                                                )}
-                                                {project.live && (
-                                                    <a href={project.live} target="_blank" rel="noreferrer" className="project-link" aria-label="Live Website">
-                                                        <ExternalLink size={22} />
-                                                    </a>
-                                                )}
+                                {displayedProjects.map((project, idx) => (
+                                    <div key={project.id} className="project-card rpg-window">
+                                        <div className="project-image-wrapper pixel-border">
+                                            <img src={project.image} alt={project.title} className="project-image" />
+                                            <div className="project-overlay">
+                                                <div className="project-overlay-content">
+                                                    <p className="project-desc">{project.description}</p>
+                                                    <div className="project-links">
+                                                        {project.github && (
+                                                            <a href={project.github} target="_blank" rel="noreferrer" className="project-link" aria-label="GitHub Repo">
+                                                                <Github size={22} />
+                                                            </a>
+                                                        )}
+                                                        {project.live && (
+                                                            <a href={project.live} target="_blank" rel="noreferrer" className="project-link" aria-label="Live Website">
+                                                                <ExternalLink size={22} />
+                                                            </a>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="project-info">
+                                            <h3>{project.title}</h3>
+                                            <div className="project-tags">
+                                                {project.tags.map((tag, tIdx) => (
+                                                    <span key={tIdx} className="project-tag">{tag}</span>
+                                                ))}
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="project-info">
-                                    <h3>{project.title}</h3>
-                                    <div className="project-tags">
-                                        {project.tags.map(tag => (
-                                            <span key={tag} className="project-tag">{tag}</span>
-                                        ))}
-                                    </div>
-                                </div>
+                                ))}
                             </motion.div>
-                        ))}
+                        </AnimatePresence>
                     </div>
+
+                    {totalPages > 1 && (
+                        <div className="projects-pagination">
+                            <button className="carousel-btn prev-btn" onClick={prevPage}>
+                                <ChevronLeft size={30} />
+                            </button>
+                            <span className="page-indicator">{currentPage + 1} / {totalPages}</span>
+                            <button className="carousel-btn next-btn" onClick={nextPage}>
+                                <ChevronRight size={30} />
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

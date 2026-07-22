@@ -1,5 +1,5 @@
 .recommendations-section {
-    padding: 100px 0 150px;
+    padding: var(--section-padding);
     position: relative;
 }
 
