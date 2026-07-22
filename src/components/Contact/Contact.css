@@ -217,3 +217,90 @@
         gap: 15px;
     }
 }
+
+/* ── STAGE CLEARED OVERLAY ── */
+.victory-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    animation: fadeInOverlay 0.5s ease forwards;
+}
+
+@keyframes fadeInOverlay {
+    from { opacity: 0; backdrop-filter: blur(0); }
+    to { opacity: 1; backdrop-filter: blur(10px); }
+}
+
+.victory-content {
+    text-align: center;
+    animation: slideUpContent 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    padding: 20px;
+}
+
+@keyframes slideUpContent {
+    from { transform: translateY(40px) scale(0.9); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.victory-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.5rem;
+    color: #FBC02D;
+    text-shadow: 4px 4px 0 #D32F2F;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    animation: pulseTitle 2s infinite;
+}
+
+@keyframes pulseTitle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.victory-score {
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.victory-msg {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.victory-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.8rem;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 12px 24px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #D32F2F;
+    transition: all 0.2s;
+}
+
+.victory-btn:hover {
+    background: #D32F2F;
+    box-shadow: 6px 6px 0 #000;
+    transform: translate(-2px, -2px);
+}
+
+.victory-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}

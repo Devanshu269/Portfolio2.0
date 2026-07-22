@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Gamepad2, Tv, Heart, BookOpen } from 'lucide-react';
+import { Gamepad2, Tv, Heart } from 'lucide-react';
+import DialogueBox from './DialogueBox';
 import './About.css';
 
 const About = () => {
@@ -37,15 +38,14 @@ const About = () => {
                         <span className="section-subtitle">Character Lore</span>
                         <h2 className="section-title">Beyondthe <br /> <span className="outline-text">Code</span></h2>
                         <div className="about-text">
-                            <p className="lead">
-                                A passionate Software Engineer who treats every project like a boss fight — strategize, execute, and ship. My expertise spans both front-end and back-end development, where I continuously grind my skills to build scalable and efficient solutions.
-                            </p>
-                            <p>
-                                When I'm not coding, you'll find me sharpening my problem-solving abilities through DSA challenges on platforms like Scaler and LeetCode. I believe in the power of constant leveling up — every new algorithm mastered is another skill point allocated.
-                            </p>
-                            <p>
-                                In my downtime, I unwind by diving into competitive FPS games (mainly Valorant), catching up on the latest anime arcs, or reading manga chapters. Whether it's a ranked match or a production deployment, I approach every challenge with the same relentless drive to win.
-                            </p>
+                            <DialogueBox 
+                                typingSpeed={25}
+                                lines={[
+                                    "A passionate Software Engineer who treats every project like a boss fight — strategize, execute, and ship. My expertise spans both front-end and back-end development.",
+                                    "When I'm not coding, you'll find me sharpening my problem-solving abilities through DSA challenges on platforms like Scaler and LeetCode.",
+                                    "In my downtime, I unwind by diving into competitive FPS games (mainly Valorant), catching up on the latest anime arcs, or reading manga chapters. I approach every challenge with a relentless drive to win."
+                                ]} 
+                            />
                         </div>
 
 

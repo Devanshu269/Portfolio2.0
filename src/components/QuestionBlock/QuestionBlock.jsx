@@ -1,15 +1,18 @@
 import { useState } from 'react';
+import { useAudio } from '../../context/AudioContext';
 import './QuestionBlock.css';
 
 const QuestionBlock = () => {
     const [hit, setHit] = useState(false);
     const [showOneUp, setShowOneUp] = useState(false);
     const [coins, setCoins] = useState([]);
+    const { playSfx } = useAudio();
 
     const handleHit = () => {
         if (hit) return;
         setHit(true);
         setShowOneUp(true);
+        playSfx('coin');
 
         // Spawn burst coins
         const burst = Array.from({ length: 6 }, (_, i) => ({

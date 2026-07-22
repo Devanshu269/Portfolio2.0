@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useAudio } from '../../context/AudioContext';
 import './MarioPet.css';
 
 const MESSAGES = [
@@ -105,6 +106,7 @@ const MarioPet = () => {
     const [mJumping, setMJumping] = useState(false);
     const [mIdle, setMIdle] = useState(false);
     const [bubble, setBubble] = useState(null);
+    const { playSfx } = useAudio();
 
     // Koopa state
     const [koopa, setKoopa] = useState(null);   // null | { x, dir, flat }
@@ -171,6 +173,7 @@ const MarioPet = () => {
         if (jumpRef.current) return;
         jumpRef.current = true;
         setMJumping(true);
+        playSfx('jump');
         let vy = stompKoopa ? 16 : 12;
         let yv = 0;
         const grav = stompKoopa ? 0.9 : 0.8;

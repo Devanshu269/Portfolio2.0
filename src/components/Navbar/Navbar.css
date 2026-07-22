@@ -117,6 +117,26 @@
     box-shadow: 0 4px 16px rgba(211, 47, 47, 0.45);
 }
 
+/* ---- AUDIO TOGGLE ---- */
+.audio-toggle {
+    background: transparent;
+    color: var(--text-primary);
+    border: none;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.15s;
+    border-radius: 50%;
+}
+
+.audio-toggle:hover {
+    color: var(--primary-alt);
+    transform: scale(1.1);
+}
+
+
 /* ---- MOBILE TOGGLE ---- */
 .mobile-toggle {
     display: none;

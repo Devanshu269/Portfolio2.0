@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useAudio } from '../../context/AudioContext';
 import './WarpPipe.css';
 
 const WarpPipe = () => {
     const [visible, setVisible] = useState(false);
     const [warping, setWarping] = useState(false);
+    const { playSfx } = useAudio();
 
     useEffect(() => {
         const onScroll = () => setVisible(window.scrollY > 400);
@@ -14,6 +16,7 @@ const WarpPipe = () => {
     const handleWarp = () => {
         if (warping) return;
         setWarping(true);
+        playSfx('pipe');
         setTimeout(() => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 250);

@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Volume2, VolumeX } from 'lucide-react';
+import { useAudio } from '../../context/AudioContext';
 import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { isMuted, toggleMute } = useAudio();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -77,6 +79,9 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-actions">
+                    <button className="audio-toggle" onClick={toggleMute} aria-label="Toggle Audio">
+                        {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                    </button>
                     <a href="#contact" className="contact-btn desktop-only">
                         Contact <ArrowUpRight size={16} />
                     </a>

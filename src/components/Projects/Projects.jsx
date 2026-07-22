@@ -96,33 +96,55 @@ const Projects = () => {
                                 className="projects-page"
                             >
                                 {displayedProjects.map((project) => (
-                                    <div key={project.id} className="project-card rpg-window">
-                                        <div className="project-image-wrapper pixel-border">
-                                            <img src={project.image} alt={project.title} className="project-image" />
-                                            <div className="project-overlay">
-                                                <div className="project-overlay-content">
-                                                    <p className="project-desc">{project.description}</p>
-                                                    <div className="project-links">
-                                                        {project.github && (
-                                                            <a href={project.github} target="_blank" rel="noreferrer" className="project-link" aria-label="GitHub Repo">
-                                                                <Github size={22} />
-                                                            </a>
-                                                        )}
-                                                        {project.live && (
-                                                            <a href={project.live} target="_blank" rel="noreferrer" className="project-link" aria-label="Live Website">
-                                                                <ExternalLink size={22} />
-                                                            </a>
-                                                        )}
-                                                    </div>
+                                    <div key={project.id} className="cartridge-wrapper">
+                                        <div className="cartridge-shell">
+                                            {/* Top Grooves */}
+                                            <div className="cartridge-grooves">
+                                                <div className="groove"></div>
+                                                <div className="groove"></div>
+                                                <div className="groove"></div>
+                                            </div>
+
+                                            {/* Cartridge Label */}
+                                            <div className="cartridge-label">
+                                                <div className="label-header">ENTERTAINMENT SYSTEM</div>
+                                                <div className="label-image-wrapper">
+                                                    <img src={project.image} alt={project.title} className="label-image" />
                                                 </div>
+                                                <div className="label-title">{project.title}</div>
+                                            </div>
+
+                                            {/* Seal moved to shell level */}
+                                            <div className="label-seal">⭐ QUALITY SEAL</div>
+
+                                            {/* Bottom Edge */}
+                                            <div className="cartridge-bottom">
+                                                <div className="cartridge-arrow">▼</div>
                                             </div>
                                         </div>
-                                        <div className="project-info">
-                                            <h3>{project.title}</h3>
+
+                                        {/* Hover Overlay with Info & Links */}
+                                        <div className="project-info-overlay">
+                                            <h3 className="overlay-title">{project.title}</h3>
+                                            <p className="overlay-desc">{project.description}</p>
+                                            
                                             <div className="project-tags">
                                                 {project.tags.map((tag, tIdx) => (
                                                     <span key={tIdx} className="project-tag">{tag}</span>
                                                 ))}
+                                            </div>
+
+                                            <div className="project-links">
+                                                {project.github && (
+                                                    <a href={project.github} target="_blank" rel="noreferrer" className="project-link" aria-label="GitHub Repo">
+                                                        <Github size={20} /> SOURCE
+                                                    </a>
+                                                )}
+                                                {project.live && (
+                                                    <a href={project.live} target="_blank" rel="noreferrer" className="project-link" aria-label="Live Website">
+                                                        <ExternalLink size={20} /> PLAY
+                                                    </a>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

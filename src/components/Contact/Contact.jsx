@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, MapPin, Mail, Phone, ExternalLink, Loader2, Github, Linkedin, Code2, GraduationCap } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useAudio } from '../../context/AudioContext';
 import './Contact.css';
 
 const Contact = () => {
@@ -12,6 +13,8 @@ const Contact = () => {
     });
     const [isLoading, setIsLoading] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(''); // 'success' | 'error' | ''
+    const [showVictoryScreen, setShowVictoryScreen] = useState(false);
+    const { playSfx } = useAudio();
 
     const handleChange = (e) => {
         setFormData({
@@ -46,6 +49,8 @@ const Contact = () => {
 
                 if (response.status === 200) {
                     setSubmitStatus('success');
+                    setShowVictoryScreen(true);
+                    playSfx('victory');
                     // Reset form
                     setFormData({
                         name: '',
@@ -178,6 +183,20 @@ const Contact = () => {
                                 )}
                             </button>
                         </form>
+
+                        {/* STAGE CLEARED OVERLAY */}
+                        {showVictoryScreen && (
+                            <div className="victory-overlay">
+                                <div className="victory-content">
+                                    <h3 className="victory-title">STAGE CLEARED!</h3>
+                                    <div className="victory-score">SCORE: 9999</div>
+                                    <p className="victory-msg">Message successfully transmitted. I will respond to your quest shortly.</p>
+                                    <button className="victory-btn" onClick={() => setShowVictoryScreen(false)}>
+                                        CONTINUE?
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </motion.div>
                 </div>
             </div>

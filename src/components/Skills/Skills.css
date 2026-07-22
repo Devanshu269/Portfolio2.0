@@ -1,86 +1,182 @@
+/* ── Section Padding ── */
 .skills-section {
-    padding: var(--section-padding);
-    position: relative;
+    padding: 120px 0;
 }
 
-.align-center {
-    text-align: center;
-    margin-bottom: 5rem;
-}
-
-.skills-cloud {
+/* ── RPG Inventory Layout ── */
+.inventory-layout {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 900px) {
+    .inventory-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        transform: translateX(-30px); /* Only shift on desktop */
+    }
+}
+
+/* ── Inventory Tooltip Box ── */
+.inventory-tooltip {
+    flex: 1;
+    min-width: 300px;
+    min-height: 220px;
+    background: #0000AA; /* Classic JRPG blue */
+    background: linear-gradient(135deg, #0000AA 0%, #000055 100%);
+    border: 4px solid #fff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 
+        inset 0 0 0 4px #000,
+        8px 8px 0 rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 20px;
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
 }
 
-.rpg-skill-card {
-    position: relative;
+.tooltip-header {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
-    gap: 15px;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    gap: 16px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    padding-bottom: 12px;
 }
 
-.skill-icon {
-    font-size: 1.8rem;
-    color: var(--text-secondary);
-    transition: color 0.3s ease, transform 0.3s ease;
+.tooltip-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(2px 2px 0 #000);
 }
 
-.rpg-skill-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--hover-color, var(--primary));
-    box-shadow: 0 10px 20px -10px var(--hover-color, var(--primary));
+.tooltip-header h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    text-shadow: 2px 2px 0 #000;
 }
 
-.rpg-skill-card:hover .skill-icon {
-    color: var(--hover-color, var(--primary));
-    transform: scale(1.1);
+.tooltip-type {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #FBC02D;
+    text-shadow: 2px 2px 0 #000;
 }
 
-.skill-name {
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    line-height: 1.2;
-    white-space: nowrap;
+.tooltip-stats {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    color: #4CAF50;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 0 #000;
 }
 
-.rpg-skill-card:hover .skill-name {
+.tooltip-desc {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
     color: #fff;
+    line-height: 1.4;
+    text-shadow: 1px 1px 0 #000;
 }
 
-@media (max-width: 768px) {
-    .skills-cloud {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+.tooltip-empty {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.8rem;
+    color: #aaa;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.blinking-arrow {
+    display: inline-block;
+    color: #FBC02D;
+    animation: blink 1s steps(2, start) infinite;
+}
+@keyframes blink {
+    to { visibility: hidden; }
+}
+
+/* ── Inventory Grid ── */
+.inventory-grid {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on mobile/tablet */
+    gap: 12px;
+    background: #111;
+    padding: 20px;
+    border: 4px solid #333;
+    border-radius: 8px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.8);
+}
+
+@media (min-width: 900px) {
+    .inventory-grid {
+        grid-template-columns: repeat(5, 1fr); /* exactly 5 columns on desktop for 20 slots */
     }
-    
-    .rpg-skill-card {
-        height: 110px;
-    }
-    
-    .skill-icon {
-        font-size: 2rem;
-    }
-    
-    .skill-name {
-        font-size: 0.8rem;
-    }
+}
+
+.inventory-slot {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #222;
+    border-top: 3px solid #000;
+    border-left: 3px solid #000;
+    border-bottom: 3px solid #444;
+    border-right: 3px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.1s;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.inventory-slot.empty-slot {
+    cursor: default;
+    background: #1a1a1a;
+}
+
+.inventory-slot.has-item:hover {
+    background: #333;
+    border-top: 3px solid #444;
+    border-left: 3px solid #444;
+    border-bottom: 3px solid #000;
+    border-right: 3px solid #000;
+}
+
+.slot-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: transform 0.1s;
+    width: 100%;
+}
+
+.slot-icon {
+    font-size: 1.6rem;
+    filter: drop-shadow(2px 2px 0 #000);
+}
+
+.slot-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.4rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 0 #000;
+    word-break: break-word;
+    width: 100%;
+    line-height: 1.2;
+}
+
+.inventory-slot.has-item:hover .slot-item {
+    transform: scale(1.1);
 }
