@@ -62,6 +62,26 @@ const DialogueBox = ({ lines, typingSpeed = 30 }) => {
         };
     }, [currentLine, isTyping, lines, typingSpeed]);
 
+    // Auto-advance logic
+    useEffect(() => {
+        if (isTyping) return; // Wait until typing is finished
+
+        const waitTime = currentLine === lines.length - 1 ? 6000 : 3000;
+        
+        const autoAdvanceTimer = setTimeout(() => {
+            if (currentLine < lines.length - 1) {
+                setCurrentLine(c => c + 1);
+            } else {
+                // Loop back to start
+                setCurrentLine(0);
+            }
+            setDisplayedText('');
+            setIsTyping(true);
+        }, waitTime);
+
+        return () => clearTimeout(autoAdvanceTimer);
+    }, [isTyping, currentLine, lines.length]);
+
     return (
         <div className="dialogue-box" onClick={nextLine}>
             <div className="dialogue-name">Devanshu</div>
