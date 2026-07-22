@@ -28,7 +28,7 @@
 .sphere-1 {
     width: 50vw;
     height: 50vw;
-    background: var(--primary);
+    background: var(--primary); /* Sakura Pink */
     top: -10vw;
     right: -10vw;
 }
@@ -36,7 +36,7 @@
 .sphere-2 {
     width: 40vw;
     height: 40vw;
-    background: #00AEFF;
+    background: var(--primary-alt); /* Cyan */
     bottom: -10vw;
     left: -10vw;
 }
@@ -46,8 +46,6 @@
     flex-direction: column;
     height: 100%;
 }
-
-
 
 .hero-header h1 {
     font-size: clamp(3.5rem, 12vw, 10rem);
@@ -62,10 +60,12 @@
 .role-container {
     margin-top: 1.5rem;
     min-height: 4rem;
-    /* Prevents layout shift */
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .hero-role {
@@ -75,7 +75,58 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     position: relative;
-    text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+    text-shadow: 0 0 15px rgba(255, 45, 85, 0.4), 0 0 30px rgba(255, 45, 85, 0.2);
+}
+
+.level-badge {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    animation: neon-pulse-gold 3s ease-in-out infinite;
+}
+
+@keyframes neon-pulse-gold {
+    0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
+    50% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.15); }
+}
+
+/* Status Indicator */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+}
+
+.status-dot-online {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #22c55e, 0 0 16px rgba(34, 197, 94, 0.4);
+    animation: pulse-online 2s infinite ease-in-out;
+}
+
+@keyframes pulse-online {
+    0%, 100% { box-shadow: 0 0 4px #22c55e, 0 0 8px rgba(34, 197, 94, 0.3); transform: scale(1); }
+    50% { box-shadow: 0 0 12px #22c55e, 0 0 24px rgba(34, 197, 94, 0.5); transform: scale(1.2); }
+}
+
+.status-text {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.65rem;
+    color: #22c55e;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
 }
 
 .typewriter-text {
@@ -92,7 +143,7 @@
     margin-left: 2px;
     vertical-align: text-bottom;
     animation: blink 0.8s step-end infinite;
-    color: transparent; /* hide the '|' character since we're using background-color */
+    color: transparent;
 }
 
 @keyframes blink {
@@ -117,12 +168,13 @@
 }
 
 .hello-text {
-    font-size: 1.3rem;
-    color: var(--text-primary);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    color: var(--primary-alt);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 6px;
-    text-shadow: 0 0 15px rgba(0, 71, 255, 0.3);
+    letter-spacing: 8px;
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
     margin-left: 0;
     margin-bottom: 5px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
@@ -140,7 +192,7 @@
 
 .last-name {
     color: transparent;
-    background: linear-gradient(to bottom, var(--primary), #00AEFF);
+    background: linear-gradient(to bottom, var(--primary), var(--primary-alt));
     -webkit-background-clip: text;
     background-clip: text;
 }
@@ -179,6 +231,79 @@
     transition: color 0.3s ease;
 }
 
+.bio-icon-box {
+    padding: 12px;
+    background: rgba(255, 45, 85, 0.05);
+    border-radius: 12px;
+    color: var(--primary);
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 45, 85, 0.15);
+}
+
+/* RPG Stat Bars */
+.stat-bars-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 2rem;
+    max-width: 600px;
+}
+
+.stat-bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stat-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.stat-bar-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    box-shadow: 0 0 8px currentColor;
+    position: relative;
+}
+
+.stat-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -1px;
+    bottom: -1px;
+    width: 3px;
+    background: white;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 0 6px white;
+}
+
 .hero-socials {
     display: flex;
     gap: 15px;
@@ -194,12 +319,15 @@
     color: var(--text-primary);
     transition: var(--transition-smooth);
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .social-link:hover {
     background: var(--primary);
-    color: var(--text-inverse);
+    color: white;
     transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 45, 85, 0.4);
+    border-color: var(--primary);
 }
 
 .social-tooltip {
@@ -210,14 +338,14 @@
     opacity: 0;
     pointer-events: none;
     background: var(--primary);
-    color: #0B0E14;
+    color: white;
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.75rem;
     font-weight: 700;
     white-space: nowrap;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 10px rgba(0, 242, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(255, 45, 85, 0.3);
 }
 
 .social-link:hover .social-tooltip {
@@ -247,13 +375,13 @@
 
 .hero-btn.btn-primary {
     background: var(--primary);
-    color: #0B0E14; /* Always dark text on primary button */
+    color: white;
     border: 1px solid var(--primary);
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 45, 85, 0.3);
 }
 
 .hero-btn.btn-primary:hover {
-    box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+    box-shadow: 0 0 25px rgba(255, 45, 85, 0.5);
     transform: translateY(-3px);
 }
 
@@ -307,6 +435,15 @@
 
     .hero-bio {
         max-width: 100%;
+    }
+
+    .stat-bars-container {
+        grid-template-columns: 1fr;
+    }
+
+    .role-container {
+        flex-direction: column;
+        gap: 10px;
     }
 }
 

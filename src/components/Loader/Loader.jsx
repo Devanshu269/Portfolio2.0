@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import './Loader.css';
 
 const Loader = () => {
-    const words = ["Software Engineer", "Gamer", "Learner"];
+    const words = ["Software Engineer", "Gamer", "Anime Enthusiast"];
     const [index, setIndex] = useState(0);
     const [subtext, setSubtext] = useState("");
     const [isDeleting, setIsDeleting] = useState(false);
     const [speed, setSpeed] = useState(100);
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
         const handleType = () => {
@@ -31,6 +32,17 @@ const Loader = () => {
         const timer = setTimeout(handleType, speed);
         return () => clearTimeout(timer);
     }, [subtext, isDeleting, index]);
+
+    // XP bar progress animation
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setProgress(prev => {
+                if (prev >= 100) return 100;
+                return prev + 2;
+            });
+        }, 80);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <motion.div
@@ -63,11 +75,11 @@ const Loader = () => {
                     )}
                     {index === 2 && (
                         <motion.div
-                            key="learner"
+                            key="anime"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 0.4 }}
                             exit={{ opacity: 0 }}
-                            className="bg-layer learner-constellation"
+                            className="bg-layer anime-sparkles"
                         />
                     )}
                 </AnimatePresence>
@@ -95,6 +107,29 @@ const Loader = () => {
                         <span className="cursor">|</span>
                     </p>
                 </div>
+
+                {/* XP Progress Bar */}
+                <div className="xp-bar-container">
+                    <div className="xp-bar-track">
+                        <motion.div
+                            className="xp-bar-fill"
+                            initial={{ width: '0%' }}
+                            animate={{ width: `${progress}%` }}
+                            transition={{ duration: 0.1, ease: 'linear' }}
+                        />
+                    </div>
+                    <span className="xp-bar-label">LOADING... {progress}%</span>
+                </div>
+
+                {/* Press Start Text */}
+                <motion.p
+                    className="press-start-text"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: progress >= 80 ? [0, 1, 0, 1, 0, 1] : 0 }}
+                    transition={{ duration: 1.5 }}
+                >
+                    ▶ PRESS START
+                </motion.p>
             </div>
         </motion.div>
     );

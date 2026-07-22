@@ -37,27 +37,29 @@ const Navbar = () => {
                 >
                     <motion.span
                         animate={{
-                            backgroundColor: ["#0047FF", "#00AEFF", "#00FFC2", "#7000FF", "#0047FF"],
+                            backgroundColor: ["#FF2D55", "#00F0FF", "#FFD700", "#BB86FC", "#FF2D55"],
                             boxShadow: [
-                                "0 0 5px #0047FF",
-                                "0 0 15px #00AEFF",
-                                "0 0 5px #00FFC2",
-                                "0 0 15px #7000FF",
-                                "0 0 5px #0047FF"
+                                "0 0 5px #FF2D55",
+                                "0 0 15px #00F0FF",
+                                "0 0 5px #FFD700",
+                                "0 0 15px #BB86FC",
+                                "0 0 5px #FF2D55"
                             ]
                         }}
                         transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                         className="logo-dot"
                     ></motion.span>
+                    <span className="logo-bracket">「</span>
                     <motion.span
                         animate={{
-                            color: ["#ffffff", "#00AEFF", "#00FFC2", "#7000FF", "#ffffff"]
+                            color: ["#ffffff", "#FF2D55", "#00F0FF", "#FFD700", "#ffffff"]
                         }}
                         transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                         style={{ display: 'inline-block' }}
                     >
                         DS
                     </motion.span>
+                    <span className="logo-bracket">」</span>
                 </motion.a>
 
                 <div className="nav-links desktop-only">
@@ -70,7 +72,7 @@ const Navbar = () => {
 
                 <div className="nav-actions">
                     <a href="#contact" className="contact-btn desktop-only">
-                        Get in touch <ArrowUpRight size={16} />
+                        Party Up <ArrowUpRight size={16} />
                     </a>
                     <ThemeToggle />
                     <button
@@ -105,7 +107,7 @@ const Navbar = () => {
                             className="mobile-link contact"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Get in touch
+                            Party Up
                         </a>
                     </motion.div>
                 )}

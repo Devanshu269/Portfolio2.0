@@ -28,11 +28,11 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--gradient-main);
+  background: linear-gradient(135deg, var(--primary), var(--primary-alt));
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 71, 255, 0.4);
+  box-shadow: 0 2px 8px rgba(255, 45, 85, 0.4);
 }
 
 .icon-wrapper {
@@ -40,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-primary);
+  color: white;
 }
 
 /* Mobile adjustments */

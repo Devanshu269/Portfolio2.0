@@ -16,7 +16,7 @@
 
 .navbar-inner {
     width: 100%;
-    max-width: 1200px; /* Increased from 900px to fit all links */
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,13 +29,19 @@
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-family: 'Lexend', sans-serif;
+    gap: 4px;
+    font-family: 'Orbitron', 'Lexend', sans-serif;
     font-weight: 800;
     color: var(--text-primary);
     font-size: 1.2rem;
     transition: color 0.3s ease;
-    margin-right: 20px; /* added margin to ensure it never overlaps */
+    margin-right: 20px;
+}
+
+.logo-bracket {
+    color: var(--primary);
+    font-size: 1.1rem;
+    opacity: 0.7;
 }
 
 .logo-dot {
@@ -47,23 +53,42 @@
 
 .nav-links {
     display: flex;
-    gap: 20px; /* decreased from 24px */
-    flex-wrap: wrap; /* allow wrapping on smaller screens before mobile menu kicks in */
+    gap: 20px;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .nav-link {
     font-weight: 500;
-    font-size: 0.85rem; /* decreased slightly */
+    font-size: 0.85rem;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: color 0.3s ease;
-    white-space: nowrap; /* keep text on one line */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    white-space: nowrap;
+    font-family: 'Rajdhani', sans-serif;
+    position: relative;
 }
 
 .nav-link:hover {
-    color: var(--text-primary);
+    color: var(--primary-alt);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-alt);
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 .nav-actions {
@@ -73,8 +98,8 @@
 }
 
 .contact-btn {
-    background: var(--text-primary);
-    color: var(--bg-primary);
+    background: var(--primary);
+    color: white;
     padding: 8px 18px;
     border-radius: 100px;
     font-size: 0.85rem;
@@ -84,12 +109,16 @@
     gap: 6px;
     text-transform: uppercase;
     transition: all 0.3s ease;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(255, 45, 85, 0.2);
 }
 
 .contact-btn:hover {
     background: var(--primary);
-    color: var(--text-inverse);
+    color: white;
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);
 }
 
 .mobile-toggle {
@@ -119,6 +148,9 @@
     text-transform: uppercase;
     color: var(--text-primary);
     transition: color 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    font-size: 1rem;
 }
 
 .mobile-link.contact {

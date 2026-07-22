@@ -18,7 +18,7 @@ const ThemeToggle = () => {
             <motion.div
                 className="toggle-track"
                 animate={{
-                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 71, 255, 0.2)'
+                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 45, 85, 0.2)'
                 }}
                 transition={{ duration: 0.3 }}
             >

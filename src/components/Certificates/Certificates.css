@@ -29,7 +29,6 @@
     gap: 30px;
     overflow: hidden;
     padding: 20px 0;
-    /* Creates a fade effect on the left and right edges */
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
@@ -70,20 +69,20 @@
 
 .cert-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 242, 255, 0.1);
-    border-color: rgba(0, 242, 255, 0.3);
+    box-shadow: 0 10px 20px rgba(255, 45, 85, 0.15);
+    border-color: rgba(255, 45, 85, 0.3);
 }
 
 .cert-icon-wrapper {
     width: 60px;
     height: 60px;
     border-radius: 16px;
-    background: rgba(0, 242, 255, 0.1);
+    background: rgba(255, 45, 85, 0.08);
     color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(0, 242, 255, 0.2);
+    border: 1px solid rgba(255, 45, 85, 0.2);
 }
 
 .cert-content {
@@ -94,10 +93,12 @@
 }
 
 .cert-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
 }
 
 .cert-desc {
@@ -114,21 +115,24 @@
     gap: 10px;
     padding: 12px 20px;
     border-radius: 12px;
-    background: rgba(0, 242, 255, 0.05);
+    background: linear-gradient(135deg, rgba(255, 45, 85, 0.05) 0%, rgba(0, 240, 255, 0.05) 100%);
     color: var(--primary);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    border: 1px solid rgba(0, 242, 255, 0.2);
+    border: 1px solid rgba(255, 45, 85, 0.2);
     margin-top: auto;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
 }
 
 .cert-link:hover {
-    background: var(--primary);
-    color: #0B0E14;
-    box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+    background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 45, 85, 0.4);
     transform: scale(1.02);
+    border-color: transparent;
 }
 
 /* Responsive */

@@ -1,40 +1,41 @@
 :root {
-  --primary: #00F2FF; /* Electric Cyan */
-  --primary-dark: #00B8C4;
-  --primary-alt: #BB86FC; /* Neon Purple */
+  --primary: #FF2D55; /* Sakura Pink */
+  --primary-dark: #CC2244;
+  --primary-alt: #00F0FF; /* Electric Cyan */
+  --accent-gold: #FFD700; /* XP / Achievement Gold */
   --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   --section-padding: 120px 0;
 }
 
-/* Dark Mode (Default) - Cyberpunk Minimalism */
+/* Dark Mode (Default) - Gaming / Anime Aesthetic */
 :root,
 [data-theme="dark"] {
-  --bg-primary: #0B0E14; /* Midnight Navy */
-  --bg-secondary: #12151C; /* Slightly lighter navy */
-  --bg-surface: #1A1D23; /* Dark Slate */
+  --bg-primary: #0A0A12; /* Deep midnight purple-black */
+  --bg-secondary: #0F0F1A; /* Slightly lighter midnight */
+  --bg-surface: #13131F; /* Dark panel */
   --text-primary: #ffffff;
-  --text-secondary: #A0A4B8; /* Muted Lavender-Gray */
-  --text-inverse: #0B0E14;
-  --glass: rgba(0, 242, 255, 0.03); /* Subtle Cyan Glass */
-  --glass-border: rgba(0, 242, 255, 0.1);
-  --gradient-main: linear-gradient(135deg, #00F2FF 0%, #BB86FC 100%);
-  --divider: rgba(0, 242, 255, 0.08);
+  --text-secondary: #9B9BB8; /* Muted lavender */
+  --text-inverse: #0A0A12;
+  --glass: rgba(255, 45, 85, 0.03); /* Subtle pink glass */
+  --glass-border: rgba(255, 45, 85, 0.12);
+  --gradient-main: linear-gradient(135deg, #FF2D55 0%, #00F0FF 100%);
+  --divider: rgba(255, 45, 85, 0.08);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 242, 255, 0.1); /* Subtle neon glow */
+  --shadow-lg: 0 8px 32px rgba(255, 45, 85, 0.1); /* Subtle pink glow */
 }
 
 /* Light Mode */
 [data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --bg-surface: #050505;
-  --text-primary: #050505;
-  --text-secondary: #666666;
-  --text-inverse: #ffffff;
+  --bg-primary: #FAF8FF; /* Very light lavender */
+  --bg-secondary: #F0EDF5;
+  --bg-surface: #1A1A2E;
+  --text-primary: #0A0A12;
+  --text-secondary: #555566;
+  --text-inverse: #FAF8FF;
   --glass: rgba(0, 0, 0, 0.03);
   --glass-border: rgba(0, 0, 0, 0.08);
-  --gradient-main: linear-gradient(135deg, #0047FF 0%, #00AEFF 100%);
+  --gradient-main: linear-gradient(135deg, #FF2D55 0%, #00B8D4 100%);
   --divider: rgba(0, 0, 0, 0.06);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
@@ -86,7 +87,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Rajdhani', 'Inter', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -95,6 +96,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Anime-style scanline overlay */
 body::before {
   content: "";
   position: fixed;
@@ -105,7 +107,13 @@ body::before {
   pointer-events: none;
   z-index: 99999;
   opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 45, 85, 0.05) 2px,
+    rgba(255, 45, 85, 0.05) 4px
+  );
 }
 
 .progress-bar {
@@ -117,6 +125,7 @@ body::before {
   background: var(--gradient-main);
   transform-origin: 0%;
   z-index: 10000;
+  box-shadow: 0 0 10px rgba(255, 45, 85, 0.6), 0 0 20px rgba(0, 240, 255, 0.3);
 }
 
 h1,
@@ -125,10 +134,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lexend', sans-serif;
+  font-family: 'Orbitron', 'Lexend', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
 }
 
 a {
@@ -148,7 +157,7 @@ button {
   background: none;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Gaming styled */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -158,12 +167,13 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--text-secondary);
+  background: linear-gradient(to bottom, var(--primary), var(--primary-alt));
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+  box-shadow: 0 0 8px rgba(255, 45, 85, 0.5);
 }
 
 /* Glassmorphism Utility */
@@ -201,18 +211,120 @@ button {
 }
 
 .section-subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  /* Increased size */
+  font-size: clamp(0.85rem, 2vw, 1rem);
   color: var(--primary);
   text-transform: uppercase;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.3rem;
   font-weight: 700;
-  display: block;
+  display: inline-block;
   margin-bottom: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+  padding: 4px 0;
+}
+
+/* Anime bracket decorations on subtitles */
+.section-subtitle::before {
+  content: '「';
+  margin-right: 6px;
+  color: var(--primary-alt);
+  font-size: 1.2em;
+}
+
+.section-subtitle::after {
+  content: '」';
+  margin-left: 6px;
+  color: var(--primary-alt);
+  font-size: 1.2em;
 }
 
 .section-title {
   font-size: clamp(2rem, 8vw, 6rem);
   line-height: 0.9;
   margin-bottom: 2rem;
+}
+
+/* Outline text style for section titles */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--primary);
+  text-shadow: 0 0 30px rgba(255, 45, 85, 0.2);
+}
+
+[data-theme="light"] .outline-text {
+  -webkit-text-stroke: 2px var(--primary);
+  text-shadow: none;
+}
+
+/* ===== Gaming / Anime Utility Animations ===== */
+
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 5px var(--primary), 0 0 10px rgba(255, 45, 85, 0.3); }
+  50% { box-shadow: 0 0 15px var(--primary), 0 0 30px rgba(255, 45, 85, 0.5), 0 0 45px rgba(255, 45, 85, 0.2); }
+}
+
+@keyframes neon-text-pulse {
+  0%, 100% { text-shadow: 0 0 5px var(--primary), 0 0 10px rgba(255, 45, 85, 0.3); }
+  50% { text-shadow: 0 0 15px var(--primary), 0 0 30px rgba(255, 45, 85, 0.5); }
+}
+
+@keyframes xp-fill {
+  from { width: 0%; }
+  to { width: var(--fill-to, 100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glitch-text {
+  0%, 90%, 100% { transform: translate(0); opacity: 1; }
+  91% { transform: translate(-2px, 1px); opacity: 0.8; }
+  93% { transform: translate(2px, -1px); opacity: 0.9; }
+  95% { transform: translate(-1px, 2px); opacity: 0.8; }
+  97% { transform: translate(1px, -2px); opacity: 1; }
+}
+
+@keyframes shimmer-gold {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes scanline-move {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Neon glow utility classes */
+.neon-pink {
+  text-shadow: 0 0 10px rgba(255, 45, 85, 0.6), 0 0 20px rgba(255, 45, 85, 0.3);
+}
+
+.neon-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.neon-gold {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Animate spin utility (used for loading spinner) */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Animate pulse utility */
+.animate-pulse {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }

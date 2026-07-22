@@ -40,8 +40,8 @@ const CustomCursor = () => {
             x: mousePosition.x - 16,
             y: mousePosition.y - 16,
             scale: 1.5,
-            backgroundColor: "rgba(0, 71, 255, 0.1)",
-            border: "2px solid var(--primary-dark)",
+            backgroundColor: "rgba(255, 45, 85, 0.1)",
+            border: "2px solid var(--primary-alt)",
         }
     };
 

@@ -74,8 +74,8 @@ const Contact = () => {
             <div className="container">
                 <div className="contact-grid">
                     <div className="contact-info">
-                        <span className="section-subtitle">Connect</span>
-                        <h2 className="section-title">Let's build <br /> <span className="outline-text">Together</span></h2>
+                        <span className="section-subtitle">Connect // Co-Op</span>
+                        <h2 className="section-title">Let's Party <br /> <span className="outline-text">Up</span></h2>
 
                         <div className="info-cards">
                             <div className="info-card glass">
@@ -117,7 +117,7 @@ const Contact = () => {
                                 <input
                                     type="text"
                                     name="name"
-                                    placeholder="John Doe"
+                                    placeholder="Enter your gamertag... or real name"
                                     className="glass"
                                     value={formData.name}
                                     onChange={handleChange}
@@ -140,7 +140,7 @@ const Contact = () => {
                                 <label>Message</label>
                                 <textarea
                                     name="message"
-                                    placeholder="Tell me about your project..."
+                                    placeholder="Tell me about your quest..."
                                     className="glass"
                                     rows="5"
                                     value={formData.message}
@@ -185,7 +185,7 @@ const Contact = () => {
             <footer className="footer">
                 <div className="container">
                     <div className="footer-inner">
-                        <p>© 2024 Devanshu Shekhar. Built with React & Passion.</p>
+                        <p>© 2024 Devanshu Shekhar. Built with React & ⚔️ Determination.</p>
                         
                         <div className="footer-socials">
                             <a href="https://github.com/Devanshu269" target="_blank" rel="noreferrer" aria-label="GitHub">
