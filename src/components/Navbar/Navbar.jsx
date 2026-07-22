@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -74,7 +73,6 @@ const Navbar = () => {
                     <a href="#contact" className="contact-btn desktop-only">
                         Contact <ArrowUpRight size={16} />
                     </a>
-                    <ThemeToggle />
                     <button
                         className="mobile-toggle"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './MapleLeaves.css';
 
 const MapleLeaves = () => {
-    const [leaves, setLeaves] = useState([]);
-
-    useEffect(() => {
-        // Generate random leaves for Guiding Wind effect (GoT)
-        const leafCount = 20; 
-        const newLeaves = Array.from({ length: leafCount }).map((_, i) => {
-            const startX = -10 - Math.random() * 20; // Start off-screen left
-            const startY = Math.random() * 100; // Random height
-            const animationDuration = 5 + Math.random() * 10; // Fast wind 5s-15s
-            const animationDelay = Math.random() * 10;
+    const [leaves] = useState(() => {
+        return Array.from({ length: 25 }).map((_, i) => {
+            const startX = Math.random() * 100;
+            const startY = -10 - Math.random() * 20;
+            const animationDuration = 10 + Math.random() * 15;
+            const animationDelay = Math.random() * 15;
             const opacity = 0.6 + Math.random() * 0.4;
             const size = 15 + Math.random() * 20;
             const rotate = Math.random() * 360;
@@ -28,8 +24,7 @@ const MapleLeaves = () => {
                 transform: `rotate(${rotate}deg)`,
             };
         });
-        setLeaves(newLeaves);
-    }, []);
+    });
 
     return (
         <div className="maple-container">

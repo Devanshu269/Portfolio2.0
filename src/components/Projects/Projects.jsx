@@ -7,9 +7,6 @@ import './Projects.css';
 import imgAOT from '../../assets/projects/aot_project_1782574504692.png';
 import imgAMC from '../../assets/projects/amc_project_1782574519230.png';
 import imgAmazon from '../../assets/projects/amazon_project_1782574533567.png';
-import imgParking from '../../assets/projects/parking_project_1782574545424.png';
-import imgSnakes from '../../assets/projects/snakes_project_1782574557514.png';
-import imgTicTacToe from '../../assets/projects/tictactoe_project_1782574569055.png';
 import imgNote from '../../assets/projects/note_project_1782574581552.png';
 import imgTodo from '../../assets/projects/todo_project_1782574593750.png';
 
@@ -98,7 +95,7 @@ const Projects = () => {
                                 transition={{ duration: 0.2 }}
                                 className="projects-page"
                             >
-                                {displayedProjects.map((project, idx) => (
+                                {displayedProjects.map((project) => (
                                     <div key={project.id} className="project-card rpg-window">
                                         <div className="project-image-wrapper pixel-border">
                                             <img src={project.image} alt={project.title} className="project-image" />

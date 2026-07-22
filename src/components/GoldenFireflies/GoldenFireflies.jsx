@@ -4,17 +4,21 @@ import './GoldenFireflies.css';
 const GoldenFireflies = () => {
     // Generate 40 fireflies for a soothing, magical GoT aesthetic
     const fireflyCount = 40;
-    const fireflies = Array.from({ length: fireflyCount });
+    const [fireflies] = React.useState(() => {
+        return Array.from({ length: fireflyCount }).map(() => ({
+            randomX: Math.random() * 100,
+            randomY: Math.random() * 100,
+            randomDelay: Math.random() * 10,
+            randomDuration: 10 + Math.random() * 15,
+            randomScale: 0.5 + Math.random() * 1.5
+        }));
+    });
 
     return (
         <div className="fireflies-container">
             <div className="fireflies-fog-overlay"></div>
-            {fireflies.map((_, i) => {
-                const randomX = Math.random() * 100;
-                const randomY = Math.random() * 100;
-                const randomDelay = Math.random() * 10;
-                const randomDuration = 10 + Math.random() * 15;
-                const randomScale = 0.5 + Math.random() * 1.5;
+            {fireflies.map((fly, i) => {
+                const { randomX, randomY, randomDelay, randomDuration, randomScale } = fly;
                 
                 return (
                     <div

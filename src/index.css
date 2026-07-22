@@ -311,7 +311,7 @@ button {
 }
 
 .section-title {
-  font-size: clamp(1.5rem, 5vw, 4rem);
+  font-size: clamp(2.2rem, 8vw, 4rem);
   line-height: 1.2;
   margin-bottom: 2rem;
   position: relative;
