@@ -1,0 +1,58 @@
+name: Deploy by Branch
+
+on:
+  push:
+    branches:
+      - main
+      - gamin-anime-version
+      # Add more branches here in future, it will work automatically!
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Determine branch path
+        id: branch
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          if [ "$BRANCH_NAME" = "main" ]; then
+            BASE_PATH=""
+          else
+            BASE_PATH="$BRANCH_NAME"
+          fi
+          echo "base_path=$BASE_PATH" >> $GITHUB_OUTPUT
+      
+      - name: Build
+        run: npm run build
+        env:
+          VITE_BASE_PATH: ${{ steps.branch.outputs.base_path }}
+      
+      - name: Create deployment structure
+        run: |
+          mkdir -p deploy
+          BASE_PATH="${{ steps.branch.outputs.base_path }}"
+          if [ -z "$BASE_PATH" ]; then
+            cp -r dist/* deploy/
+          else
+            mkdir -p "deploy/$BASE_PATH"
+            cp -r dist/* "deploy/$BASE_PATH/"
+          fi
+      
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          force_orphan: false
