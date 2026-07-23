@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, Volume2, VolumeX } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Volume2, VolumeX, Trophy } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
+import TrophyRoom from '../TrophyRoom/TrophyRoom';
 import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const { isMuted, toggleMute } = useAudio();
+    const [trophyRoomOpen, setTrophyRoomOpen] = useState(false);
+    const { isMuted, toggleMute, playSfx } = useAudio();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -79,6 +81,14 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-actions">
+                    <button 
+                        className="trophy-toggle" 
+                        onClick={() => { playSfx('hover'); setTrophyRoomOpen(true); }} 
+                        aria-label="View Trophies"
+                        style={{ background: 'transparent', border: 'none', color: '#FBC02D', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                    >
+                        <Trophy size={20} />
+                    </button>
                     <button className="audio-toggle" onClick={toggleMute} aria-label="Toggle Audio">
                         {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
                     </button>
@@ -124,6 +134,8 @@ const Navbar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <TrophyRoom isOpen={trophyRoomOpen} onClose={() => setTrophyRoomOpen(false)} />
         </nav>
     );
 };

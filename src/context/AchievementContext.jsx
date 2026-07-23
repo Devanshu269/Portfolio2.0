@@ -7,7 +7,7 @@ const AchievementContext = createContext();
 
 export const useAchievements = () => useContext(AchievementContext);
 
-const ACHIEVEMENTS_DATA = {
+export const ACHIEVEMENTS_DATA = {
     first_blood: { title: "First Blood", desc: "Started the journey", icon: "⚔️" },
     konami_code: { title: "Konami Hacker", desc: "Entered the sacred cheat code", icon: "🕹️" },
     scroller: { title: "Deep Diver", desc: "Scrolled all the way to the footer", icon: "📜" },

@@ -1,33 +1,25 @@
-.pixel-cursor {
+.pixel-cursor-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 16px;
-    height: 16px;
-    background-color: var(--primary);
-    border: 4px solid #fff;
     pointer-events: none;
-    z-index: 9999;
-    box-shadow: 4px 4px 0px rgba(0,0,0,1);
-    /* Blocky movement, no smooth transition */
+    z-index: 999999;
+    /* Blocky movement */
     transition: none;
-}
-
-.pixel-cursor.hovering {
-    background-color: transparent;
-    border-color: var(--primary-alt);
-    box-shadow: 4px 4px 0px rgba(211, 47, 47, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (pointer: fine) {
-    body {
-        cursor: none; /* Hide default cursor to fully commit to the gaming vibe */
+    * {
+        cursor: none !important;
     }
 }
 
 /* Hide custom cursor on touch devices */
 @media (max-width: 768px) {
-    .pixel-cursor {
+    .pixel-cursor-container {
         display: none !important;
     }
     body {

@@ -1,0 +1,48 @@
+.bg-sprites-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Crucial: clicks pass through to site */
+    z-index: -1; /* Place behind all content, but over the absolute background color */
+    overflow: hidden;
+}
+
+.pixel-cloud {
+    position: absolute;
+    font-size: 60px;
+    opacity: 0.15;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)) blur(1px);
+}
+
+.cloud-1 {
+    top: 15%;
+}
+
+.cloud-2 {
+    top: 45%;
+    font-size: 80px;
+}
+
+.cloud-3 {
+    top: 75%;
+    font-size: 40px;
+}
+
+.pixel-star {
+    position: absolute;
+    color: #FBC02D;
+    font-size: 24px;
+    opacity: 0.2;
+}
+
+.star-1 {
+    top: 25%;
+    left: 80%;
+}
+
+.star-2 {
+    top: 65%;
+    left: 15%;
+}

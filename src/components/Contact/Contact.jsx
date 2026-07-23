@@ -80,77 +80,82 @@ const Contact = () => {
     return (
         <section id="contact" className="contact-section bg-pixel-stars">
             <div className="container">
-                <div className="contact-grid">
-                    <div className="contact-info">
-                        <span className="section-subtitle">Multiplayer</span>
-                        <h2 className="section-title">Initiate <br /> <span className="outline-text">Contact</span></h2>
+                <span className="section-subtitle">Multiplayer</span>
+                <h2 className="section-title">Final <br /> <span className="outline-text">Boss</span></h2>
 
-                        <div className="info-cards">
-                            <div className="info-card rpg-window">
-                                <Mail className="info-icon" />
-                                <div className="info-details">
-                                    <p>Email</p>
-                                    <a href="mailto:devanshu.shekhar2@gmail.com">devanshu.shekhar2@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <div className="info-card rpg-window">
-                                <Phone className="info-icon" />
-                                <div className="info-details">
-                                    <p>Phone</p>
-                                    <a href="tel:+919504940086">+91 9504940086</a>
-                                </div>
-                            </div>
-
-                            <div className="info-card rpg-window">
-                                <MapPin className="info-icon" />
-                                <div className="info-details">
-                                    <p>Location</p>
-                                    <span>Bengaluru, Karnataka, India</span>
+                <div className="battle-arena">
+                    {/* Boss Area */}
+                    <div className="boss-sprite-container">
+                        <motion.div 
+                            className="boss-sprite"
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            👾
+                        </motion.div>
+                        <div className="boss-info">
+                            <span className="boss-name">RECRUITER</span>
+                            <div className="boss-hp">
+                                <span className="hp-label">HP</span>
+                                <div className="hp-bar-container">
+                                    <div className="hp-bar boss-health"></div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="contact-form-container rpg-window"
-                    >
-                        <form className="contact-form" onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Your Name</label>
+                    {/* Battle UI Box */}
+                    <div className="battle-ui-wrapper">
+                        {/* Player Stats */}
+                        <div className="battle-stats rpg-window">
+                            <h3 className="player-name">PLAYER 1</h3>
+                            <div className="stat-row">
+                                <span className="stat-label">HP</span>
+                                <div className="stat-val">999/999</div>
+                            </div>
+                            <div className="stat-row">
+                                <span className="stat-label">MP</span>
+                                <div className="stat-val">050/050</div>
+                            </div>
+                            <div className="stat-row mt-3">
+                                <span className="stat-label">LVL</span>
+                                <div className="stat-val">99</div>
+                            </div>
+                        </div>
+
+                        {/* Action Menu (Form) */}
+                        <form className="battle-action-menu rpg-window" onSubmit={handleSubmit}>
+                            <div className="form-group-inline">
+                                <label>▶ HERO NAME</label>
                                 <input
                                     type="text"
                                     name="name"
-                                    placeholder="Enter your name..."
-                                    className="rpg-input"
+                                    placeholder="Enter name..."
+                                    className="battle-input"
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
-                            <div className="form-group">
-                                <label>Email Address</label>
+                            <div className="form-group-inline">
+                                <label>▶ GUILD (EMAIL)</label>
                                 <input
                                     type="email"
                                     name="email"
-                                    placeholder="john@example.com"
-                                    className="rpg-input"
+                                    placeholder="email@guild.com"
+                                    className="battle-input"
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
-                            <div className="form-group">
-                                <label>Message</label>
+                            <div className="form-group-block">
+                                <label>▶ MAGIC SPELL (MESSAGE)</label>
                                 <textarea
                                     name="message"
-                                    placeholder="Tell me about your quest..."
-                                    className="rpg-input"
-                                    rows="5"
+                                    placeholder="Type your message..."
+                                    className="battle-input"
+                                    rows="3"
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
@@ -158,34 +163,25 @@ const Contact = () => {
                             </div>
 
                             {submitStatus && (
-                                <div className={`status-message ${submitStatus}`}>
+                                <div className={`battle-status-msg ${submitStatus}`}>
                                     {submitStatus === 'success'
-                                        ? '✓ Message sent successfully! I\'ll get back to you soon.'
-                                        : '✗ Failed to send message. Please try again.'}
+                                        ? 'CRITICAL HIT! Message delivered.'
+                                        : 'MISS! Failed to send message.'}
                                 </div>
                             )}
 
-                            <button
-                                type="submit"
-                                className="submit-btn"
-                                disabled={!isFormValid || isLoading}
-                                style={{
-                                    opacity: isFormValid && !isLoading ? 1 : 0.5,
-                                    cursor: isFormValid && !isLoading ? 'pointer' : 'not-allowed'
-                                }}
-                            >
-                                {isLoading ? (
-                                    <>
-                                        <Loader2 size={18} className="animate-spin" />
-                                        Sending...
-                                    </>
-                                ) : (
-                                    <>
-                                        Send Message <Send size={18} />
-                                    </>
-                                )}
-                            </button>
+                            <div className="battle-commands">
+                                <button
+                                    type="submit"
+                                    className="command-btn"
+                                    disabled={!isFormValid || isLoading}
+                                >
+                                    {isLoading ? 'CASTING...' : '[ ATTACK ]'}
+                                </button>
+                            </div>
                         </form>
+                    </div>
+                </div>
 
                         {/* STAGE CLEARED OVERLAY */}
                         {showVictoryScreen && (
@@ -200,8 +196,6 @@ const Contact = () => {
                                 </div>
                             </div>
                         )}
-                    </motion.div>
-                </div>
             </div>
         </section>
     );

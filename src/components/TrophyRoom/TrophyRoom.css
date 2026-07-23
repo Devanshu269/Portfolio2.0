@@ -1,0 +1,165 @@
+.trophy-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.trophy-modal-content {
+    background: rgba(15, 15, 20, 0.95);
+    border: 3px solid var(--primary-alt);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(251, 192, 45, 0.2), inset 0 0 15px rgba(251, 192, 45, 0.1);
+    font-family: 'VT323', monospace;
+}
+
+/* Custom Scrollbar for Modal */
+.trophy-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+.trophy-modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+.trophy-modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-alt);
+    border-radius: 4px;
+}
+
+.trophy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed #444;
+    padding-bottom: 15px;
+}
+
+.trophy-header h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+
+.trophy-close {
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trophy-close:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.trophy-stats {
+    font-size: 1.4rem;
+    color: #FFF;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.trophy-stats .highlight {
+    color: var(--primary-alt);
+    font-weight: bold;
+}
+
+.trophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.trophy-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.trophy-card.unlocked {
+    border-color: var(--primary-alt);
+    background: rgba(251, 192, 45, 0.05);
+}
+
+.trophy-card.locked {
+    opacity: 0.6;
+    filter: grayscale(100%);
+}
+
+.trophy-icon {
+    font-size: 2rem;
+    min-width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.trophy-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.trophy-info h3 {
+    margin: 0;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: #FFF;
+    line-height: 1.4;
+}
+
+.trophy-card.unlocked .trophy-info h3 {
+    color: var(--primary-alt);
+}
+
+.trophy-info p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #aaa;
+    line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+    .trophy-modal-content {
+        padding: 20px;
+    }
+    
+    .trophy-header h2 {
+        font-size: 14px;
+    }
+    
+    .trophy-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -25,6 +25,7 @@ import CursorTrail from './components/CursorTrail/CursorTrail';
 import QuestionBlock from './components/QuestionBlock/QuestionBlock';
 import Starfield from './components/Starfield/Starfield';
 import ScrollXPBar from './components/ScrollXPBar/ScrollXPBar';
+import BackgroundSprites from './components/BackgroundSprites/BackgroundSprites';
 import { useAudio } from './context/AudioContext';
 
 import './App.css';
@@ -111,6 +112,7 @@ function App() {
           >
             <Starfield />
             <ScrollXPBar />
+            <BackgroundSprites />
             {/* ── Game HUD elements ── */}
             <CoinProgress />
             <StageBanner />
