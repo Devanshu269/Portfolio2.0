@@ -11,49 +11,38 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
       
-      - name: Install dependencies
-        run: npm install
+      - run: npm install
       
-      - name: Determine branch path
-        id: branch
+      - name: Determine deployment path
+        id: deploy-path
         run: |
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
           if [ "$BRANCH_NAME" = "main" ]; then
-            BASE_PATH=""
+            echo "base_path=" >> $GITHUB_OUTPUT
+            echo "deploy_subdir=" >> $GITHUB_OUTPUT
           else
-            BASE_PATH="$BRANCH_NAME"
+            echo "base_path=$BRANCH_NAME" >> $GITHUB_OUTPUT
+            echo "deploy_subdir=$BRANCH_NAME/" >> $GITHUB_OUTPUT
           fi
-          echo "base_path=$BASE_PATH" >> $GITHUB_OUTPUT
       
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_PATH: ${{ steps.branch.outputs.base_path }}
+          VITE_BASE_PATH: ${{ steps.deploy-path.outputs.base_path }}
       
-      - name: Create deployment structure
+      - name: Prepare deployment files
         run: |
-          mkdir -p deploy
-          BASE_PATH="${{ steps.branch.outputs.base_path }}"
-          
-          if [ -z "$BASE_PATH" ]; then
-            # For main: copy everything to root
-            cp -r dist/* deploy/
-          else
-            # For other branches: create subdirectory
-            mkdir -p "deploy/$BASE_PATH"
-            cp -r dist/* "deploy/$BASE_PATH/"
-          fi
+          mkdir -p deploy/${{ steps.deploy-path.outputs.deploy_subdir }}
+          cp -r dist/* deploy/${{ steps.deploy-path.outputs.deploy_subdir }}
       
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./deploy
