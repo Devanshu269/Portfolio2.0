@@ -1,0 +1,86 @@
+.speed-lines-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    mix-blend-mode: overlay; /* Gives it that anime lighting effect */
+}
+
+/* Base repeating lines for vertical edges */
+.speed-lines-left, .speed-lines-right {
+    position: absolute;
+    top: -10%;
+    bottom: -10%;
+    width: 200px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 15px,
+        rgba(255, 255, 255, 0.8) 16px,
+        transparent 18px,
+        rgba(255, 255, 255, 0.4) 30px,
+        transparent 32px
+    );
+    filter: blur(1px);
+}
+
+.speed-lines-left {
+    left: 0;
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    animation: intenseShakeVertical 0.1s infinite;
+}
+
+.speed-lines-right {
+    right: 0;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    animation: intenseShakeVertical 0.1s infinite reverse;
+}
+
+/* Base repeating lines for horizontal edges */
+.speed-lines-top, .speed-lines-bottom {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    height: 150px;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 20px,
+        rgba(255, 255, 255, 0.8) 22px,
+        transparent 25px,
+        rgba(255, 255, 255, 0.4) 40px,
+        transparent 42px
+    );
+    filter: blur(1px);
+}
+
+.speed-lines-top {
+    top: 0;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    animation: intenseShakeHorizontal 0.1s infinite;
+}
+
+.speed-lines-bottom {
+    bottom: 0;
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    animation: intenseShakeHorizontal 0.1s infinite reverse;
+}
+
+@keyframes intenseShakeVertical {
+    0% { transform: translateY(-2%); opacity: 0.8; }
+    50% { transform: translateY(2%); opacity: 1; }
+    100% { transform: translateY(-1%); opacity: 0.9; }
+}
+
+@keyframes intenseShakeHorizontal {
+    0% { transform: translateX(-2%); opacity: 0.8; }
+    50% { transform: translateX(2%); opacity: 1; }
+    100% { transform: translateX(-1%); opacity: 0.9; }
+}

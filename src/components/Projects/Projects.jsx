@@ -55,20 +55,53 @@ const DUMMY_PROJECTS = [
         tags: ["Frontend", "JavaScript", "CSS"],
         github: "https://github.com/Devanshu269/todo",
         live: ""
+    },
+    {
+        id: 6,
+        title: "Project Alpha (Dummy)",
+        description: "A highly anticipated next-gen web application currently under development. Stay tuned for features.",
+        image: imgNote,
+        tags: ["React", "WebGL", "TypeScript"],
+        github: "",
+        live: ""
+    },
+    {
+        id: 7,
+        title: "Project Beta (Dummy)",
+        description: "Secret project involving complex data visualization and real-time multiplayer networking.",
+        image: imgTodo,
+        tags: ["Node.js", "Socket.io", "React"],
+        github: "",
+        live: ""
     }
 ];
 
 const Projects = () => {
     const [currentPage, setCurrentPage] = useState(0);
+    const [isSlashing, setIsSlashing] = useState(false);
     const projectsPerPage = 6;
     const totalPages = Math.ceil(DUMMY_PROJECTS.length / projectsPerPage);
 
     const nextPage = () => {
-        setCurrentPage((prev) => (prev + 1) % totalPages);
+        if (isSlashing) return;
+        setIsSlashing(true);
+        setTimeout(() => {
+            setCurrentPage((prev) => (prev + 1) % totalPages);
+        }, 300); // Swap midway through the slash flash
+        setTimeout(() => {
+            setIsSlashing(false);
+        }, 600); // Total animation duration
     };
 
     const prevPage = () => {
-        setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+        if (isSlashing) return;
+        setIsSlashing(true);
+        setTimeout(() => {
+            setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+        }, 300);
+        setTimeout(() => {
+            setIsSlashing(false);
+        }, 600);
     };
 
     const displayedProjects = DUMMY_PROJECTS.slice(
@@ -84,15 +117,23 @@ const Projects = () => {
                     <h2 className="section-title">Featured <br /> <span className="outline-text">Projects</span></h2>
                 </div>
 
-                <div className="projects-container">
+                <div className="projects-container" style={{ position: 'relative', overflow: 'hidden' }}>
+                    
+                    {isSlashing && (
+                        <div className="katana-slash-overlay">
+                            <div className="slash-flash" />
+                            <div className="slash-line" />
+                        </div>
+                    )}
+
                     <div className="projects-grid">
                         <AnimatePresence mode="wait">
                             <motion.div 
                                 key={currentPage}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                transition={{ duration: 0.2 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.1 }}
                                 className="projects-page"
                             >
                                 {displayedProjects.map((project) => (
@@ -155,11 +196,11 @@ const Projects = () => {
 
                     {totalPages > 1 && (
                         <div className="projects-pagination">
-                            <button className="carousel-btn prev-btn" onClick={prevPage}>
+                            <button className="proj-carousel-btn proj-prev-btn" onClick={prevPage}>
                                 <ChevronLeft size={30} />
                             </button>
                             <span className="page-indicator">{currentPage + 1} / {totalPages}</span>
-                            <button className="carousel-btn next-btn" onClick={nextPage}>
+                            <button className="proj-carousel-btn proj-next-btn" onClick={nextPage}>
                                 <ChevronRight size={30} />
                             </button>
                         </div>

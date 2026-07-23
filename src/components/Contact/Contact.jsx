@@ -77,6 +77,14 @@ const Contact = () => {
 
     const isFormValid = formData.name.trim() && formData.email.trim() && formData.message.trim();
 
+    const hpScore = 
+        (formData.name.trim().length > 0 ? 1 : 0) + 
+        (formData.email.trim().length > 0 ? 1 : 0) + 
+        (formData.message.trim().length > 0 ? 1 : 0) +
+        (showVictoryScreen ? 1 : 0);
+
+    const hpPercentage = Math.max(0, 100 - (hpScore * 25));
+
     return (
         <section id="contact" className="contact-section bg-pixel-stars">
             <div className="container">
@@ -87,18 +95,21 @@ const Contact = () => {
                     {/* Boss Area */}
                     <div className="boss-sprite-container">
                         <motion.div 
-                            className="boss-sprite"
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                            className={`boss-sprite ${hpPercentage === 0 ? 'defeated' : ''}`}
+                            animate={hpPercentage === 0 ? {} : { y: [0, -10, 0] }}
+                            transition={hpPercentage === 0 ? {} : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         >
-                            👾
+                            {hpPercentage === 0 ? '💀' : '👾'}
                         </motion.div>
                         <div className="boss-info">
                             <span className="boss-name">RECRUITER</span>
                             <div className="boss-hp">
                                 <span className="hp-label">HP</span>
                                 <div className="hp-bar-container">
-                                    <div className="hp-bar boss-health"></div>
+                                    <div 
+                                        className="hp-bar boss-health"
+                                        style={{ width: `${hpPercentage}%`, transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }}
+                                    ></div>
                                 </div>
                             </div>
                         </div>

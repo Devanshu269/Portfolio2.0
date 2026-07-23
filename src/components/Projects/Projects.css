@@ -251,7 +251,7 @@
     margin-top: 40px;
 }
 
-.carousel-btn {
+.proj-carousel-btn {
     background: transparent;
     border: 2px solid var(--primary-alt);
     color: var(--primary-alt);
@@ -265,14 +265,14 @@
     box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
 }
 
-.carousel-btn:hover {
+.proj-carousel-btn:hover {
     background: var(--primary-alt);
     color: #000;
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
 }
 
-.carousel-btn:active {
+.proj-carousel-btn:active {
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
@@ -288,4 +288,46 @@
     .projects-page {
         grid-template-columns: 1fr;
     }
+}
+
+/* Katana Slash Animation */
+.katana-slash-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.slash-line {
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 300%;
+    height: 4px;
+    background: #fff;
+    box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #fff;
+    transform: translateY(-50%) rotate(-15deg);
+    animation: slashStrike 0.6s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+.slash-flash {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #fff;
+    opacity: 0;
+    animation: flashFade 0.6s ease-out forwards;
+}
+
+@keyframes slashStrike {
+    0% { left: -100%; height: 2px; }
+    30% { left: -50%; height: 8px; }
+    50% { left: 0%; height: 12px; }
+    100% { left: 100%; height: 1px; }
+}
+
+@keyframes flashFade {
+    0% { opacity: 0; }
+    30% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }

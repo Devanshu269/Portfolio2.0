@@ -26,6 +26,8 @@ import QuestionBlock from './components/QuestionBlock/QuestionBlock';
 import Starfield from './components/Starfield/Starfield';
 import ScrollXPBar from './components/ScrollXPBar/ScrollXPBar';
 import BackgroundSprites from './components/BackgroundSprites/BackgroundSprites';
+import SpeedLines from './components/SpeedLines/SpeedLines';
+import DamageNumbers from './components/DamageNumbers/DamageNumbers';
 import { useAudio } from './context/AudioContext';
 
 import './App.css';
@@ -95,6 +97,8 @@ function App() {
       <CustomCursor />
       <CursorTrail />
       <KonamiCode />
+      <SpeedLines />
+      <DamageNumbers />
 
       {/* ── Scroll progress bar (red) ── */}
       <motion.div className="progress-bar" style={{ scaleX }} />
