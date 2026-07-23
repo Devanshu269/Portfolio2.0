@@ -47,4 +47,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./deploy
           force_orphan: false
-          cname: ''
+          keep_files: true
