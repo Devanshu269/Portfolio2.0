@@ -1,162 +1,236 @@
+/* ============================================
+   NAVBAR — Modern Floating Pill
+   (Retains pixel contact button design)
+   ============================================ */
+
 .navbar-container {
     position: fixed;
-    top: 30px;
+    top: 45px;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     z-index: 1000;
     padding: 0 20px;
-    transition: var(--transition-smooth);
+    transition: top 0.3s ease;
 }
 
 .navbar-container.scrolled {
-    top: 15px;
+    top: 35px;
 }
 
 .navbar-inner {
     width: 100%;
-    max-width: 1200px; /* Increased from 900px to fit all links */
+    max-width: 1100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 28px;
-    border-radius: 100px;
-    box-shadow: var(--shadow-md);
-    transition: box-shadow 0.3s ease;
+    padding: 12px 30px;
+    background: rgba(10, 10, 15, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(211, 47, 47, 0.25);
+    border-radius: 50px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+/* ---- LOGO ---- */
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-family: 'Lexend', sans-serif;
-    font-weight: 800;
+    gap: 4px;
+    font-family: 'Press Start 2P', monospace;
     color: var(--text-primary);
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-    margin-right: 20px; /* added margin to ensure it never overlaps */
+    font-size: 0.85rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo-bracket {
+    color: var(--primary);
 }
 
 .logo-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--primary);
-    border-radius: 50%;
+    display: none;
 }
 
+/* ---- NAV LINKS ---- */
 .nav-links {
     display: flex;
-    gap: 20px; /* decreased from 24px */
-    flex-wrap: wrap; /* allow wrapping on smaller screens before mobile menu kicks in */
-    justify-content: center;
+    align-items: center;
+    gap: 4px;
 }
 
 .nav-link {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
     font-weight: 500;
-    font-size: 0.85rem; /* decreased slightly */
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: 20px;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease;
     letter-spacing: 1px;
-    transition: color 0.3s ease;
-    white-space: nowrap; /* keep text on one line */
+}
+
+.nav-link::before {
+    display: none;
 }
 
 .nav-link:hover {
-    color: var(--text-primary);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.07);
 }
 
+.nav-link::after {
+    display: none;
+}
+
+/* ---- ACTIONS ---- */
 .nav-actions {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
+/* Pixel-angled Contact button (kept from previous design) */
 .contact-btn {
-    background: var(--text-primary);
-    color: var(--bg-primary);
-    padding: 8px 18px;
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.5px;
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 18px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 }
 
 .contact-btn:hover {
-    background: var(--primary);
-    color: var(--text-inverse);
-    transform: scale(1.05);
+    background: #b71c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(211, 47, 47, 0.45);
 }
 
+/* ---- AUDIO TOGGLE ---- */
+.audio-toggle {
+    background: transparent;
+    color: var(--text-primary);
+    border: none;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.15s;
+    border-radius: 50%;
+}
+
+.audio-toggle:hover {
+    color: var(--primary-alt);
+    transform: scale(1.1);
+}
+
+
+/* ---- MOBILE TOGGLE ---- */
 .mobile-toggle {
     display: none;
     color: var(--text-primary);
-    transition: color 0.3s ease;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 7px 9px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
 }
 
-/* Mobile Menu */
+.mobile-toggle:hover {
+    border-color: var(--primary);
+    background: rgba(211, 47, 47, 0.1);
+}
+
+/* ---- MOBILE MENU ---- */
 .mobile-menu {
     position: absolute;
-    top: 80px;
-    left: 20px;
-    right: 20px;
-    border-radius: 24px;
-    padding: 24px;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    margin: 0 20px;
+    background: rgba(10, 10, 15, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    z-index: 999;
-    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(211, 47, 47, 0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    z-index: 998;
 }
 
 .mobile-link {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--text-primary);
-    transition: color 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 15px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s, padding-left 0.2s;
+}
+
+.mobile-link:last-child {
+    border-bottom: none;
+}
+
+.mobile-link:hover {
+    background: rgba(211, 47, 47, 0.08);
+    color: #fff;
+    padding-left: 32px;
 }
 
 .mobile-link.contact {
-    color: var(--primary);
+    color: var(--primary-alt);
 }
 
-@media (max-width: 768px) {
+/* ---- RESPONSIVE ---- */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none;
+    }
+
     .desktop-only {
         display: none !important;
     }
 
     .mobile-toggle {
-        display: block;
-    }
-
-    .navbar-inner {
-        max-width: 100%;
-        padding: 10px 20px;
-    }
-
-    .nav-logo {
-        font-size: 1rem;
+        display: flex;
+        align-items: center;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .navbar-container {
-        top: 15px;
-        padding: 0 10px;
+        padding: 0 12px;
     }
 
     .navbar-inner {
-        padding: 8px 16px;
+        padding: 10px 18px;
+        border-radius: 36px;
     }
 
-    .mobile-menu {
-        left: 10px;
-        right: 10px;
-        padding: 20px;
+    .nav-logo {
+        font-size: 0.7rem;
     }
 }

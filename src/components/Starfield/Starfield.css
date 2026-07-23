@@ -1,0 +1,66 @@
+.starfield-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background: transparent;
+    pointer-events: none;
+}
+
+.stars-layer-1, .stars-layer-2, .stars-layer-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+}
+
+/* Duplicating the shadow for infinite seamless scroll by adding another pseudo element */
+.stars-layer-1::after, .stars-layer-2::after, .stars-layer-3::after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    left: 0;
+    background: transparent;
+}
+
+.stars-layer-1 {
+    animation: animStar 50s linear infinite;
+    opacity: 0.5;
+}
+.stars-layer-1::after {
+    width: 1px;
+    height: 1px;
+    box-shadow: inherit;
+}
+
+.stars-layer-2 {
+    animation: animStar 100s linear infinite;
+    opacity: 0.7;
+}
+.stars-layer-2::after {
+    width: 2px;
+    height: 2px;
+    box-shadow: inherit;
+}
+
+.stars-layer-3 {
+    animation: animStar 150s linear infinite;
+    opacity: 1;
+}
+.stars-layer-3::after {
+    width: 3px;
+    height: 3px;
+    box-shadow: inherit;
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}

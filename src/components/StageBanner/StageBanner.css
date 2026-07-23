@@ -1,0 +1,43 @@
+/* ============================
+   OPTION 1: TOAST NOTIFICATION
+   ============================ */
+.stage-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid var(--primary);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1), inset 0 0 10px rgba(211, 47, 47, 0.3);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 99999;
+    border-radius: 4px;
+}
+
+.toast-icon {
+    font-size: 24px;
+}
+
+.toast-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.toast-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--text-secondary);
+}
+
+.toast-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: var(--primary-alt);
+    text-shadow: 1px 1px 0 #000;
+}
+
+
+

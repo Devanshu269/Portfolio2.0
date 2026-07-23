@@ -7,9 +7,6 @@ import './Projects.css';
 import imgAOT from '../../assets/projects/aot_project_1782574504692.png';
 import imgAMC from '../../assets/projects/amc_project_1782574519230.png';
 import imgAmazon from '../../assets/projects/amazon_project_1782574533567.png';
-import imgParking from '../../assets/projects/parking_project_1782574545424.png';
-import imgSnakes from '../../assets/projects/snakes_project_1782574557514.png';
-import imgTicTacToe from '../../assets/projects/tictactoe_project_1782574569055.png';
 import imgNote from '../../assets/projects/note_project_1782574581552.png';
 import imgTodo from '../../assets/projects/todo_project_1782574593750.png';
 
@@ -58,60 +55,156 @@ const DUMMY_PROJECTS = [
         tags: ["Frontend", "JavaScript", "CSS"],
         github: "https://github.com/Devanshu269/todo",
         live: ""
+    },
+    {
+        id: 6,
+        title: "Project Alpha (Dummy)",
+        description: "A highly anticipated next-gen web application currently under development. Stay tuned for features.",
+        image: imgNote,
+        tags: ["React", "WebGL", "TypeScript"],
+        github: "",
+        live: ""
+    },
+    {
+        id: 7,
+        title: "Project Beta (Dummy)",
+        description: "Secret project involving complex data visualization and real-time multiplayer networking.",
+        image: imgTodo,
+        tags: ["Node.js", "Socket.io", "React"],
+        github: "",
+        live: ""
     }
 ];
 
 const Projects = () => {
+    const [currentPage, setCurrentPage] = useState(0);
+    const [isSlashing, setIsSlashing] = useState(false);
+    const projectsPerPage = 6;
+    const totalPages = Math.ceil(DUMMY_PROJECTS.length / projectsPerPage);
+
+    const nextPage = () => {
+        if (isSlashing) return;
+        setIsSlashing(true);
+        setTimeout(() => {
+            setCurrentPage((prev) => (prev + 1) % totalPages);
+        }, 300); // Swap midway through the slash flash
+        setTimeout(() => {
+            setIsSlashing(false);
+        }, 600); // Total animation duration
+    };
+
+    const prevPage = () => {
+        if (isSlashing) return;
+        setIsSlashing(true);
+        setTimeout(() => {
+            setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+        }, 300);
+        setTimeout(() => {
+            setIsSlashing(false);
+        }, 600);
+    };
+
+    const displayedProjects = DUMMY_PROJECTS.slice(
+        currentPage * projectsPerPage,
+        (currentPage + 1) * projectsPerPage
+    );
+
     return (
-        <section id="projects" className="projects-section">
+        <section id="projects" className="projects-section bg-retro-grid">
             <div className="container">
                 <div className="section-header align-center">
-                    <span className="section-subtitle">Portfolio</span>
+                    <span className="section-subtitle">Load Game</span>
                     <h2 className="section-title">Featured <br /> <span className="outline-text">Projects</span></h2>
                 </div>
 
-                <div className="projects-container">
+                <div className="projects-container" style={{ position: 'relative', overflow: 'hidden' }}>
+                    
+                    {isSlashing && (
+                        <div className="katana-slash-overlay">
+                            <div className="slash-flash" />
+                            <div className="slash-line" />
+                        </div>
+                    )}
+
                     <div className="projects-grid">
-                        {DUMMY_PROJECTS.map((project, idx) => (
-                            <motion.div
-                                key={project.id}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
-                                className="project-card glass"
+                        <AnimatePresence mode="wait">
+                            <motion.div 
+                                key={currentPage}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.1 }}
+                                className="projects-page"
                             >
-                                <div className="project-image-wrapper">
-                                    <img src={project.image} alt={project.title} className="project-image" />
-                                    <div className="project-overlay">
-                                        <div className="project-overlay-content">
-                                            <p className="project-desc">{project.description}</p>
+                                {displayedProjects.map((project) => (
+                                    <div key={project.id} className="cartridge-wrapper">
+                                        <div className="cartridge-shell">
+                                            {/* Top Grooves */}
+                                            <div className="cartridge-grooves">
+                                                <div className="groove"></div>
+                                                <div className="groove"></div>
+                                                <div className="groove"></div>
+                                            </div>
+
+                                            {/* Cartridge Label */}
+                                            <div className="cartridge-label">
+                                                <div className="label-header">ENTERTAINMENT SYSTEM</div>
+                                                <div className="label-image-wrapper">
+                                                    <img src={project.image} alt={project.title} className="label-image" />
+                                                </div>
+                                                <div className="label-title">{project.title}</div>
+                                            </div>
+
+                                            {/* Seal moved to shell level */}
+                                            <div className="label-seal">⭐ QUALITY SEAL</div>
+
+                                            {/* Bottom Edge */}
+                                            <div className="cartridge-bottom">
+                                                <div className="cartridge-arrow">▼</div>
+                                            </div>
+                                        </div>
+
+                                        {/* Hover Overlay with Info & Links */}
+                                        <div className="project-info-overlay">
+                                            <h3 className="overlay-title">{project.title}</h3>
+                                            <p className="overlay-desc">{project.description}</p>
+                                            
+                                            <div className="project-tags">
+                                                {project.tags.map((tag, tIdx) => (
+                                                    <span key={tIdx} className="project-tag">{tag}</span>
+                                                ))}
+                                            </div>
+
                                             <div className="project-links">
                                                 {project.github && (
                                                     <a href={project.github} target="_blank" rel="noreferrer" className="project-link" aria-label="GitHub Repo">
-                                                        <Github size={22} />
+                                                        <Github size={20} /> SOURCE
                                                     </a>
                                                 )}
                                                 {project.live && (
                                                     <a href={project.live} target="_blank" rel="noreferrer" className="project-link" aria-label="Live Website">
-                                                        <ExternalLink size={22} />
+                                                        <ExternalLink size={20} /> PLAY
                                                     </a>
                                                 )}
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="project-info">
-                                    <h3>{project.title}</h3>
-                                    <div className="project-tags">
-                                        {project.tags.map(tag => (
-                                            <span key={tag} className="project-tag">{tag}</span>
-                                        ))}
-                                    </div>
-                                </div>
+                                ))}
                             </motion.div>
-                        ))}
+                        </AnimatePresence>
                     </div>
+
+                    {totalPages > 1 && (
+                        <div className="projects-pagination">
+                            <button className="proj-carousel-btn proj-prev-btn" onClick={prevPage}>
+                                <ChevronLeft size={30} />
+                            </button>
+                            <span className="page-indicator">{currentPage + 1} / {totalPages}</span>
+                            <button className="proj-carousel-btn proj-next-btn" onClick={nextPage}>
+                                <ChevronRight size={30} />
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

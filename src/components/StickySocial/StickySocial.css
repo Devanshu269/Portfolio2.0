@@ -1,6 +1,6 @@
 .sticky-social-container {
     position: fixed;
-    right: 30px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -34,9 +34,9 @@
 
 .social-icon-wrapper:hover {
     background: var(--primary);
-    color: #0B0E14;
+    color: #fff;
     border-color: var(--primary);
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+    box-shadow: 0 0 15px rgba(211, 47, 47, 0.4);
     transform: scale(1.1) translateX(-5px);
 }
 

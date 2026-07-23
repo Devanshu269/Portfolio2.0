@@ -1,102 +1,93 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useAudio } from '../../context/AudioContext';
+import { useAchievements } from '../../context/AchievementContext';
 import './Loader.css';
 
-const Loader = () => {
-    const words = ["Software Engineer", "Gamer", "Learner"];
-    const [index, setIndex] = useState(0);
-    const [subtext, setSubtext] = useState("");
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [speed, setSpeed] = useState(100);
+const Loader = ({ onStart }) => {
+    const { playSfx, initAudio, setIsMuted } = useAudio();
+    const { unlockAchievement } = useAchievements();
+    const [progress, setProgress] = useState(0);
+    const [status, setStatus] = useState("GENERATING WORLD...");
+    const [phase, setPhase] = useState('loading'); // 'loading' | 'ready'
 
     useEffect(() => {
-        const handleType = () => {
-            const currentWord = words[index];
-            if (isDeleting) {
-                setSubtext(currentWord.substring(0, subtext.length - 1));
-                setSpeed(50);
-            } else {
-                setSubtext(currentWord.substring(0, subtext.length + 1));
-                setSpeed(100);
-            }
+        const statuses = [
+            "GENERATING WORLD...",
+            "SPAWNING NPCs...",
+            "COMPILING QUESTS...",
+            "EQUIPPING GEAR...",
+            "STARTING GAME..."
+        ];
 
-            if (!isDeleting && subtext === currentWord) {
-                setTimeout(() => setIsDeleting(true), 800);
-            } else if (isDeleting && subtext === "") {
-                setIsDeleting(false);
-                setIndex((prev) => (prev + 1) % words.length);
-            }
-        };
+        const interval = setInterval(() => {
+            setProgress(prev => {
+                const next = prev + Math.floor(Math.random() * 12) + 2;
+                if (next >= 100) {
+                    clearInterval(interval);
+                    setStatus("STARTING GAME...");
+                    setPhase('ready');
+                    
+                    setTimeout(() => {
+                        unlockAchievement('first_blood');
+                        if (onStart) onStart();
+                    }, 1200);
 
-        const timer = setTimeout(handleType, speed);
-        return () => clearTimeout(timer);
-    }, [subtext, isDeleting, index]);
+                    return 100;
+                }
+
+                if (next > 80) setStatus(statuses[3]);
+                else if (next > 50) setStatus(statuses[2]);
+                else if (next > 20) setStatus(statuses[1]);
+
+                return next;
+            });
+        }, 300);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
-        <motion.div
-            className={`loader-wrapper word-bg-${index}`}
-            initial={{ opacity: 1 }}
-            exit={{
-                y: '-100%',
-                transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
-            }}
-        >
-            <div className="loader-bg-overlay">
-                <AnimatePresence mode="wait">
-                    {index === 0 && (
-                        <motion.div
-                            key="eng"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.4 }}
-                            exit={{ opacity: 0 }}
-                            className="bg-layer engineering-grid"
-                        />
-                    )}
-                    {index === 1 && (
-                        <motion.div
-                            key="gamer"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.4 }}
-                            exit={{ opacity: 0 }}
-                            className="bg-layer gaming-energy"
-                        />
-                    )}
-                    {index === 2 && (
-                        <motion.div
-                            key="learner"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.4 }}
-                            exit={{ opacity: 0 }}
-                            className="bg-layer learner-constellation"
-                        />
-                    )}
-                </AnimatePresence>
-            </div>
-
-            <div className="loader-content">
+        <AnimatePresence>
+            {phase !== 'done' && (
                 <motion.div
-                    className="liquid-logo"
-                    animate={{
-                        borderRadius: ["40% 60% 70% 30% / 40% 40% 60% 50%", "30% 60% 70% 40% / 50% 60% 30% 60%", "60% 40% 30% 70% / 60% 30% 70% 40%", "40% 60% 70% 30% / 40% 40% 60% 50%"],
-                        scale: [1, 1.05, 1],
-                        rotate: [0, 5, -5, 0]
-                    }}
-                    transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "linear"
+                    className="rpg-loader-wrapper"
+                    initial={{ opacity: 1 }}
+                    exit={{
+                        opacity: 0,
+                        transition: { duration: 0.8 }
                     }}
                 >
-                    <span className="loader-text">DS</span>
+                    <div className="rpg-container">
+                        {/* 8-bit Heart Icon or Logo Placeholder */}
+                        <div className={`rpg-icon ${phase === 'ready' ? 'rpg-pulse' : ''}`}>
+                            <div className="pixel-heart"></div>
+                        </div>
+
+                        {phase === 'ready' ? (
+                            <h2 className="rpg-status-text rpg-blink" style={{ color: 'var(--accent-gold)' }}>
+                                STARTING GAME...
+                            </h2>
+                        ) : (
+                            <h2 className="rpg-status-text">
+                                {status}
+                            </h2>
+                        )}
+
+                        <div className="rpg-progress-container">
+                            <div
+                                className="rpg-progress-bar"
+                                style={{ width: `${progress}%` }}
+                            ></div>
+                        </div>
+
+                        <div className="rpg-percentage">
+                            LVL {Math.floor(progress / 10)} - {progress}%
+                        </div>
+                    </div>
                 </motion.div>
-                <div className="loader-subtext-container">
-                    <p className="loader-subtext">
-                        {subtext}
-                        <span className="cursor">|</span>
-                    </p>
-                </div>
-            </div>
-        </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 

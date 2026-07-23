@@ -56,7 +56,7 @@ const Work = () => {
     ];
 
     return (
-        <section id="work" className="work-section">
+        <section id="work" className="work-section bg-pixel-dungeon">
             <div className="container">
                 <div className="section-header">
                     <span className="section-subtitle">Professional Journey</span>
@@ -73,7 +73,7 @@ const Work = () => {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             style={{ perspective: 1000 }}
                         >
-                            <TiltCard className="experience-card glass">
+                            <div className="experience-card rpg-window">
                                 <div className="exp-left">
                                     <div className="exp-icon">
                                         <Briefcase size={32} />
@@ -86,7 +86,7 @@ const Work = () => {
                                         </div>
                                         {exp.roles.length > 1 && (
                                             <div className="promotion-badge animate-pulse">
-                                                <span className="promo-star">★</span> Promoted Inside
+                                                <span className="promo-star">★</span> LEVEL UP!
                                             </div>
                                         )}
                                     </div>
@@ -97,7 +97,7 @@ const Work = () => {
                                         <div key={rIndex} className="exp-role-item">
                                             {exp.roles.length > 1 && <div className="timeline-node" />}
                                             <div className="role-header">
-                                                <h4 className="role-title">{role.title}</h4>
+                                                <h4 className="role-title">[{role.title}]</h4>
                                                 <span className="role-period">{role.period}</span>
                                             </div>
                                             <ul className="role-achievements">
@@ -113,7 +113,7 @@ const Work = () => {
                                         </div>
                                     ))}
                                 </div>
-                            </TiltCard>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

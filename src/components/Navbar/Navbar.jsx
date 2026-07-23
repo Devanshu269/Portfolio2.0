@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import { Menu, X, ArrowUpRight, Volume2, VolumeX, Trophy } from 'lucide-react';
+import { useAudio } from '../../context/AudioContext';
+import TrophyRoom from '../TrophyRoom/TrophyRoom';
 import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [trophyRoomOpen, setTrophyRoomOpen] = useState(false);
+    const { isMuted, toggleMute, playSfx } = useAudio();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -37,42 +40,61 @@ const Navbar = () => {
                 >
                     <motion.span
                         animate={{
-                            backgroundColor: ["#0047FF", "#00AEFF", "#00FFC2", "#7000FF", "#0047FF"],
+                            backgroundColor: ["#D32F2F", "#FBC02D", "#F57F17", "#D32F2F", "#D32F2F"],
                             boxShadow: [
-                                "0 0 5px #0047FF",
-                                "0 0 15px #00AEFF",
-                                "0 0 5px #00FFC2",
-                                "0 0 15px #7000FF",
-                                "0 0 5px #0047FF"
+                                "0 0 5px #D32F2F",
+                                "0 0 15px #FBC02D",
+                                "0 0 5px #F57F17",
+                                "0 0 15px #D32F2F",
+                                "0 0 5px #D32F2F"
                             ]
                         }}
                         transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                         className="logo-dot"
                     ></motion.span>
+                    <span className="logo-bracket">「</span>
                     <motion.span
                         animate={{
-                            color: ["#ffffff", "#00AEFF", "#00FFC2", "#7000FF", "#ffffff"]
+                            color: ["#ffffff", "#D32F2F", "#FBC02D", "#F57F17", "#ffffff"]
                         }}
                         transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                         style={{ display: 'inline-block' }}
                     >
                         DS
                     </motion.span>
+                    <span className="logo-bracket">」</span>
                 </motion.a>
 
                 <div className="nav-links desktop-only">
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="nav-link">
+                        <motion.a 
+                            key={link.name} 
+                            href={link.href} 
+                            className="nav-link"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.9 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
                             {link.name}
-                        </a>
+                        </motion.a>
                     ))}
                 </div>
 
                 <div className="nav-actions">
+                    <button 
+                        className="trophy-toggle" 
+                        onClick={() => { playSfx('hover'); setTrophyRoomOpen(true); }} 
+                        aria-label="View Trophies"
+                        style={{ background: 'transparent', border: 'none', color: '#FBC02D', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                    >
+                        <Trophy size={20} />
+                    </button>
+                    <button className="audio-toggle" onClick={toggleMute} aria-label="Toggle Audio">
+                        {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                    </button>
                     <a href="#contact" className="contact-btn desktop-only">
-                        Get in touch <ArrowUpRight size={16} />
+                        Contact <ArrowUpRight size={16} />
                     </a>
-                    <ThemeToggle />
                     <button
                         className="mobile-toggle"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -91,25 +113,29 @@ const Navbar = () => {
                         exit={{ opacity: 0, y: -20 }}
                     >
                         {navLinks.map((link) => (
-                            <a
+                            <motion.a
                                 key={link.name}
                                 href={link.href}
                                 className="mobile-link"
                                 onClick={() => setMobileMenuOpen(false)}
+                                whileHover={{ scale: 1.05, originX: 0 }}
+                                whileTap={{ scale: 0.95, originX: 0 }}
                             >
                                 {link.name}
-                            </a>
+                            </motion.a>
                         ))}
                         <a
                             href="#contact"
                             className="mobile-link contact"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Get in touch
+                            Contact
                         </a>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <TrophyRoom isOpen={trophyRoomOpen} onClose={() => setTrophyRoomOpen(false)} />
         </nav>
     );
 };

@@ -24,7 +24,7 @@ const ALL_CERTIFICATES = [
 
 const Certificates = () => {
     return (
-        <section id="certificates" className="certificates-section">
+        <section id="certificates" className="certificates-section bg-pixel-stars">
             <div className="container">
                 <div className="section-header align-center">
                     <span className="section-subtitle">Qualifications</span>
@@ -35,7 +35,7 @@ const Certificates = () => {
                     <div className="cert-marquee">
                         <div className="cert-marquee-track">
                             {ALL_CERTIFICATES.map((cert) => (
-                                <div key={cert.id} className="cert-card glass">
+                                <div key={cert.id} className="cert-card rpg-window">
                                     <div className="cert-icon-wrapper">
                                         {cert.icon}
                                     </div>
@@ -54,7 +54,7 @@ const Certificates = () => {
                         {/* Duplicated track for seamless infinite scroll */}
                         <div className="cert-marquee-track" aria-hidden="true">
                             {ALL_CERTIFICATES.map((cert) => (
-                                <div key={`${cert.id}-dup`} className="cert-card glass">
+                                <div key={`${cert.id}-dup`} className="cert-card rpg-window">
                                     <div className="cert-icon-wrapper">
                                         {cert.icon}
                                     </div>

@@ -1,0 +1,55 @@
+.achievement-toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100000;
+    pointer-events: none;
+}
+
+.achievement-toast {
+    display: flex;
+    align-items: center;
+    background: #111;
+    border: 2px solid var(--accent-gold);
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.8), inset 0 0 10px rgba(245,127,23,0.2);
+    min-width: 300px;
+}
+
+.toast-icon {
+    font-size: 2.5rem;
+    margin-right: 15px;
+    filter: drop-shadow(2px 2px 0 #000);
+}
+
+.toast-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.toast-header {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 4px;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.toast-title {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 2px;
+    line-height: 1.2;
+}
+
+.toast-desc {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    color: #aaa;
+    line-height: 1.2;
+}

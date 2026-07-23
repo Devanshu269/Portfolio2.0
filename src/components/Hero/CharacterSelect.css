@@ -1,0 +1,60 @@
+.character-select-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.5);
+    padding: 10px 15px;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+.char-select-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.5rem;
+    color: var(--primary-alt);
+}
+
+.char-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.char-btn {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    background: #111;
+    color: #888;
+    border: 2px solid #444;
+    padding: 4px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.char-btn:hover {
+    color: #fff;
+    border-color: #888;
+}
+
+.char-btn.active {
+    color: #fff;
+    border-width: 2px;
+}
+
+.char-warrior.active {
+    border-color: #D32F2F;
+    background: rgba(211, 47, 47, 0.2);
+}
+
+.char-mage.active {
+    border-color: #1976D2;
+    background: rgba(25, 118, 210, 0.2);
+}
+
+.char-rogue.active {
+    border-color: #388E3C;
+    background: rgba(56, 142, 60, 0.2);
+}

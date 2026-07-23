@@ -114,10 +114,10 @@ const Recommendations = () => {
     };
 
     return (
-        <section id="recommendations" className="recommendations-section">
+        <section id="recommendations" className="recommendations-section bg-pixel-dungeon">
             <div className="container">
                 <div className="section-header align-center">
-                    <span className="section-subtitle">Vouches</span>
+                    <span className="section-subtitle">Party Members</span>
                     <h2 className="section-title">Peer <br /> <span className="outline-text">Recognition</span></h2>
                 </div>
 
@@ -134,8 +134,8 @@ const Recommendations = () => {
                                     key={idx}
                                     initial={false}
                                     animate={styles}
-                                    transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                                    className={`testimonial-card glass ${idx === currentIndex ? 'active-card' : 'inactive-card'}`}
+                                    transition={{ duration: 0.1 }} /* blocky fast animation */
+                                    className={`testimonial-card rpg-window ${idx === currentIndex ? 'active-card' : 'inactive-card'}`}
                                     onClick={() => setCurrentIndex(idx)}
                                 >
                                     <Quote className="quote-icon" size={32} />

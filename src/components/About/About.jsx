@@ -1,28 +1,32 @@
 import { motion } from 'framer-motion';
-import { Gamepad2, GraduationCap, Heart, Tv } from 'lucide-react';
+import { Gamepad2, Tv, Heart } from 'lucide-react';
+import DialogueBox from './DialogueBox';
 import './About.css';
 
 const About = () => {
     const interests = [
         {
             icon: <Gamepad2 size={20} />,
-            label: "FPS Gaming",
-            desc: "Strategic thinking & quick reflexes"
+            label: "Valorant & FPS",
+            desc: "Immortal rank grinder, clutch specialist",
+            color: "#00F0FF"
         },
         {
             icon: <Tv size={20} />,
-            label: "Anime",
-            desc: "Creative storytelling inspiration"
+            label: "Shōnen Anime",
+            desc: "One Piece, AoT, JJK — storytelling fuel",
+            color: "#FF2D55"
         },
         {
             icon: <Heart size={20} />,
             label: "Badminton",
-            desc: "For agility & mental sharpness"
+            desc: "For agility & mental sharpness",
+            color: "#22c55e"
         }
     ];
 
     return (
-        <section id="about" className="about-section">
+        <section id="about" className="about-section bg-dust-motes">
             <div className="container">
                 <div className="about-grid">
                     <motion.div
@@ -31,18 +35,17 @@ const About = () => {
                         viewport={{ once: true }}
                         className="about-content"
                     >
-                        <span className="section-subtitle">The Story</span>
-                        <h2 className="section-title">Beyond the <br /> <span className="outline-text">Code</span></h2>
+                        <span className="section-subtitle">Character Lore</span>
+                        <h2 className="section-title">Beyondthe <br /> <span className="outline-text">Code</span></h2>
                         <div className="about-text">
-                            <p className="lead">
-                                As a passionate Software Engineer, I thrive on building impactful web applications and solving complex problems. My expertise spans across both front-end and some part of back-end development, where I continuously refine my skills to create scalable and efficient solutions.
-                            </p>
-                            <p>
-                                When I'm not coding, you'll find me sharpening my problem-solving abilities through DSA challenges on platforms like Scaler and LeetCode. I believe in the power of constant learning, which not only strengthens my technical abilities but also fuels my personal growth and confidence.
-                            </p>
-                            <p>
-                                In my downtime, I unwind by diving into online FPS games, where I channel my strategic thinking and focus. Whether it's coding or gaming, I approach every challenge with a relentless drive to improve and succeed.
-                            </p>
+                            <DialogueBox 
+                                typingSpeed={25}
+                                lines={[
+                                    "A passionate Software Engineer who treats every project like a boss fight — strategize, execute, and ship. My expertise spans both front-end and back-end development.",
+                                    "When I'm not coding, you'll find me sharpening my problem-solving abilities through DSA challenges on platforms like Scaler and LeetCode.",
+                                    "In my downtime, I unwind by diving into competitive FPS games (mainly Valorant), catching up on the latest anime arcs, or reading manga chapters. I approach every challenge with a relentless drive to win."
+                                ]} 
+                            />
                         </div>
 
 
@@ -55,10 +58,12 @@ const About = () => {
                         className="about-visuals"
                     >
                         <div className="interests-grid">
-                            <span className="category-label">Life & Hobbies</span>
+                            <span className="category-label">Side Quests & Hobbies</span>
                             {interests.map((item, i) => (
                                 <div key={i} className="interest-card glass" tabIndex="0" aria-label={`Hobby: ${item.label}`}>
-                                    <div className="interest-icon">{item.icon}</div>
+                                    <div className="interest-icon" style={{ background: `${item.color}15`, color: item.color, borderColor: `${item.color}30` }}>
+                                        {item.icon}
+                                    </div>
                                     <div className="interest-info">
                                         <h4>{item.label}</h4>
                                         <p>{item.desc}</p>
@@ -68,7 +73,7 @@ const About = () => {
                         </div>
 
                         <div className="philosophy-quote glass">
-                            <p>"I believe that constant learning fuels both technical ability and personal growth. Every line of code is an opportunity to solve an edge case or optimize a workflow."</p>
+                            <p>"The moment you think of giving up, think of the reason why you held on so long." — Natsu Dragneel</p>
                         </div>
                     </motion.div>
                 </div>
