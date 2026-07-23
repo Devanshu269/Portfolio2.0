@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import './StageBanner.css';
 
 const STAGES = [
@@ -62,16 +63,24 @@ const StageBanner = () => {
         };
     }, [showBanner]);
 
-    if (!banner) return null;
-
     return (
-        <div className={`stage-banner${visible ? ' show' : ' hide'}`}>
-            <div className="stage-inner">
-                <span className="stage-num">WORLD {banner.num}</span>
-                <span className="stage-dash">—</span>
-                <span className="stage-name">{banner.name}</span>
-            </div>
-        </div>
+        <AnimatePresence>
+            {visible && banner && (
+                <motion.div
+                    className="stage-toast"
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 100, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                >
+                    <div className="toast-icon">🗺️</div>
+                    <div className="toast-content">
+                        <div className="toast-title">AREA DISCOVERED</div>
+                        <div className="toast-name">{banner.name}</div>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 

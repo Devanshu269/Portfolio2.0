@@ -21,6 +21,10 @@ const KonamiCode = () => {
         const onKey = (e) => {
             keysRef.current = [...keysRef.current, e.key].slice(-KONAMI_SEQUENCE.length);
             if (keysRef.current.join(',') === KONAMI_SEQUENCE.join(',')) {
+                // Konami Code Visual Overdrive (Hacker Mode)
+                document.body.classList.add('hacker-mode');
+                setTimeout(() => document.body.classList.remove('hacker-mode'), 5000);
+                
                 setShowMiniGame(true);
                 unlockAchievement('konami_code');
                 keysRef.current = [];

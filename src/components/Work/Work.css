@@ -161,7 +161,7 @@
 .role-achievements li::before {
     content: '►';
     position: absolute;
-    left: -20px;
+    left: -25px;
     color: var(--primary-alt);
     font-size: 1rem;
     top: 2px;
@@ -197,5 +197,29 @@
     .rpg-window {
         flex-direction: column;
         gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .work-section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .rpg-window {
+        padding: 25px 15px 25px 40px; /* 40px left padding to fit the timeline node */
+    }
+    
+    .role-title {
+        font-size: 1rem; /* Smaller font so it doesn't overflow */
+        word-wrap: break-word;
+    }
+    
+    .role-achievements {
+        padding-left: 20px; /* Give bullets room on mobile */
+    }
+    
+    .role-achievements li {
+        font-size: 1.2rem;
     }
 }

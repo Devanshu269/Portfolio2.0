@@ -96,8 +96,7 @@ export const AudioProvider = ({ children }) => {
                 osc.start(now);
                 osc.stop(now + 0.8);
                 break;
-            case 'hover':
-                // Subtle UI tick
+            case 'achievement':
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(800, now);
                 gainNode.gain.setValueAtTime(0.02, now);

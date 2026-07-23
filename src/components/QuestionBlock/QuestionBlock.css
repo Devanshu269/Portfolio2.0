@@ -3,7 +3,7 @@
 .question-block-wrapper {
     position: fixed;
     top: 45%;
-    left: 20px;
+    left: 15px;
     transform: translateY(-50%);
     z-index: 9500;
     display: flex;
@@ -131,9 +131,90 @@
     transform-origin: 0 0;
 }
 
+.sparkle:nth-child(5) { top: 50%; left: 50%; animation-delay: 0.4s; }
+.sparkle:nth-child(6) { top: 0%; left: 50%; animation-delay: 0.5s; }
+.sparkle:nth-child(7) { top: 50%; left: 0%; animation-delay: 0.6s; }
+.sparkle:nth-child(8) { top: 100%; left: 50%; animation-delay: 0.7s; }
+
+/* ── Mobile Layout ── */
+@media (max-width: 768px) {
+    .question-block-wrapper {
+        top: auto;
+        bottom: 100px; /* Safely above the Warp Pipe */
+        left: 20px;
+        transform: none;
+        z-index: 9400; /* Just below Warp Pipe z-index */
+    }
+}
+
 @keyframes coinBurst {
     0%   { transform: rotate(var(--angle)) translateY(0px) scale(1);  opacity: 1; }
     100% { transform: rotate(var(--angle)) translateY(-35px) scale(0.3); opacity: 0; }
+}
+
+/* ── Cheat Code Banner ── */
+.cheat-code-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Start completely centered */
+    z-index: 10000;
+    background: rgba(10, 10, 15, 0.95);
+    border: 3px solid #00FF00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4), inset 0 0 10px rgba(0, 255, 0, 0.2);
+    padding: 30px 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.cheat-banner-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #00FF00;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.cheat-banner-close:hover {
+    color: #FFF;
+    transform: scale(1.2);
+}
+
+.cheat-banner-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: #FBC02D;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.cheat-banner-code {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 20px;
+    color: #00FF00;
+    margin: 10px 0;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.cheat-banner-hint {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: #FFF;
+}
+
+/* Hide the cheat banner on mobile and tablet because there is no physical keyboard */
+@media (max-width: 992px) {
+    .cheat-code-banner {
+        display: none !important;
+    }
 }
 
 /* Mobile adjustments */

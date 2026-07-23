@@ -24,6 +24,7 @@ import StageBanner from './components/StageBanner/StageBanner';
 import CursorTrail from './components/CursorTrail/CursorTrail';
 import QuestionBlock from './components/QuestionBlock/QuestionBlock';
 import Starfield from './components/Starfield/Starfield';
+import ScrollXPBar from './components/ScrollXPBar/ScrollXPBar';
 import { useAudio } from './context/AudioContext';
 
 import './App.css';
@@ -109,6 +110,7 @@ function App() {
             transition={{ duration: 0.5 }}
           >
             <Starfield />
+            <ScrollXPBar />
             {/* ── Game HUD elements ── */}
             <CoinProgress />
             <StageBanner />
