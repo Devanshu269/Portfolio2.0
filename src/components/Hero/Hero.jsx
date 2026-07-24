@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Code2, Gamepad2, Swords } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import CharacterSelect from './CharacterSelect';
+import resumePdf from '../../assets/Devanshu_Shekhar_Resume.pdf';
 import './Hero.css';
 
 const TypewriterText = ({ texts }) => {
@@ -106,6 +107,9 @@ const Hero = () => {
                             </a>
                             <a href="#contact" className="hero-menu-item">
                                 <span className="menu-cursor">►</span> MULTIPLAYER (CONTACT)
+                            </a>
+                            <a href={resumePdf} download="Devanshu_Shekhar_Resume.pdf" className="hero-menu-item">
+                                <span className="menu-cursor">►</span> DOWNLOAD SCROLL (RESUME)
                             </a>
                         </div>
 

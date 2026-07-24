@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAudio } from '../../context/AudioContext';
 import { useAchievements } from '../../context/AchievementContext';
+import resumePdf from '../../assets/Devanshu_Shekhar_Resume.pdf';
 import './Terminal.css';
 
 const Terminal = ({ isOpen, onClose }) => {
@@ -11,6 +12,7 @@ const Terminal = ({ isOpen, onClose }) => {
     ]);
     const [input, setInput] = useState('');
     const bottomRef = useRef(null);
+    const inputRef = useRef(null);
     const { playSfx } = useAudio();
     const { unlockAchievement } = useAchievements();
 
@@ -28,7 +30,7 @@ const Terminal = ({ isOpen, onClose }) => {
 
         switch(trimmed) {
             case 'help':
-                response = "Commands: help, whoami, skills, projects, clear, crt on, crt off, sudo";
+                response = "Commands: help, whoami, skills, projects, clear, crt on, crt off, sudo, resume";
                 break;
             case 'whoami':
                 response = "Devanshu Shekhar - Full Stack Sorcerer & Pixel Enthusiast.";
@@ -38,6 +40,15 @@ const Terminal = ({ isOpen, onClose }) => {
                 break;
             case 'projects':
                 response = "Loading Cartridges... Check the Projects section!";
+                break;
+            case 'resume':
+                response = "Downloading resume scroll...";
+                const link = document.createElement('a');
+                link.href = resumePdf;
+                link.download = 'Devanshu_Shekhar_Resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
                 break;
             case 'clear':
                 setHistory([]);
@@ -68,6 +79,10 @@ const Terminal = ({ isOpen, onClose }) => {
         }
     };
 
+    const handleBodyClick = () => {
+        inputRef.current?.focus();
+    };
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -81,13 +96,14 @@ const Terminal = ({ isOpen, onClose }) => {
                         <span className="terminal-title">~/devanshu/portfolio</span>
                         <button className="terminal-close" onClick={onClose}>X</button>
                     </div>
-                    <div className="terminal-body">
+                    <div className="terminal-body" onClick={handleBodyClick}>
                         {history.map((line, i) => (
                             <div key={i} className="terminal-line">{line}</div>
                         ))}
                         <div className="terminal-input-line">
                             <span className="terminal-prompt">$</span>
                             <input 
+                                ref={inputRef}
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
