@@ -22,15 +22,6 @@ const DUMMY_PROJECTS = [
     },
     {
         id: 2,
-        title: "Vidhyarthi Portal (B.E College Final Year Project)",
-        description: "A professional corporate website developed during an internship, focusing on responsive design, SEO optimization, and clean UI architecture.",
-        image: imgAMC,
-        tags: ["Web Development", "HTML/CSS", "JavaScript", "UI/UX"],
-        github: "https://github.com/Devanshu269/Vidhyarthi-Portal",
-        live: ""
-    },
-    {
-        id: 3,
         title: "Amazon Style Landing Page",
         description: "An e-commerce product landing page mimicking the robust design and structure of Amazon, featuring responsive product grids and interactive UI elements.",
         image: imgAmazon,
@@ -39,7 +30,7 @@ const DUMMY_PROJECTS = [
         live: "https://devanshu269.github.io/AmazonStyleProductlandingPage/"
     },
     {
-        id: 4,
+        id: 3,
         title: "Task Note App",
         description: "A lightweight productivity application for managing notes and tasks, featuring intuitive state management and local storage integration.",
         image: imgNote,
@@ -48,7 +39,7 @@ const DUMMY_PROJECTS = [
         live: ""
     },
     {
-        id: 5,
+        id: 4,
         title: "Advanced To-Do Application",
         description: "A robust to-do list manager allowing users to track progress, categorize tasks, and maintain productivity.",
         image: imgTodo,
@@ -56,24 +47,6 @@ const DUMMY_PROJECTS = [
         github: "https://github.com/Devanshu269/todo",
         live: ""
     },
-    {
-        id: 6,
-        title: "Project Alpha (Dummy)",
-        description: "A highly anticipated next-gen web application currently under development. Stay tuned for features.",
-        image: imgNote,
-        tags: ["React", "WebGL", "TypeScript"],
-        github: "",
-        live: ""
-    },
-    {
-        id: 7,
-        title: "Project Beta (Dummy)",
-        description: "Secret project involving complex data visualization and real-time multiplayer networking.",
-        image: imgTodo,
-        tags: ["Node.js", "Socket.io", "React"],
-        github: "",
-        live: ""
-    }
 ];
 
 const Projects = () => {
@@ -118,7 +91,7 @@ const Projects = () => {
                 </div>
 
                 <div className="projects-container" style={{ position: 'relative', overflow: 'hidden' }}>
-                    
+
                     {isSlashing && (
                         <div className="katana-slash-overlay">
                             <div className="slash-flash" />
@@ -128,7 +101,7 @@ const Projects = () => {
 
                     <div className="projects-grid">
                         <AnimatePresence mode="wait">
-                            <motion.div 
+                            <motion.div
                                 key={currentPage}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -168,7 +141,7 @@ const Projects = () => {
                                         <div className="project-info-overlay">
                                             <h3 className="overlay-title">{project.title}</h3>
                                             <p className="overlay-desc">{project.description}</p>
-                                            
+
                                             <div className="project-tags">
                                                 {project.tags.map((tag, tIdx) => (
                                                     <span key={tIdx} className="project-tag">{tag}</span>
