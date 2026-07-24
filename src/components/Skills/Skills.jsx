@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-    FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJava, FaPython, FaGitAlt, FaJs
+    FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJava, FaPython, FaGitAlt, FaJs, FaGithub, FaCode, FaTasks
 } from 'react-icons/fa';
 import {
-    SiNextdotjs, SiTailwindcss, SiSass, SiExpress, SiSpringboot,
-    SiPostgresql, SiMysql
+    SiNextdotjs, SiTailwindcss, SiSass, SiSpringboot,
+    SiPostgresql, SiMysql, SiRedux, SiJira, SiTypescript
 } from 'react-icons/si';
 import { BiNetworkChart } from 'react-icons/bi';
 import './Skills.css';
@@ -16,23 +16,25 @@ const Skills = () => {
     const [activeSkill, setActiveSkill] = useState(null);
 
     const skillsList = [
+        { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26", type: "Core Foundation", stats: "+100 Structure", desc: "The skeletal structure of every web-based entity." },
+        { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6", type: "Visual Paint", stats: "+100 Aesthetics", desc: "Adds beauty, color, and layout to the structural bones." },
+        { name: "JavaScript", icon: <FaJs />, color: "#F7DF1E", type: "Core Logic", stats: "+100 Interactivity, +80 Event Handling", desc: "The versatile magic that brings the web to life." },
         { name: "React.js", icon: <FaReact />, color: "#61DAFB", type: "Legendary Framework", stats: "+50 UI Speed, +30 Component Reusability", desc: "Construct dynamic Single Page Applications without breaking a sweat." },
-        { name: "Next.js", icon: <SiNextdotjs />, color: "#FFFFFF", type: "Epic Framework", stats: "+40 SEO, +50 SSR Power", desc: "The ultimate meta-framework for React production builds." },
+        { name: "Redux", icon: <SiRedux />, color: "#764ABC", type: "State Manager", stats: "+80 Global State, +40 Predictability", desc: "A predictable state container for maintaining order in complex JavaScript apps." },
+        { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#06B6D4", type: "Utility Armor", stats: "+80 Styling Speed", desc: "Rapidly build modern websites without ever leaving your HTML." },
+        { name: "SASS", icon: <SiSass />, color: "#CC6699", type: "Styling Relic", stats: "+40 CSS Logic", desc: "CSS with superpowers. Variables, nesting, and mixins." },
+        { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6", type: "Strict Typings", stats: "+80 Type Safety, +40 Dev Speed", desc: "A strongly typed superset of JavaScript that prevents bugs before they happen." },
         { name: "Node.js", icon: <FaNodeJs />, color: "#339933", type: "Rare Environment", stats: "+60 Async I/O, +40 Backend Speed", desc: "Allows execution of JavaScript magic outside the browser." },
         { name: "Java", icon: <FaJava />, color: "#007396", type: "Ancient Magic", stats: "+80 Enterprise Scalability, +50 OOP", desc: "A highly durable backend spell. Grants immense cross-platform dominance." },
         { name: "Spring Boot", icon: <SiSpringboot />, color: "#6DB33F", type: "Mythic Tool", stats: "+90 Microservice Synergy", desc: "Rapidly brew production-ready stand-alone Spring applications." },
         { name: "Python", icon: <FaPython />, color: "#3776AB", type: "Versatile Scroll", stats: "+70 Scripting, +80 Data Magic", desc: "An elegant, readable language perfect for quick scripts and ML." },
         { name: "PostgreSQL", icon: <SiPostgresql />, color: "#4169E1", type: "Relational Vault", stats: "+90 Data Integrity, +40 Query Speed", desc: "A rock-solid open-source vault for storing critical quest data." },
         { name: "MySQL", icon: <SiMysql />, color: "#4479A1", type: "Standard Vault", stats: "+80 Reliability, +50 Speed", desc: "The classic choice for tabular data storage." },
-        { name: "Express.js", icon: <SiExpress />, color: "#FFFFFF", type: "Fast Middleware", stats: "+50 Routing, +40 API Creation", desc: "A minimal and flexible Node.js web application framework." },
-        { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#06B6D4", type: "Utility Armor", stats: "+80 Styling Speed", desc: "Rapidly build modern websites without ever leaving your HTML." },
-        { name: "SASS", icon: <SiSass />, color: "#CC6699", type: "Styling Relic", stats: "+40 CSS Logic", desc: "CSS with superpowers. Variables, nesting, and mixins." },
-        { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26", type: "Core Foundation", stats: "+100 Structure", desc: "The skeletal structure of every web-based entity." },
-        { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6", type: "Visual Paint", stats: "+100 Aesthetics", desc: "Adds beauty, color, and layout to the structural bones." },
-        { name: "JavaScript", icon: <FaJs />, color: "#F7DF1E", type: "Core Logic", stats: "+100 Interactivity, +80 Event Handling", desc: "The versatile magic that brings the web to life." },
-        { name: "Git", icon: <FaGitAlt />, color: "#F05032", type: "Time Machine", stats: "+100 Version Control", desc: "Allows you to travel back in time to fix critical mistakes." },
+        { name: "Git/GitHub", icon: <FaGithub />, color: "#FFFFFF", type: "Time Machine", stats: "+100 Version Control", desc: "Allows you to travel back in time to fix critical mistakes and collaborate globally." },
+        { name: "DSA", icon: <FaCode />, color: "#FFD700", type: "Core Fundamentals", stats: "+100 Problem Solving", desc: "The fundamental building blocks for writing highly optimized and efficient spells." },
+        { name: "Agile", icon: <SiJira />, color: "#2684FF", type: "Quest Methodology", stats: "+80 Sprint Speed", desc: "An iterative approach to delivering high-quality software in fast-paced environments." },
         // Empty slots to pad out the inventory UI (total 20 slots)
-        ...Array(5).fill(null)
+        ...Array(3).fill(null)
     ];
 
     const handleHover = (skill) => {
