@@ -9,6 +9,9 @@ import imgAMC from '../../assets/projects/amc_project_1782574519230.png';
 import imgAmazon from '../../assets/projects/amazon_project_1782574533567.png';
 import imgNote from '../../assets/projects/note_project_1782574581552.png';
 import imgTodo from '../../assets/projects/todo_project_1782574593750.png';
+import imgHtmlMarkDown from '../../assets/projects/HtmlMarkDown.png';
+import imgRockPaperScissorGame from '../../assets/projects/rockPaperScissor.png';
+import imgJobJuggler from '../../assets/projects/jobJuggler.png';
 
 const DUMMY_PROJECTS = [
     {
@@ -31,6 +34,33 @@ const DUMMY_PROJECTS = [
     },
     {
         id: 3,
+        title: "Job Juggler",
+        description: "A full-stack job application tracking platform designed to streamline the job search, featuring Kanban pipeline boards, interview scheduling, and analytics.",
+        image: imgJobJuggler,
+        tags: ["React", "JavaScript", "State Management", "Java", "Spring", "SQL"],
+        github: "https://github.com/Devanshu269/JobTrackingApplication",
+        live: "https://job-tracking-application-frontend.vercel.app/login"
+    },
+    {
+        id: 4,
+        title: "Markdown to HTML Converter",
+        description: "A modern, responsive web utility that converts Markdown text to HTML in real-time, featuring a live preview and support for multiple Markdown extensions.",
+        image: imgHtmlMarkDown,
+        tags: ["HTML", "CSS", "JavaScript"],
+        github: "https://github.com/Devanshu269/HTMLMarkDown",
+        live: "https://codepen.io/editor/Nikozy/pen/01a17414-a4ed-7ded-a8a3-7c212f021ef1"
+    },
+    {
+        id: 5,
+        title: "Rock Paper Scissors Game",
+        description: "A classic Rock Paper Scissors game with a modern interface, featuring multiple game modes, score tracking, and smooth animations.",
+        image: imgRockPaperScissorGame,
+        tags: ["HTML", "CSS", "JavaScript"],
+        github: "https://github.com/Devanshu269/RockPaperScissorGame",
+        live: "https://codepen.io/editor/Nikozy/pen/01a17415-f248-7905-82d5-fba8bf4d685f"
+    },
+    {
+        id: 6,
         title: "Task Note App",
         description: "A lightweight productivity application for managing notes and tasks, featuring intuitive state management and local storage integration.",
         image: imgNote,
@@ -39,7 +69,7 @@ const DUMMY_PROJECTS = [
         live: ""
     },
     {
-        id: 4,
+        id: 7,
         title: "Advanced To-Do Application",
         description: "A robust to-do list manager allowing users to track progress, categorize tasks, and maintain productivity.",
         image: imgTodo,
